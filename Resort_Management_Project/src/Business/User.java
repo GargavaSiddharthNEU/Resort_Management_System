@@ -9,5 +9,5 @@ package Business;
  * @author siddh
  */
 public class User {
-    
+    String test = "";
 }
