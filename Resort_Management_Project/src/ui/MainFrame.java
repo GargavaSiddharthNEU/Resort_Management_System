@@ -7,7 +7,8 @@ package ui;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import Business.User;
+import model.User;
+import model.UserDirectory;
 
 /**
  *
@@ -15,7 +16,8 @@ import Business.User;
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    static User user;
+    User user;
+    UserDirectory userDirectory;
 
     //private SysAdminJFrame sysadminJFrame;
     /**
@@ -23,6 +25,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        userDirectory = new UserDirectory();
     }
 
     /**
@@ -144,13 +147,13 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        Register registerPanel = new Register();
+        Register registerPanel = new Register(userDirectory);
         SplitPane.setRightComponent(registerPanel);
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        LoginPanel loginPanel = new LoginPanel();
+        LoginPanel loginPanel = new LoginPanel(userDirectory);
         SplitPane.setRightComponent(loginPanel);
     }//GEN-LAST:event_btnLoginActionPerformed
 
