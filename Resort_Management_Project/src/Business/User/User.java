@@ -9,16 +9,23 @@ package Business.User;
  * @author siddh
  */
 public class User {
-    String firstName;
-    String lastName;
-    String address;
-    String role;
-    String userName;
-    String password;
-    String emailAddress;
-    String contactNumber;
-    String userId;
-    
+    private Long userId;
+    private String firstName;
+    private String lastName;
+    private String userName;
+    private String password;
+    private int age;
+    private String emailId;
+    private Long phoneNumber;
+    private String roleType;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -34,22 +41,6 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public String getUserName() {
@@ -68,29 +59,35 @@ public class User {
         this.password = password;
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public int getAge() {
+        return age;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public String getContactNumber() {
-        return contactNumber;
+    public String getEmailId() {
+        return emailId;
     }
 
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
 
-    public String getUserId() {
-        return userId;
+    public Long getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setPhoneNumber(Long phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
-    
-    
+
+    public String getRoleType() {
+        return roleType;
+    }
+
+    public void setRoleType(String roleType) {
+        this.roleType = roleType;
+    }  
 }

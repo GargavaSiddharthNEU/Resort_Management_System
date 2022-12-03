@@ -6,7 +6,7 @@ package Business.Role;
 
 /**
  *
- * @author siddh
+ * @author manikantareddythikkavarapu
  */
 public class Customer {
     
