@@ -220,8 +220,8 @@ public class Register extends javax.swing.JPanel {
         String roleType = (String) cmbRole.getSelectedItem();
         String emailAddress = txtEmailAddress.getText();
 
-        if (firstName.isBlank() || lastName.isBlank() || userName.isBlank() || password.isBlank()
-                || phoneNumber.isBlank() || userId.isBlank() || age.isBlank() || address.isBlank()) {
+        if (firstName.isEmpty() || lastName.isEmpty() || userName.isEmpty()|| password.isEmpty()
+                || phoneNumber.isEmpty()|| userId.isEmpty()|| age.isEmpty()|| address.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter all details !");
             //clearAllFields();
             return;
