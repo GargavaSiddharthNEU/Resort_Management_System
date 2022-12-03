@@ -69,7 +69,7 @@ public class Register extends javax.swing.JPanel {
             }
         });
 
-        cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Admin", "Vehicle Contractor", "Pool Incharge", "Gaming Incharge", "Janitor", "" }));
+        cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Admin", "Vehicle Contractor", "Pool Incharge", "Gaming Incharge", "Janitor" }));
         cmbRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbRoleActionPerformed(evt);
