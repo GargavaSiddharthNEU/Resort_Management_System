@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-import model.User;
-import model.UserDirectory;
+import Business.User.User;
+import Business.User.UserDirectory;
 
 /**
  *

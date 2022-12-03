@@ -7,8 +7,8 @@ package ui;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import model.User;
-import model.UserDirectory;
+import Business.User.User;
+import Business.User.UserDirectory;
 
 /**
  *
