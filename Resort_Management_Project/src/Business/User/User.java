@@ -18,11 +18,6 @@ public class User {
     String emailAddress;
     String contactNumber;
     String userId;
-
-    public User(String userName, String password) {
-        this.userName = userName;
-        this.password = password;
-    }
     
 
     public String getFirstName() {
