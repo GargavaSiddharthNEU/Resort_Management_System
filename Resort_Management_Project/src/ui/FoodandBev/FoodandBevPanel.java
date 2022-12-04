@@ -46,6 +46,11 @@ public class FoodandBevPanel extends javax.swing.JPanel {
         });
 
         jButton2.setText("Requests");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Logout");
 
@@ -114,6 +119,12 @@ public class FoodandBevPanel extends javax.swing.JPanel {
         MenuPanel menuPanel = new MenuPanel();
         jSplitPane1.setRightComponent(menuPanel);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        WorkRequest workRequest = new WorkRequest();
+        jSplitPane1.setRightComponent(workRequest);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
