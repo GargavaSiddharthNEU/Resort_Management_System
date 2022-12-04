@@ -116,7 +116,7 @@ public class FoodandBevPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        MenuPanel menuPanel = new MenuPanel();
+        MenuPanel menuPanel = new MenuPanel(system);
         jSplitPane1.setRightComponent(menuPanel);
     }//GEN-LAST:event_jButton1ActionPerformed
 

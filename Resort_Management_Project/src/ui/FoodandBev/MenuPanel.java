@@ -4,17 +4,133 @@
  */
 package ui.FoodandBev;
 
+import Business.EcoSystem;
+import Business.FoodandBev.Menu.FBItem;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author manikantareddythikkavarapu
  */
 public class MenuPanel extends javax.swing.JPanel {
+    private EcoSystem system;
 
+    String mainValidationString = "";
+    String validationString1 = "";
+    String validationString2 = "";
+    
     /**
      * Creates new form MenuPanel
      */
-    public MenuPanel() {
+    public MenuPanel(EcoSystem system) {
         initComponents();
+        this.system = system;
+    }
+    
+    private void resetMenuData() {
+        jTextField1.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+    }
+
+    public boolean areDataFieldsEmpty() {
+        validationString1 = "";
+        if (jTextField1.getText().isEmpty()) {
+            validationString1 += "Id, ";
+        }
+        if (jTextField3.getText().isEmpty()) {
+            validationString1 += "Name, ";
+        }
+        if (jTextField4.getText() == null) {
+            validationString1 += "Price, ";
+        }
+        return isNotValid(validationString1);
+    }
+
+    public boolean areDataTypesCorrect() {
+        validationString2 = "";
+        if (!validateDoubleDataType(jTextField4.getText())) {
+            validationString2 += "Price, ";
+        }
+        return isNotValid(validationString2);
+    }
+
+    public boolean isNotValid(String str) {
+        if (str.equals("")) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean validateDoubleDataType(String str) {
+        try {
+            Double.parseDouble(str);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public void validationErrorMessagesDialog(boolean validation1, boolean validation2) {
+        if (validation1) {
+            mainValidationString = validationString1;
+            JOptionPane.showMessageDialog(this, "Please update the data for these fields: " + mainValidationString);
+        } else if (validation2) {
+            mainValidationString = validationString2;
+            JOptionPane.showMessageDialog(this, "Please enter only numbers for these fields: " + mainValidationString);
+        }
+    }
+    
+    private boolean menuDetailsExistence() {
+        String menuId = jTextField1.getText();
+        boolean exist = false;
+        System.out.println(system.getFBItemDirectory().getFbItemDirectoryList());
+        System.out.println(system.getFBItemDirectory());
+        if (system.getFBItemDirectory().getFbItemDirectoryList().isEmpty()) {
+            for (FBItem fb : system.getFBItemDirectory().getFbItemDirectoryList()) {
+                if (jTextField1.getText().equals(fb.getFbItemId())) {
+                    exist = true;
+                    break;
+                }
+            }
+        }
+        return exist;
+    }
+    
+    private FBItem setMenuData() {
+        String menuId = jTextField1.getText();
+        String category = String.valueOf(jComboBox1.getSelectedItem());
+        String name = jTextField3.getText();
+        double price = Double.parseDouble(jTextField4.getText());
+
+        FBItem fb = new FBItem();
+        fb.setFbItemId(menuId);
+        fb.setCategory(category);
+        fb.setFbName(name);
+        fb.setPrice(price);
+
+        return fb;
+    }
+    
+    private void showMenuData() {
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+
+        if (system.getFBItemDirectory().getFbItemDirectoryList() != null) {
+            for (FBItem fb : system.getFBItemDirectory().getFbItemDirectoryList()) {
+
+                Object[] newRow = new Object[4];
+                newRow[0] = fb.getFbItemId();
+                newRow[1] = fb.getCategory();
+                newRow[2] = fb.getFbName();
+                newRow[3] = fb.getPrice();
+
+                model.addRow(newRow);
+            }
+        }
     }
 
     /**
@@ -171,6 +287,22 @@ public class MenuPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        boolean validation1 = areDataFieldsEmpty();
+        boolean validation2 = areDataTypesCorrect();
+
+        if (!validation1 && !validation2) {
+            String menuId = jTextField1.getText();
+            if (!menuDetailsExistence()) {
+                system.getFBItemDirectory().addNewMenuData(setMenuData());
+                JOptionPane.showMessageDialog(this, "New menu data with menuId id : " + menuId + " created");
+                resetMenuData();
+                showMenuData();
+            } else {
+                JOptionPane.showMessageDialog(this, "Menu details already exists with the menuId id : " + menuId);
+            }
+        } else {
+            validationErrorMessagesDialog(validation1, validation2);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

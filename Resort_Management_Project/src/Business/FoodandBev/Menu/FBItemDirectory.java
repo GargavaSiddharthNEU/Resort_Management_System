@@ -11,5 +11,22 @@ import java.util.ArrayList;
  * @author siddh
  */
 public class FBItemDirectory {
-    ArrayList<FBItem> FBItemDirectory;
+    private ArrayList<FBItem> fbItemDirectoryList;
+
+    public ArrayList<FBItem> getFbItemDirectoryList() {
+        return fbItemDirectoryList;
+    }
+
+    public void setFbItemDirectoryList(ArrayList<FBItem> fbItemDirectoryList) {
+        this.fbItemDirectoryList = fbItemDirectoryList;
+    }
+    
+    public FBItemDirectory() {
+        this.fbItemDirectoryList = new ArrayList<>();
+    }
+    
+    public void addNewMenuData(FBItem fb) {
+        this.fbItemDirectoryList.add(fb);
+    }
+    
 }

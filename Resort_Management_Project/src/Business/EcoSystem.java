@@ -93,7 +93,7 @@ public class EcoSystem {
         this.laundryDirectory = laundryDirectory;
     }
 
-    public FBItemDirectory getfBItemDirectory() {
+    public FBItemDirectory getFBItemDirectory() {
         return fBItemDirectory;
     }
 
