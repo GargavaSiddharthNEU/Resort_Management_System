@@ -101,37 +101,40 @@ public class LoginPanel extends javax.swing.JPanel {
 
     private void btnLoginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginUserActionPerformed
         // TODO add your handling code here:
-        String userName = txtEUserName.getText();
-        String password = txtEPassword.getText();
-        ArrayList<User> list = userDirectory.getUsers();
         
-         if (userName.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter all the details !!");
-        } else {
-            if (list.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "You have not registered !!");
-            } else {
-                int index = 0;
-                for (User temp : list) {
-                    if (userName.equalsIgnoreCase(temp.getUserName()) && password.equalsIgnoreCase(temp.getPassword())) {
-                        if (temp.getRoleType().equalsIgnoreCase("Customer")) {
-
-                        } else if (temp.getRoleType().equalsIgnoreCase("Admin")) {
-
-                        } else if (temp.getRoleType().equalsIgnoreCase("Vehicle Contractor")) {
-
-                        } else if (temp.getRoleType().equalsIgnoreCase("Pool Incharge")) {
-
-                        }
-                    } else {
-                        index++;
-                    }
-                }
-                if (index == list.size()) {
-                    JOptionPane.showMessageDialog(this, "You have not registered !!");
-                }
-            }
-        }
+        
+        
+//        String userName = txtEUserName.getText();
+//        String password = txtEPassword.getText();
+//        ArrayList<User> list = userDirectory.getUsers();
+//        
+//         if (userName.isEmpty() || password.isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Please enter all the details !!");
+//        } else {
+//            if (list.isEmpty()) {
+//                JOptionPane.showMessageDialog(this, "You have not registered !!");
+//            } else {
+//                int index = 0;
+//                for (User temp : list) {
+//                    if (userName.equalsIgnoreCase(temp.getUserName()) && password.equalsIgnoreCase(temp.getPassword())) {
+//                        if (temp.getRoleType().equalsIgnoreCase("Customer")) {
+//
+//                        } else if (temp.getRoleType().equalsIgnoreCase("Admin")) {
+//
+//                        } else if (temp.getRoleType().equalsIgnoreCase("Vehicle Contractor")) {
+//
+//                        } else if (temp.getRoleType().equalsIgnoreCase("Pool Incharge")) {
+//
+//                        }
+//                    } else {
+//                        index++;
+//                    }
+//                }
+//                if (index == list.size()) {
+//                    JOptionPane.showMessageDialog(this, "You have not registered !!");
+//                }
+//            }
+//        }
                         
 //                JOptionPane.showMessageDialog(this, "Invalid User");
     }//GEN-LAST:event_btnLoginUserActionPerformed

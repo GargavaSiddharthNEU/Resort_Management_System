@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import Business.User.User;
 import Business.User.UserDirectory;
+import java.awt.CardLayout;
 
 /**
  *
@@ -148,7 +149,9 @@ public class MainFrame extends javax.swing.JFrame {
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
         Register registerPanel = new Register(userDirectory);
-        SplitPane.setRightComponent(registerPanel);
+        CardLayout layout=(CardLayout)workArea.getLayout();
+        workArea.add("Register Panel",registerPanel);
+        layout.next(workArea);
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
