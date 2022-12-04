@@ -1,5 +1,7 @@
 package ui.FoodandBev;
 
+import Business.EcoSystem;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -10,12 +12,13 @@ package ui.FoodandBev;
  * @author manikantareddythikkavarapu
  */
 public class FoodandBevPanel extends javax.swing.JPanel {
-
+    private EcoSystem system;
     /**
      * Creates new form FoodandBevPanel
      */
-    public FoodandBevPanel() {
+    public FoodandBevPanel(EcoSystem system) {
         initComponents();
+        this.system = system;
     }
 
     /**

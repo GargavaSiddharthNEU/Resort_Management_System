@@ -8,20 +8,22 @@ import Business.EcoSystem;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import Business.User.User;
-
+import ui.FoodandBev.FoodandBevPanel;
 /**
  *
  * @author manikantareddythikkavarapu
  */
 public class LoginPanel extends javax.swing.JPanel {
     private EcoSystem system;
+    private javax.swing.JSplitPane SplitPane;
     
     /**
      * Creates new form LoginPanel
      */
-    public LoginPanel(EcoSystem system) {
+    public LoginPanel(EcoSystem system, javax.swing.JSplitPane SplitPane) {
         initComponents();
         this.system = system;
+        this.SplitPane = SplitPane;
     }
 
     /**
@@ -121,6 +123,9 @@ public class LoginPanel extends javax.swing.JPanel {
 
                         } else if (temp.getRoleType().equalsIgnoreCase("Pool Incharge")) {
 
+                        } else if (temp.getRoleType().equalsIgnoreCase("Food Manager")) {
+                            FoodandBevPanel foodandBevPanel = new FoodandBevPanel(system);
+                            SplitPane.setRightComponent(foodandBevPanel);
                         }
                     } else {
                         index++;
