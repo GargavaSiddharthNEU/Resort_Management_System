@@ -8,8 +8,9 @@ import java.util.ArrayList;
 
 /**
  *
- * @author siddh
+ * @author Subbu
  */
-public class scheduleDirectory {
+public class ScheduleDirectory {
+    
     ArrayList<Schedule> scheduleDirectory;
 }

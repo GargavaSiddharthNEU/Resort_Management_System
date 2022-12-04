@@ -4,12 +4,10 @@
  */
 package Business.Role;
 
-import Business.User.User;
-
 /**
  *
  * @author siddh
  */
-public class VehicleContractor extends User{
+public class VehicleContractor {
     
 }

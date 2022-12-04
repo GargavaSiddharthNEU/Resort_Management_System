@@ -4,10 +4,119 @@
  */
 package Business;
 
+import Business.FoodandBev.Menu.FBItemDirectory;
+import Business.HouseKeeping.LaundryFacility.LaundryDirectory;
+import Business.HouseKeeping.RoomCleaning.ScheduleDirectory;
+import Business.Recreation.GamingFacility.GameDirectory;
+import Business.Recreation.PoolFacility.PoolDirectory;
+import Business.Shopping.InhouseShopping.SouvenirDirectory;
+import Business.Transportation.VehicleBooking.VehicleDirectory;
+import Business.User.UserDirectory;
+
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class EcoSystem {
-    
+
+    private static EcoSystem ecoSystem;
+    UserDirectory userDirectory;
+    VehicleDirectory vehicleDirectory;
+    SouvenirDirectory souvenirDirectory;
+    PoolDirectory poolDirectory;
+    GameDirectory gameDirectory;
+    ScheduleDirectory scheduleDirectory;
+    LaundryDirectory laundryDirectory;
+    FBItemDirectory fBItemDirectory;
+
+    public static EcoSystem getEcoSystem() {
+        return ecoSystem;
+    }
+
+    public static void setEcoSystem(EcoSystem ecoSystem) {
+        EcoSystem.ecoSystem = ecoSystem;
+    }
+
+    public UserDirectory getUserDirectory() {
+        return userDirectory;
+    }
+
+    public void setUserDirectory(UserDirectory userDirectory) {
+        this.userDirectory = userDirectory;
+    }
+
+    public VehicleDirectory getVehicleDirectory() {
+        return vehicleDirectory;
+    }
+
+    public void setVehicleDirectory(VehicleDirectory vehicleDirectory) {
+        this.vehicleDirectory = vehicleDirectory;
+    }
+
+    public SouvenirDirectory getSouvenirDirectory() {
+        return souvenirDirectory;
+    }
+
+    public void setSouvenirDirectory(SouvenirDirectory souvenirDirectory) {
+        this.souvenirDirectory = souvenirDirectory;
+    }
+
+    public PoolDirectory getPoolDirectory() {
+        return poolDirectory;
+    }
+
+    public void setPoolDirectory(PoolDirectory poolDirectory) {
+        this.poolDirectory = poolDirectory;
+    }
+
+    public GameDirectory getGameDirectory() {
+        return gameDirectory;
+    }
+
+    public void setGameDirectory(GameDirectory gameDirectory) {
+        this.gameDirectory = gameDirectory;
+    }
+
+    public ScheduleDirectory getScheduleDirectory() {
+        return scheduleDirectory;
+    }
+
+    public void setScheduleDirectory(ScheduleDirectory scheduleDirectory) {
+        this.scheduleDirectory = scheduleDirectory;
+    }
+
+    public LaundryDirectory getLaundryDirectory() {
+        return laundryDirectory;
+    }
+
+    public void setLaundryDirectory(LaundryDirectory laundryDirectory) {
+        this.laundryDirectory = laundryDirectory;
+    }
+
+    public FBItemDirectory getfBItemDirectory() {
+        return fBItemDirectory;
+    }
+
+    public void setfBItemDirectory(FBItemDirectory fBItemDirectory) {
+        this.fBItemDirectory = fBItemDirectory;
+    }
+
+    public static EcoSystem getInstance() {
+        if (ecoSystem == null) {
+            ecoSystem = new EcoSystem();
+        }
+        return ecoSystem;
+    }
+
+    private EcoSystem() {
+
+        userDirectory = new UserDirectory();
+        vehicleDirectory = new VehicleDirectory();
+        souvenirDirectory = new SouvenirDirectory();
+        poolDirectory = new PoolDirectory();
+        gameDirectory = new GameDirectory();
+        scheduleDirectory = new ScheduleDirectory();
+        laundryDirectory = new LaundryDirectory();
+        fBItemDirectory = new FBItemDirectory();
+    }
 }

@@ -4,11 +4,9 @@
  */
 package ui;
 
-import java.util.ArrayList;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import Business.User.User;
-import Business.User.UserDirectory;
+import Business.DB4OUtil.DB4OUtil;
+import Business.EcoSystem;
+
 
 /**
  *
@@ -16,16 +14,16 @@ import Business.User.UserDirectory;
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    User user;
-    UserDirectory userDirectory;
-
+    private EcoSystem system;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    
     //private SysAdminJFrame sysadminJFrame;
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
-        userDirectory = new UserDirectory();
+        system = dB4OUtil.retrieveSystem();
     }
 
     /**
@@ -147,13 +145,13 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        Register registerPanel = new Register(userDirectory);
+        Register registerPanel = new Register(system);
         SplitPane.setRightComponent(registerPanel);
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        LoginPanel loginPanel = new LoginPanel(userDirectory);
+        LoginPanel loginPanel = new LoginPanel(system);
         SplitPane.setRightComponent(loginPanel);
     }//GEN-LAST:event_btnLoginActionPerformed
 
