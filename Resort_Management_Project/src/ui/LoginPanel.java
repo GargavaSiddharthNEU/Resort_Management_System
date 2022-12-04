@@ -4,25 +4,24 @@
  */
 package ui;
 
+import Business.EcoSystem;
 import java.util.ArrayList;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import Business.User.User;
-import Business.User.UserDirectory;
 
 /**
  *
  * @author manikantareddythikkavarapu
  */
 public class LoginPanel extends javax.swing.JPanel {
-    private UserDirectory userDirectory;
+    private EcoSystem system;
     
     /**
      * Creates new form LoginPanel
      */
-    public LoginPanel(UserDirectory userDirectory) {
+    public LoginPanel(EcoSystem system) {
         initComponents();
-        this.userDirectory = userDirectory;
+        this.system = system;
     }
 
     /**
@@ -103,7 +102,7 @@ public class LoginPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String userName = txtEUserName.getText();
         String password = txtEPassword.getText();
-        ArrayList<User> list = userDirectory.getUsers();
+        ArrayList<User> list = system.getUserDirectory().getUsers();
         
          if (userName.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter all the details !!");

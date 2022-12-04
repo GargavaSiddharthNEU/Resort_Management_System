@@ -4,12 +4,13 @@
  */
 package ui;
 
+import Business.DB4OUtil.DB4OUtil;
+import Business.EcoSystem;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import Business.User.User;
-import Business.User.UserDirectory;
 
 /**
  *
@@ -17,14 +18,15 @@ import Business.User.UserDirectory;
  */
 public class Register extends javax.swing.JPanel {
 
-    private UserDirectory userDirectory;
+    private EcoSystem system;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
 
     /**
      * Creates new form Register
      */
-    public Register(UserDirectory userDirectory) {
+    public Register(EcoSystem system) {
         initComponents();
-        this.userDirectory = userDirectory;
+        this.system = system;
     }
 
     /**
@@ -247,7 +249,7 @@ public class Register extends javax.swing.JPanel {
             return;
         }
 
-        for (User p : userDirectory.getUsers()) {
+        for (User p : system.getUserDirectory().getUsers()) {
             if (userName.equals(p.getUserName())) {
                 JOptionPane.showMessageDialog(this, "Person already exists !");
                 return;
@@ -267,20 +269,21 @@ public class Register extends javax.swing.JPanel {
         user.setEmailId(emailAddress);
         user.setUserId(id);
 
-        ArrayList<User> users = userDirectory.getUsers();
+        ArrayList<User> users = system.getUserDirectory().getUsers();
         users.add(user);
-        userDirectory.setUsers(users);
+        system.getUserDirectory().setUsers(users);
 
         JOptionPane.showMessageDialog(this, "Profile successfully added !");
+        dB4OUtil.storeSystem(system);
         clearAllFields();
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void cmbRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRoleActionPerformed
         // TODO add your handling code here:
         String roleType = (String) cmbRole.getSelectedItem();
-        if (roleType == "Customer") {
+        if (roleType.equals("Customer")) {
 
-        } else if (roleType == "Admin") {
+        } else if (roleType.equals("Admin")) {
 
         } else {
 

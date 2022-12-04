@@ -6,12 +6,15 @@ package Business;
 
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class ConfigureASystem {
 
     public static EcoSystem configure() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+        EcoSystem system = EcoSystem.getInstance();
+        
+        return system;
     }
     
 }
