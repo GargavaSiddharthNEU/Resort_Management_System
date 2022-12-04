@@ -6,8 +6,8 @@ package Business.Role;
 
 /**
  *
- * @author siddh
+ * @author manikantareddythikkavarapu
  */
-public class Waiter {
+public class FoodManager {
     
 }
