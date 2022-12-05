@@ -12,6 +12,10 @@ import java.util.ArrayList;
  */
 public class FBItemDirectory {
     private ArrayList<FBItem> fbItemDirectoryList;
+    
+    public FBItemDirectory() {
+        this.fbItemDirectoryList = new ArrayList<>();
+    }
 
     public ArrayList<FBItem> getFbItemDirectoryList() {
         return fbItemDirectoryList;
@@ -19,10 +23,6 @@ public class FBItemDirectory {
 
     public void setFbItemDirectoryList(ArrayList<FBItem> fbItemDirectoryList) {
         this.fbItemDirectoryList = fbItemDirectoryList;
-    }
-    
-    public FBItemDirectory() {
-        this.fbItemDirectoryList = new ArrayList<>();
     }
     
     public void addNewMenuData(FBItem fb) {

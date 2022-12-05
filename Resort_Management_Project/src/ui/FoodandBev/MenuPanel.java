@@ -86,16 +86,12 @@ public class MenuPanel extends javax.swing.JPanel {
     private boolean menuDetailsExistence() {
         String menuId = jTextField1.getText();
         boolean exist = false;
-        System.out.println(system.getFBItemDirectory().getFbItemDirectoryList());
-        System.out.println(system.getFBItemDirectory());
-        if (system.getFBItemDirectory().getFbItemDirectoryList().isEmpty()) {
             for (FBItem fb : system.getFBItemDirectory().getFbItemDirectoryList()) {
                 if (jTextField1.getText().equals(fb.getFbItemId())) {
                     exist = true;
                     break;
                 }
             }
-        }
         return exist;
     }
     
@@ -119,7 +115,6 @@ public class MenuPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
 
-        if (system.getFBItemDirectory().getFbItemDirectoryList() != null) {
             for (FBItem fb : system.getFBItemDirectory().getFbItemDirectoryList()) {
 
                 Object[] newRow = new Object[4];
@@ -130,7 +125,6 @@ public class MenuPanel extends javax.swing.JPanel {
 
                 model.addRow(newRow);
             }
-        }
     }
 
     /**
