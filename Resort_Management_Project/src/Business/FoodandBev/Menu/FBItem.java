@@ -46,5 +46,8 @@ public class FBItem {
         this.price = price;
     }
     
-    
+    @Override
+    public String toString() {
+        return fbItemId;
+    }
 }

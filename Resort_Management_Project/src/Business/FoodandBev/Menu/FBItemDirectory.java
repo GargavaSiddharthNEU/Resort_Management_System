@@ -29,4 +29,12 @@ public class FBItemDirectory {
         this.fbItemDirectoryList.add(fb);
     }
     
+    public void deleteMenuData(FBItem fb) {
+        this.fbItemDirectoryList.remove(fb);
+    }
+    
+    public void updateExistingMenuData(FBItem fb, int index) {
+        this.fbItemDirectoryList.set(index, fb);
+    }
+    
 }
