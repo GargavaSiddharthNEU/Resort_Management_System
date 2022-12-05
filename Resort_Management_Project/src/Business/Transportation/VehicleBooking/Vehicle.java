@@ -10,6 +10,7 @@ package Business.Transportation.VehicleBooking;
  */
 public class Vehicle {
     String vehicleId;
+    String vehicleNumber;
     String vehicleName;
     String category;
     Integer seater;
@@ -22,6 +23,15 @@ public class Vehicle {
     public void setVehicleId(String vehicleId) {
         this.vehicleId = vehicleId;
     }
+
+    public String getVehicleNumber() {
+        return vehicleNumber;
+    }
+
+    public void setVehicleNumber(String vehicleNumber) {
+        this.vehicleNumber = vehicleNumber;
+    }
+    
 
     public String getVehicleName() {
         return vehicleName;
@@ -55,5 +65,8 @@ public class Vehicle {
         this.price = price;
     }
     
-    
+     @Override
+    public String toString(){
+        return vehicleNumber;
+    }
 }
