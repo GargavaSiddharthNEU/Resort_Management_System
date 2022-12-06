@@ -12,15 +12,15 @@ import Business.HouseKeeping.LaundryFacility.Laundry;
  */
 public class LaundryWorkRequest {
     
-    Long userId;
+    String userId;
     Laundry laundryDetails;
     String status;
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

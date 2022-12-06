@@ -44,6 +44,11 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         userRightPanel = new javax.swing.JPanel();
 
         bookVehicleBtn.setText("Book Vehicle");
+        bookVehicleBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookVehicleBtnActionPerformed(evt);
+            }
+        });
 
         bookPoolBtn.setText("Book Pool");
 
@@ -126,8 +131,14 @@ public class CustomerHomePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void shopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopBtnActionPerformed
-        // TODO add your handling code here:
+        // Redirect User to Shopping Panel
     }//GEN-LAST:event_shopBtnActionPerformed
+
+    private void bookVehicleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookVehicleBtnActionPerformed
+        // Redirect User to Vehicle Booking Panel
+        VehicleBookingPanel bookVehicle = new VehicleBookingPanel(system);
+        jSplitPane1.setRightComponent(bookVehicle);
+    }//GEN-LAST:event_bookVehicleBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
