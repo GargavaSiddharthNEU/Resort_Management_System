@@ -11,5 +11,15 @@ import java.util.ArrayList;
  * @author siddh
  */
 public class PoolDirectory {
-    ArrayList<Pool> PoolDirectory;
+    ArrayList<Pool> poolDirectory;
+
+    public ArrayList<Pool> getPoolDirectory() {
+        return poolDirectory;
+    }
+
+    public void setPoolDirectory(ArrayList<Pool> poolDirectory) {
+        this.poolDirectory = poolDirectory;
+    }
+    
+    
 }

@@ -12,4 +12,14 @@ import java.util.ArrayList;
  */
 public class GameDirectory {
     ArrayList<Game> gameDirectory;
+
+    public ArrayList<Game> getGameDirectory() {
+        return gameDirectory;
+    }
+
+    public void setGameDirectory(ArrayList<Game> gameDirectory) {
+        this.gameDirectory = gameDirectory;
+    }
+    
+    
 }
