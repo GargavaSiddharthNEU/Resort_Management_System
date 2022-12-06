@@ -12,4 +12,14 @@ import java.util.ArrayList;
  */
 public class SouvenirDirectory {
     ArrayList<Souvenir> souvenirDirectory;
+
+    public ArrayList<Souvenir> getSouvenirDirectory() {
+        return souvenirDirectory;
+    }
+
+    public void setSouvenirDirectory(ArrayList<Souvenir> souvenirDirectory) {
+        this.souvenirDirectory = souvenirDirectory;
+    }
+    
+    
 }

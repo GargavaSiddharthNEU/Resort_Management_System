@@ -12,4 +12,14 @@ import java.util.ArrayList;
  */
 public class LaundryDirectory {
     ArrayList<Laundry> laundryDirectory;
+
+    public ArrayList<Laundry> getLaundryDirectory() {
+        return laundryDirectory;
+    }
+
+    public void setLaundryDirectory(ArrayList<Laundry> laundryDirectory) {
+        this.laundryDirectory = laundryDirectory;
+    }
+    
+    
 }
