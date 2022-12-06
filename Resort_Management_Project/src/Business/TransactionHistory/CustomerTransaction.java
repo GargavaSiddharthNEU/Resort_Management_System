@@ -10,16 +10,16 @@ package Business.TransactionHistory;
  */
 public class CustomerTransaction {
     
-    Long userId;
+    String userId;
     String facilityUsed;
     //vehiclebooked
     Float price;
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
