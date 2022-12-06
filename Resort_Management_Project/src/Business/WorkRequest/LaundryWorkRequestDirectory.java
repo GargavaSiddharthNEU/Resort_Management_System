@@ -1,0 +1,25 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Business.WorkRequest;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Subbu
+ */
+public class LaundryWorkRequestDirectory {
+    
+    ArrayList<LaundryWorkRequest> laundryWorkRequestList;
+
+    public ArrayList<LaundryWorkRequest> getLaundryWorkRequestList() {
+        return laundryWorkRequestList;
+    }
+
+    public void setLaundryWorkRequestList(ArrayList<LaundryWorkRequest> laundryWorkRequestList) {
+        this.laundryWorkRequestList = laundryWorkRequestList;
+    }
+    
+}

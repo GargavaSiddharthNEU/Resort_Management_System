@@ -13,15 +13,15 @@ import java.util.ArrayList;
  */
 public class FoodBevWorkRequest {
     
-    Long userId;
+    String userId;
     ArrayList<FBItem> fbItemDetails;
     String status;
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

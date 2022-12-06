@@ -6,18 +6,18 @@ package Business;
 
 import Business.FoodandBev.Menu.FBItemDirectory;
 import Business.HouseKeeping.LaundryFacility.LaundryDirectory;
-import Business.HouseKeeping.RoomCleaning.ScheduleDirectory;
+//import Business.HouseKeeping.RoomCleaning.ScheduleDirectory;
 import Business.Recreation.GamingFacility.GameDirectory;
 import Business.Recreation.PoolFacility.PoolDirectory;
 import Business.Shopping.InhouseShopping.SouvenirDirectory;
-import Business.TransactionHistory.CustomerTransaction;
+import Business.TransactionHistory.CustomerTransactionDirectory;
 import Business.Transportation.VehicleBooking.VehicleDirectory;
 import Business.User.UserDirectory;
-import Business.WorkRequest.FoodBevWorkRequest;
-import Business.WorkRequest.GameWorkRequest;
-import Business.WorkRequest.LaundryWorkRequest;
-import Business.WorkRequest.PoolWorkRequest;
-import Business.WorkRequest.VehicleWorkRequest;
+import Business.WorkRequest.FoodBevWorkRequestDirectory;
+import Business.WorkRequest.GameWorkRequestDirectory;
+import Business.WorkRequest.LaundryWorkRequestDirectory;
+import Business.WorkRequest.PoolWorkRequestDirectory;
+import Business.WorkRequest.VehicleWorkRequestDirectory;
 
 /**
  *
@@ -31,64 +31,64 @@ public class EcoSystem {
     SouvenirDirectory souvenirDirectory;
     PoolDirectory poolDirectory;
     GameDirectory gameDirectory;
-    ScheduleDirectory scheduleDirectory;
+//    ScheduleDirectory scheduleDirectory;
     LaundryDirectory laundryDirectory;
     FBItemDirectory fBItemDirectory;
-    FoodBevWorkRequest foodBevWorkRequest;
-    GameWorkRequest gameWorkRequest;
-    LaundryWorkRequest laundryWorkRequest;
-    PoolWorkRequest poolWorkRequest;
-    VehicleWorkRequest vehicleWorkRequest;
-    CustomerTransaction customerTransaction;
+    FoodBevWorkRequestDirectory foodBevWorkRequestDirectory;
+    GameWorkRequestDirectory gameWorkRequestDirectory;
+    LaundryWorkRequestDirectory laundryWorkRequestDirectory;
+    PoolWorkRequestDirectory poolWorkRequestDirectory;
+    VehicleWorkRequestDirectory vehicleWorkRequestDirectory;
+    CustomerTransactionDirectory customerTransactionDirectory;
 
-    public CustomerTransaction getCustomerTransaction() {
-        return customerTransaction;
+    public FoodBevWorkRequestDirectory getFoodBevWorkRequestDirectory() {
+        return foodBevWorkRequestDirectory;
     }
 
-    public void setCustomerTransaction(CustomerTransaction customerTransaction) {
-        this.customerTransaction = customerTransaction;
+    public void setFoodBevWorkRequestDirectory(FoodBevWorkRequestDirectory foodBevWorkRequestDirectory) {
+        this.foodBevWorkRequestDirectory = foodBevWorkRequestDirectory;
     }
 
-    public FoodBevWorkRequest getFoodBevWorkRequest() {
-        return foodBevWorkRequest;
+    public GameWorkRequestDirectory getGameWorkRequestDirectory() {
+        return gameWorkRequestDirectory;
     }
 
-    public void setFoodBevWorkRequest(FoodBevWorkRequest foodBevWorkRequest) {
-        this.foodBevWorkRequest = foodBevWorkRequest;
+    public void setGameWorkRequestDirectory(GameWorkRequestDirectory gameWorkRequestDirectory) {
+        this.gameWorkRequestDirectory = gameWorkRequestDirectory;
     }
 
-    public GameWorkRequest getGameWorkRequest() {
-        return gameWorkRequest;
+    public LaundryWorkRequestDirectory getLaundryWorkRequestDirectory() {
+        return laundryWorkRequestDirectory;
     }
 
-    public void setGameWorkRequest(GameWorkRequest gameWorkRequest) {
-        this.gameWorkRequest = gameWorkRequest;
+    public void setLaundryWorkRequestDirectory(LaundryWorkRequestDirectory laundryWorkRequestDirectory) {
+        this.laundryWorkRequestDirectory = laundryWorkRequestDirectory;
     }
 
-    public LaundryWorkRequest getLaundryWorkRequest() {
-        return laundryWorkRequest;
+    public PoolWorkRequestDirectory getPoolWorkRequestDirectory() {
+        return poolWorkRequestDirectory;
     }
 
-    public void setLaundryWorkRequest(LaundryWorkRequest laundryWorkRequest) {
-        this.laundryWorkRequest = laundryWorkRequest;
+    public void setPoolWorkRequestDirectory(PoolWorkRequestDirectory poolWorkRequestDirectory) {
+        this.poolWorkRequestDirectory = poolWorkRequestDirectory;
     }
 
-    public PoolWorkRequest getPoolWorkRequest() {
-        return poolWorkRequest;
+    public VehicleWorkRequestDirectory getVehicleWorkRequestDirectory() {
+        return vehicleWorkRequestDirectory;
     }
 
-    public void setPoolWorkRequest(PoolWorkRequest poolWorkRequest) {
-        this.poolWorkRequest = poolWorkRequest;
+    public void setVehicleWorkRequestDirectory(VehicleWorkRequestDirectory vehicleWorkRequestDirectory) {
+        this.vehicleWorkRequestDirectory = vehicleWorkRequestDirectory;
     }
 
-    public VehicleWorkRequest getVehicleWorkRequest() {
-        return vehicleWorkRequest;
+    public CustomerTransactionDirectory getCustomerTransactionDirectory() {
+        return customerTransactionDirectory;
     }
 
-    public void setVehicleWorkRequest(VehicleWorkRequest vehicleWorkRequest) {
-        this.vehicleWorkRequest = vehicleWorkRequest;
+    public void setCustomerTransactionDirectory(CustomerTransactionDirectory customerTransactionDirectory) {
+        this.customerTransactionDirectory = customerTransactionDirectory;
     }
-
+    
     public static EcoSystem getEcoSystem() {
         return ecoSystem;
     }
@@ -137,13 +137,13 @@ public class EcoSystem {
         this.gameDirectory = gameDirectory;
     }
 
-    public ScheduleDirectory getScheduleDirectory() {
-        return scheduleDirectory;
-    }
-
-    public void setScheduleDirectory(ScheduleDirectory scheduleDirectory) {
-        this.scheduleDirectory = scheduleDirectory;
-    }
+//    public ScheduleDirectory getScheduleDirectory() {
+//        return scheduleDirectory;
+//    }
+//
+//    public void setScheduleDirectory(ScheduleDirectory scheduleDirectory) {
+//        this.scheduleDirectory = scheduleDirectory;
+//    }
 
     public LaundryDirectory getLaundryDirectory() {
         return laundryDirectory;
@@ -175,14 +175,14 @@ public class EcoSystem {
         souvenirDirectory = new SouvenirDirectory();
         poolDirectory = new PoolDirectory();
         gameDirectory = new GameDirectory();
-        scheduleDirectory = new ScheduleDirectory();
+//        scheduleDirectory = new ScheduleDirectory();
         laundryDirectory = new LaundryDirectory();
         fBItemDirectory = new FBItemDirectory();
-        foodBevWorkRequest = new FoodBevWorkRequest();
-        gameWorkRequest = new GameWorkRequest();
-        laundryWorkRequest = new LaundryWorkRequest();
-        poolWorkRequest = new PoolWorkRequest();
-        vehicleWorkRequest = new VehicleWorkRequest();
-        customerTransaction = new CustomerTransaction();
+        foodBevWorkRequestDirectory = new FoodBevWorkRequestDirectory();
+        gameWorkRequestDirectory = new GameWorkRequestDirectory();
+        laundryWorkRequestDirectory = new LaundryWorkRequestDirectory();
+        poolWorkRequestDirectory = new PoolWorkRequestDirectory();
+        vehicleWorkRequestDirectory = new VehicleWorkRequestDirectory();
+        customerTransactionDirectory = new CustomerTransactionDirectory();
     }
 }

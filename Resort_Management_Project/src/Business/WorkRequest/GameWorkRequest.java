@@ -5,6 +5,7 @@
 package Business.WorkRequest;
 
 import Business.Recreation.GamingFacility.Game;
+import java.util.Date;
 
 /**
  *
@@ -12,17 +13,26 @@ import Business.Recreation.GamingFacility.Game;
  */
 public class GameWorkRequest {
     
-    Long userId;
+    String userId;
     Game gameDetails;
     int numberOfHours;
+    Date bookingDate;
     String status;
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public Date getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(Date bookingDate) {
+        this.bookingDate = bookingDate;
     }
 
     public Game getGameDetails() {
