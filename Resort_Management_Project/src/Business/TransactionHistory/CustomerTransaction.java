@@ -12,6 +12,7 @@ public class CustomerTransaction {
     
     Long userId;
     String facilityUsed;
+    //vehiclebooked
     Float price;
 
     public Long getUserId() {

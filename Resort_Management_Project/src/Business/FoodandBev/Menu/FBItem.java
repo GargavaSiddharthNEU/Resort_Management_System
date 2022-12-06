@@ -12,7 +12,7 @@ public class FBItem {
     String fbItemId;
     String category;
     String fbName;
-    Integer price;
+    Double price;
 
     public String getFbItemId() {
         return fbItemId;
@@ -38,13 +38,16 @@ public class FBItem {
         this.fbName = fbName;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
     
-    
+    @Override
+    public String toString() {
+        return fbItemId;
+    }
 }

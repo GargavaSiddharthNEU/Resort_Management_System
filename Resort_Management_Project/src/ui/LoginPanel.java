@@ -8,8 +8,8 @@ import Business.EcoSystem;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import Business.User.User;
-import ui.Customer.CustomerHomePanel;
 import ui.FoodandBev.FoodandBevPanel;
+import ui.VehicleBooking.BookVehiclePanel;
 /**
  *
  * @author manikantareddythikkavarapu
@@ -117,12 +117,12 @@ public class LoginPanel extends javax.swing.JPanel {
                 for (User temp : list) {
                     if (userName.equalsIgnoreCase(temp.getUserName()) && password.equalsIgnoreCase(temp.getPassword())) {
                         if (temp.getRoleType().equalsIgnoreCase("Customer")) {
-                            CustomerHomePanel customerHomePanel = new CustomerHomePanel(system);
-                            SplitPane.setRightComponent(customerHomePanel);
+
                         } else if (temp.getRoleType().equalsIgnoreCase("Admin")) {
 
                         } else if (temp.getRoleType().equalsIgnoreCase("Vehicle Contractor")) {
-
+                            BookVehiclePanel bookVehiclePanel = new BookVehiclePanel(system);
+                            SplitPane.setRightComponent(bookVehiclePanel);
                         } else if (temp.getRoleType().equalsIgnoreCase("Pool Incharge")) {
 
                         } else if (temp.getRoleType().equalsIgnoreCase("Food Manager")) {

@@ -13,4 +13,14 @@ import java.util.ArrayList;
 public class ScheduleDirectory {
     
     ArrayList<Schedule> scheduleDirectory;
+
+    public ArrayList<Schedule> getScheduleDirectory() {
+        return scheduleDirectory;
+    }
+
+    public void setScheduleDirectory(ArrayList<Schedule> scheduleDirectory) {
+        this.scheduleDirectory = scheduleDirectory;
+    }
+    
+    
 }
