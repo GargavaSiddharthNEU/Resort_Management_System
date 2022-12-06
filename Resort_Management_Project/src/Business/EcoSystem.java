@@ -10,8 +10,14 @@ import Business.HouseKeeping.RoomCleaning.ScheduleDirectory;
 import Business.Recreation.GamingFacility.GameDirectory;
 import Business.Recreation.PoolFacility.PoolDirectory;
 import Business.Shopping.InhouseShopping.SouvenirDirectory;
+import Business.TransactionHistory.CustomerTransaction;
 import Business.Transportation.VehicleBooking.VehicleDirectory;
 import Business.User.UserDirectory;
+import Business.WorkRequest.FoodBevWorkRequest;
+import Business.WorkRequest.GameWorkRequest;
+import Business.WorkRequest.LaundryWorkRequest;
+import Business.WorkRequest.PoolWorkRequest;
+import Business.WorkRequest.VehicleWorkRequest;
 
 /**
  *
@@ -28,6 +34,60 @@ public class EcoSystem {
     ScheduleDirectory scheduleDirectory;
     LaundryDirectory laundryDirectory;
     FBItemDirectory fBItemDirectory;
+    FoodBevWorkRequest foodBevWorkRequest;
+    GameWorkRequest gameWorkRequest;
+    LaundryWorkRequest laundryWorkRequest;
+    PoolWorkRequest poolWorkRequest;
+    VehicleWorkRequest vehicleWorkRequest;
+    CustomerTransaction customerTransaction;
+
+    public CustomerTransaction getCustomerTransaction() {
+        return customerTransaction;
+    }
+
+    public void setCustomerTransaction(CustomerTransaction customerTransaction) {
+        this.customerTransaction = customerTransaction;
+    }
+
+    public FoodBevWorkRequest getFoodBevWorkRequest() {
+        return foodBevWorkRequest;
+    }
+
+    public void setFoodBevWorkRequest(FoodBevWorkRequest foodBevWorkRequest) {
+        this.foodBevWorkRequest = foodBevWorkRequest;
+    }
+
+    public GameWorkRequest getGameWorkRequest() {
+        return gameWorkRequest;
+    }
+
+    public void setGameWorkRequest(GameWorkRequest gameWorkRequest) {
+        this.gameWorkRequest = gameWorkRequest;
+    }
+
+    public LaundryWorkRequest getLaundryWorkRequest() {
+        return laundryWorkRequest;
+    }
+
+    public void setLaundryWorkRequest(LaundryWorkRequest laundryWorkRequest) {
+        this.laundryWorkRequest = laundryWorkRequest;
+    }
+
+    public PoolWorkRequest getPoolWorkRequest() {
+        return poolWorkRequest;
+    }
+
+    public void setPoolWorkRequest(PoolWorkRequest poolWorkRequest) {
+        this.poolWorkRequest = poolWorkRequest;
+    }
+
+    public VehicleWorkRequest getVehicleWorkRequest() {
+        return vehicleWorkRequest;
+    }
+
+    public void setVehicleWorkRequest(VehicleWorkRequest vehicleWorkRequest) {
+        this.vehicleWorkRequest = vehicleWorkRequest;
+    }
 
     public static EcoSystem getEcoSystem() {
         return ecoSystem;
@@ -118,5 +178,11 @@ public class EcoSystem {
         scheduleDirectory = new ScheduleDirectory();
         laundryDirectory = new LaundryDirectory();
         fBItemDirectory = new FBItemDirectory();
+        foodBevWorkRequest = new FoodBevWorkRequest();
+        gameWorkRequest = new GameWorkRequest();
+        laundryWorkRequest = new LaundryWorkRequest();
+        poolWorkRequest = new PoolWorkRequest();
+        vehicleWorkRequest = new VehicleWorkRequest();
+        customerTransaction = new CustomerTransaction();
     }
 }

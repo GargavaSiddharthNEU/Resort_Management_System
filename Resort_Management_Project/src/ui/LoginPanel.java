@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import Business.User.User;
+import ui.Customer.CustomerHomePanel;
 import ui.FoodandBev.FoodandBevPanel;
 /**
  *
@@ -116,7 +117,8 @@ public class LoginPanel extends javax.swing.JPanel {
                 for (User temp : list) {
                     if (userName.equalsIgnoreCase(temp.getUserName()) && password.equalsIgnoreCase(temp.getPassword())) {
                         if (temp.getRoleType().equalsIgnoreCase("Customer")) {
-
+                            CustomerHomePanel customerHomePanel = new CustomerHomePanel(system);
+                            SplitPane.setRightComponent(customerHomePanel);
                         } else if (temp.getRoleType().equalsIgnoreCase("Admin")) {
 
                         } else if (temp.getRoleType().equalsIgnoreCase("Vehicle Contractor")) {
