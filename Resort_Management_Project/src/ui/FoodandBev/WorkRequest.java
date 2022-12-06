@@ -4,17 +4,21 @@
  */
 package ui.FoodandBev;
 
+import Business.EcoSystem;
+
 /**
  *
  * @author manikantareddythikkavarapu
  */
 public class WorkRequest extends javax.swing.JPanel {
 
+        private EcoSystem system;
     /**
      * Creates new form WorkRequest
      */
-    public WorkRequest() {
+    public WorkRequest(EcoSystem system) {
         initComponents();
+        this.system = system;
     }
 
     /**
@@ -35,13 +39,13 @@ public class WorkRequest extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "UserId", "Id", "Category", "Name", "Price", "Status"
+                "UserId", "Item Details", "Status"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -52,13 +56,13 @@ public class WorkRequest extends javax.swing.JPanel {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "UserId", "Id", "Category", "Name", "Price", "Status"
+                "UserId", "Item Details", "Status"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
