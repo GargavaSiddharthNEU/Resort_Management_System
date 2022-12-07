@@ -12,6 +12,10 @@ import java.util.ArrayList;
  */
 public class LaundryDirectory {
     ArrayList<Laundry> laundryDirectory;
+    
+    public LaundryDirectory(){
+        this.laundryDirectory = new ArrayList<>();
+    }
 
     public ArrayList<Laundry> getLaundryDirectory() {
         return laundryDirectory;

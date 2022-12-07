@@ -13,6 +13,10 @@ import java.util.ArrayList;
 public class GameDirectory {
     ArrayList<Game> gameDirectory;
 
+    public GameDirectory(){
+        this.gameDirectory = new ArrayList<>();
+    }
+
     public ArrayList<Game> getGameDirectory() {
         return gameDirectory;
     }
