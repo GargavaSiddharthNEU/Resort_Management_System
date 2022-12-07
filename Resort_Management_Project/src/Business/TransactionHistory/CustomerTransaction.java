@@ -12,7 +12,6 @@ public class CustomerTransaction {
     
     String userId;
     String facilityUsed;
-    //vehiclebooked
     Float price;
 
     public String getUserId() {

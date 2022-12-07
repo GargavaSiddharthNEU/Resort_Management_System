@@ -234,7 +234,7 @@ public class ManageVehiclePanel extends javax.swing.JPanel {
         String vehicleNumber = txtVehicleNum.getText();
         String category = (String)cmbCategory.getSelectedItem();
         Integer seater = Integer.parseInt((String)cmbSeater.getSelectedItem());
-        Integer price = Integer.parseInt(txtPrice.getText());
+        Float price = Float.parseFloat(txtPrice.getText());
         
         Vehicle vehicle = system.getVehicleDirectory().addVehicleDetails();
         vehicle.setVehicleName(vehicleName);
@@ -297,7 +297,7 @@ public class ManageVehiclePanel extends javax.swing.JPanel {
             String vehicleNumber = txtVehicleNum.getText();
             String vehicleName = txtVehicleName.getText();
             int seater = Integer.parseInt((String)cmbSeater.getSelectedItem());
-            int price = Integer.parseInt(txtPrice.getText());
+            float price = Float.parseFloat(txtPrice.getText());
             String category = (String)cmbCategory.getSelectedItem();
             
             
