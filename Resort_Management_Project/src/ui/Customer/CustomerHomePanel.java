@@ -5,6 +5,7 @@
 package ui.Customer;
 
 import Business.EcoSystem;
+import Business.User.User;
 
 /**
  *
@@ -17,10 +18,12 @@ public class CustomerHomePanel extends javax.swing.JPanel {
      */
     
     EcoSystem system;
+    User user;
     
-    public CustomerHomePanel(EcoSystem system) {
+    public CustomerHomePanel(EcoSystem system, User user) {
         initComponents();
         this.system = system;
+        this.user = user;
     }
 
     /**
@@ -74,13 +77,13 @@ public class CustomerHomePanel extends javax.swing.JPanel {
             .addGroup(userLeftPanelLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addGroup(userLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(checkOutBtn)
                     .addComponent(shopBtn)
                     .addComponent(bookFoodBtn)
                     .addComponent(bookGameBtn)
                     .addComponent(bookPoolBtn)
                     .addComponent(bookVehicleBtn)
-                    .addComponent(bookLaundryBtn))
+                    .addComponent(bookLaundryBtn)
+                    .addComponent(checkOutBtn))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         userLeftPanelLayout.setVerticalGroup(
@@ -136,7 +139,7 @@ public class CustomerHomePanel extends javax.swing.JPanel {
 
     private void bookVehicleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookVehicleBtnActionPerformed
         // Redirect User to Vehicle Booking Panel
-        VehicleBookingPanel bookVehicle = new VehicleBookingPanel(system);
+        VehicleBookingPanel bookVehicle = new VehicleBookingPanel(system, user);
         jSplitPane1.setRightComponent(bookVehicle);
     }//GEN-LAST:event_bookVehicleBtnActionPerformed
 

@@ -14,6 +14,10 @@ public class VehicleWorkRequestDirectory {
     
     ArrayList<VehicleWorkRequest> vehicleWorkRequestList;
 
+    public VehicleWorkRequestDirectory() {
+        this.vehicleWorkRequestList = new ArrayList<VehicleWorkRequest>();
+    }
+    
     public ArrayList<VehicleWorkRequest> getVehicleWorkRequestList() {
         return vehicleWorkRequestList;
     }
