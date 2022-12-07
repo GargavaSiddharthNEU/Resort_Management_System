@@ -36,7 +36,7 @@ public class BookVehiclePanel extends javax.swing.JPanel {
         btnManageVehicle = new javax.swing.JButton();
         btnRequestQueue = new javax.swing.JButton();
         btnHome = new javax.swing.JButton();
-        imageArea = new javax.swing.JPanel();
+        imageAreaPanel = new javax.swing.JPanel();
         imgVehicle = new javax.swing.JLabel();
 
         btnManageVehicle.setText("MANAGE FLEET");
@@ -89,24 +89,24 @@ public class BookVehiclePanel extends javax.swing.JPanel {
         imgVehicle.setIcon(new javax.swing.ImageIcon("C:\\Users\\siddh\\OneDrive\\Desktop\\NEU Fall Sem\\AED5100\\Final Project\\Images\\book_vehicle.jfif")); // NOI18N
         imgVehicle.setText("jLabel1");
 
-        javax.swing.GroupLayout imageAreaLayout = new javax.swing.GroupLayout(imageArea);
-        imageArea.setLayout(imageAreaLayout);
-        imageAreaLayout.setHorizontalGroup(
-            imageAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(imageAreaLayout.createSequentialGroup()
+        javax.swing.GroupLayout imageAreaPanelLayout = new javax.swing.GroupLayout(imageAreaPanel);
+        imageAreaPanel.setLayout(imageAreaPanelLayout);
+        imageAreaPanelLayout.setHorizontalGroup(
+            imageAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(imageAreaPanelLayout.createSequentialGroup()
                 .addGap(262, 262, 262)
                 .addComponent(imgVehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(313, Short.MAX_VALUE))
         );
-        imageAreaLayout.setVerticalGroup(
-            imageAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(imageAreaLayout.createSequentialGroup()
+        imageAreaPanelLayout.setVerticalGroup(
+            imageAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(imageAreaPanelLayout.createSequentialGroup()
                 .addGap(258, 258, 258)
                 .addComponent(imgVehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(355, Short.MAX_VALUE))
         );
 
-        jSplitPane1.setRightComponent(imageArea);
+        jSplitPane1.setRightComponent(imageAreaPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -144,8 +144,8 @@ public class BookVehiclePanel extends javax.swing.JPanel {
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
         try {
-            ManageRequestsPanel manageRequestsPanel = new ManageRequestsPanel(system);
-            jSplitPane1.setRightComponent(manageRequestsPanel);
+            HomeVehiclePanel homeVehiclePanel = new HomeVehiclePanel();
+            jSplitPane1.setRightComponent(homeVehiclePanel);
         } catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -157,7 +157,7 @@ public class BookVehiclePanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageVehicle;
     private javax.swing.JButton btnRequestQueue;
     private javax.swing.JPanel buttonPanel;
-    private javax.swing.JPanel imageArea;
+    private javax.swing.JPanel imageAreaPanel;
     private javax.swing.JLabel imgVehicle;
     private javax.swing.JSplitPane jSplitPane1;
     // End of variables declaration//GEN-END:variables
