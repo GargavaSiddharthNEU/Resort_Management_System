@@ -13,6 +13,7 @@ import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.MutableComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -221,55 +222,55 @@ public class PoolBookingPanel extends javax.swing.JPanel {
     private void viewPoolBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPoolBtnActionPerformed
         // View Vehicle Details on choosing
 
-//        try {
-//            if (choosePoolDropdown.getSelectedItem() != null) {
-//
-//                String poolName = String.valueOf(choosePoolDropdown.getSelectedItem());
-////                Pool poolDetails = system.getPoolDirectory().getPoolByName(poolName);
-//
-//                poolNameTxt.setText(poolDetails.getPoolName());
-//                priceTxt.setText(String.valueOf(poolDetails.getPrice()));
-//
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Choose a valid Pool for booking");
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, e.getMessage());
-//        }
+        try {
+            if (choosePoolDropdown.getSelectedItem() != null) {
+
+                String poolName = String.valueOf(choosePoolDropdown.getSelectedItem());
+                Pool poolDetails = system.getPoolDirectory().getPoolByName(poolName);
+
+                poolNameTxt.setText(poolDetails.getPoolName());
+                priceTxt.setText(String.valueOf(poolDetails.getPrice()));
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Choose a valid Pool for booking");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_viewPoolBtnActionPerformed
 
     private void bookPoolBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookPoolBtnActionPerformed
         // Book a vehicle after entering details
-//        PoolWorkRequest bookPool = new PoolWorkRequest();
-//
-//        try {
-//            if (choosePoolDropdown.getSelectedItem() != null) {
-//                String poolName = String.valueOf(choosePoolDropdown.getSelectedItem());
-//                Pool poolDetails = system.getPoolDirectory().getPoolByName(poolName);
-//
-//                Date selectedDate = poolBookingDateTxt.getDate();
-//                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-//                String strDate = dateFormat.format(selectedDate);
-//                Date bookingDate = dateFormat.parse(strDate);
-//
-//                int numberOfHours = Integer.parseInt(numberOfHoursTxt.getText());
-//
-//                bookPool.setPoolDetails(poolDetails);
-//                bookPool.setBookingDate(bookingDate);
-//                bookPool.setNumberOfHours(numberOfHours);
-//                bookPool.setUserId(user.getUserId());
-//                bookPool.setStatus("Pending");
-//
-//                system.getPoolWorkRequestDirectory().getPoolWorkRequestList().add(bookPool);
-//
-//                JOptionPane.showMessageDialog(this, "Pool booking request sent to Manager");
-//                populateRequestTable();
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Choose a valid Pool for booking");
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, e.getMessage());
-//        }
+        PoolWorkRequest bookPool = new PoolWorkRequest();
+
+        try {
+            if (choosePoolDropdown.getSelectedItem() != null) {
+                String poolName = String.valueOf(choosePoolDropdown.getSelectedItem());
+                Pool poolDetails = system.getPoolDirectory().getPoolByName(poolName);
+
+                Date selectedDate = poolBookingDateTxt.getDate();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                String strDate = dateFormat.format(selectedDate);
+                Date bookingDate = dateFormat.parse(strDate);
+
+                int numberOfHours = Integer.parseInt(numberOfHoursTxt.getText());
+
+                bookPool.setPoolDetails(poolDetails);
+                bookPool.setBookingDate(bookingDate);
+                bookPool.setNumberOfHours(numberOfHours);
+                bookPool.setUserId(user.getUserId());
+                bookPool.setStatus("Pending");
+
+                system.getPoolWorkRequestDirectory().getPoolWorkRequestList().add(bookPool);
+
+                JOptionPane.showMessageDialog(this, "Pool booking request sent to Manager");
+                populateRequestTable();
+            } else {
+                JOptionPane.showMessageDialog(this, "Choose a valid Pool for booking");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_bookPoolBtnActionPerformed
 
 
@@ -293,6 +294,26 @@ public class PoolBookingPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateRequestTable() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        try {
+            DefaultTableModel model = (DefaultTableModel) poolWorkQueueTable.getModel();
+            model.setRowCount(0);
+
+            for (PoolWorkRequest poolWorkRequest : system.getPoolWorkRequestDirectory().getPoolWorkRequestList()) {
+
+                if (poolWorkRequest.getUserId().equals(user.getUserId())) {
+                    Object[] newRow = new Object[5];
+                    newRow[0] = poolWorkRequest.getPoolDetails().getPoolName();
+                    newRow[1] = poolWorkRequest.getBookingDate();
+                    newRow[2] = poolWorkRequest.getPoolDetails().getPrice();
+                    newRow[3] = poolWorkRequest.getNumberOfHours();
+                    newRow[4] = poolWorkRequest.getStatus();
+
+                    model.addRow(newRow);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 }

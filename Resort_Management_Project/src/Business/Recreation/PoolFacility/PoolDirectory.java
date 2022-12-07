@@ -25,5 +25,16 @@ public class PoolDirectory {
         this.poolDirectory = poolDirectory;
     }
     
+        public Pool getPoolByName(String poolName) {
+        
+        Pool selectedPool = new Pool();
+        for(Pool pool : poolDirectory) {
+            if(pool.getPoolName().equals(poolName)) {
+                selectedPool = pool;
+                break;
+            }
+        }
+        return selectedPool;
+    }
     
 }
