@@ -19,16 +19,16 @@ public class CheckoutPanel extends javax.swing.JPanel {
     /**
      * Creates new form CheckoutPanel
      */
-    EcoSystem system; 
+    EcoSystem system;
     User user;
-    
+
     public CheckoutPanel(EcoSystem system, User user) {
         initComponents();
         this.system = system;
         this.user = user;
-        
+
         totalAmountTxt.setEditable(false);
-        
+
         populateTable();
     }
 
@@ -125,7 +125,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
 
     private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
         // TODO add your handling code here:
-        
+
         JOptionPane.showMessageDialog(this, "Your total bill is");
     }//GEN-LAST:event_checkoutBtnActionPerformed
 
@@ -140,26 +140,28 @@ public class CheckoutPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
-        
+
         DefaultTableModel model = (DefaultTableModel) checkoutTable.getModel();
         model.setRowCount(0);
         int index = 1;
         float totalAmount = 0;
 
         for (CustomerTransaction transaction : system.getCustomerTransactionDirectory().getCustomerTransactionList()) {
-            
-            totalAmount += transaction.getPrice();
-            
-            Object[] row = new Object[3];
 
-            row[0] = index;
-            row[1] = transaction.getFacilityUsed();
-            row[2] = transaction.getPrice();
-            
-            model.addRow(row);
-            index++;
+            if (transaction.getUserId().equals(user.getUserId())) {
+                totalAmount += transaction.getPrice();
+
+                Object[] row = new Object[3];
+
+                row[0] = index;
+                row[1] = transaction.getFacilityUsed();
+                row[2] = transaction.getPrice();
+
+                model.addRow(row);
+                index++;
+            }
         }
-        
+
         totalAmountTxt.setText(String.valueOf(totalAmount));
     }
 }
