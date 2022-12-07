@@ -4,18 +4,67 @@
  */
 package ui.VehicleBooking;
 
+import Business.EcoSystem;
+import Business.FoodandBev.Menu.FBItem;
+import Business.WorkRequest.FoodBevWorkRequest;
+import Business.WorkRequest.VehicleWorkRequest;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author siddh
  */
 public class ManageRequests extends javax.swing.JPanel {
-
+    private EcoSystem system;
     /**
      * Creates new form ManageRequests
      */
-    public ManageRequests() {
+    public ManageRequests(EcoSystem system) {
         initComponents();
+        
+        this.system = system;
+        populateWorkRequestTable("Pending");
+        populateWorkRequestTable("ApprovedOrReject");
     }
+    
+    public void populateWorkRequestTable(String status) {
+        DefaultTableModel model = new DefaultTableModel();
+        if(status.equals("Pending")) {
+            model = (DefaultTableModel) tblVehicleRequests.getModel();
+        }
+        else {
+            model = (DefaultTableModel) tblVehicleConfirmed.getModel();
+        }
+        model.setRowCount(0);
+            for (VehicleWorkRequest vehicleWRequest : system.getVehicleWorkRequestDirectory().getVehicleWorkRequestList()) {
+                if(vehicleWRequest.getStatus().equals(status)) {
+                    Object[] newRow = new Object[8];
+                    newRow[0] = vehicleWRequest;
+                    newRow[1] = vehicleWRequest.getVehicleDetails().getVehicleNumber();
+                    newRow[2] = vehicleWRequest.getVehicleDetails().getVehicleName();
+                    newRow[3] = vehicleWRequest.getVehicleDetails().getCategory();
+                    newRow[4] = vehicleWRequest.getVehicleDetails().getSeater();
+                    newRow[5] = vehicleWRequest.getVehicleDetails().getPrice();
+                    newRow[6] = vehicleWRequest.getNumberOfHours();
+                    newRow[7] = vehicleWRequest.getStatus();
+                   
+                    model.addRow(newRow);
+                }
+            }
+    }
+    
+//    void updateWorkRequestStatus(VehicleWorkRequest selectedVehicle, String status) {
+//        selectedFoodBevWorkRequest.setStatus(status);
+//        int index = 0;
+//        for(FoodBevWorkRequest fbr : system.getFoodBevWorkRequestDirectory().getFoodBevWorkRequestList()) {
+//            if(fbr.getUserId().equals(selectedFoodBevWorkRequest.getUserId())) {
+//                system.getFoodBevWorkRequestDirectory().updateFoodBevWorkRequest(fbr, index);
+//                break;
+//            }
+//            index++;
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.

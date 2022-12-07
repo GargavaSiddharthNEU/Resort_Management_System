@@ -22,4 +22,8 @@ public class VehicleWorkRequestDirectory {
         this.vehicleWorkRequestList = vehicleWorkRequestList;
     }
     
+     public void updateVehicleWorkRequest(VehicleWorkRequest vehicleWRequest, int index) {
+        this.vehicleWorkRequestList.set(index, vehicleWRequest);
+    }
+    
 }
