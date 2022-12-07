@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import Business.User.User;
 import ui.Customer.CustomerHomePanel;
 import ui.FoodandBev.FoodandBevPanel;
+import ui.Shopping.ShopPanel;
 import ui.VehicleBooking.BookVehiclePanel;
 /**
  *
@@ -130,6 +131,10 @@ public class LoginPanel extends javax.swing.JPanel {
                         } else if (temp.getRoleType().equalsIgnoreCase("Food Manager")) {
                             FoodandBevPanel foodandBevPanel = new FoodandBevPanel(system);
                             SplitPane.setRightComponent(foodandBevPanel);
+                        }
+                        else if (temp.getRoleType().equalsIgnoreCase("Shop Manager")) {
+                            ShopPanel shopPanel = new ShopPanel(system);
+                            SplitPane.setRightComponent(shopPanel);
                         }
                     } else {
                         index++;
