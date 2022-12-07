@@ -11,7 +11,7 @@ package Business.Shopping.InhouseShopping;
 public class Souvenir {
     String souvenirId;
     String souvenirName;
-    Integer price;
+    Double price;
 
     public String getSouvenirId() {
         return souvenirId;
@@ -29,11 +29,11 @@ public class Souvenir {
         this.souvenirName = souvenirName;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
     

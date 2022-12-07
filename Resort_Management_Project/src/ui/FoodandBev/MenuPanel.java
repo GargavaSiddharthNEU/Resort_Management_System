@@ -87,7 +87,7 @@ public class MenuPanel extends javax.swing.JPanel {
         String menuId = jTextField1.getText();
         boolean exist = false;
             for (FBItem fb : system.getFBItemDirectory().getFbItemDirectoryList()) {
-                if (jTextField1.getText().equals(fb.getFbItemId())) {
+                if (menuId.equals(fb.getFbItemId())) {
                     exist = true;
                     break;
                 }
@@ -302,7 +302,7 @@ public class MenuPanel extends javax.swing.JPanel {
                 resetMenuData();
                 showMenuData();
             } else {
-                JOptionPane.showMessageDialog(this, "Menu details already exists with the menuId id : " + menuId);
+                JOptionPane.showMessageDialog(this, "Menu details already exists with the menuId : " + menuId);
             }
         } else {
             validationErrorMessagesDialog(validation1, validation2);
@@ -335,8 +335,8 @@ public class MenuPanel extends javax.swing.JPanel {
             return;
         }
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        FBItem selectedEmployeeProfile = (FBItem) model.getValueAt(selectedRowIndex, 0);
-        system.getFBItemDirectory().deleteMenuData(selectedEmployeeProfile);
+        FBItem selectedMenuItem = (FBItem) model.getValueAt(selectedRowIndex, 0);
+        system.getFBItemDirectory().deleteMenuData(selectedMenuItem);
         JOptionPane.showMessageDialog(this, "Selected menu data deleted");
         resetMenuData();
         showMenuData();
