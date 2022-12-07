@@ -22,4 +22,8 @@ public class FoodBevWorkRequestDirectory {
         this.foodBevWorkRequestList = foodBevWorkRequestList;
     }
     
+    public void updateFoodBevWorkRequest(FoodBevWorkRequest fbr, int index) {
+        this.foodBevWorkRequestList.set(index, fbr);
+    }
+    
 }

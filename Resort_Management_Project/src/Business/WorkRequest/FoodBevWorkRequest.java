@@ -15,6 +15,7 @@ public class FoodBevWorkRequest {
     
     String userId;
     ArrayList<FBItem> fbItemDetails;
+    Float toatlPrice;
     String status;
 
     public String getUserId() {
@@ -33,12 +34,25 @@ public class FoodBevWorkRequest {
         this.fbItemDetails = fbItemDetails;
     }
 
+    public Float getToatlPrice() {
+        return toatlPrice;
+    }
+
+    public void setToatlPrice(Float toatlPrice) {
+        this.toatlPrice = toatlPrice;
+    }
+
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
+    }
+    
+    @Override
+    public String toString() {
+        return userId;
     }
     
 }

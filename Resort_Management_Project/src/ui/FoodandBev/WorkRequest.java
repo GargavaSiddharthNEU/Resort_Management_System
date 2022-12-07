@@ -4,17 +4,68 @@
  */
 package ui.FoodandBev;
 
+import Business.EcoSystem;
+import Business.FoodandBev.Menu.FBItem;
+import Business.TransactionHistory.CustomerTransaction;
+import Business.WorkRequest.FoodBevWorkRequest;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author manikantareddythikkavarapu
  */
 public class WorkRequest extends javax.swing.JPanel {
 
+        private EcoSystem system;
     /**
      * Creates new form WorkRequest
      */
-    public WorkRequest() {
+    public WorkRequest(EcoSystem system) {
         initComponents();
+        this.system = system;
+        populateWorkRequestTable("Pending");
+        populateWorkRequestTable("ApprovedOrReject");
+    }
+    
+    void populateWorkRequestTable(String status) {
+        DefaultTableModel model = new DefaultTableModel();
+        if(status.equals("Pending")) {
+            model = (DefaultTableModel) jTable1.getModel();
+        }
+        else {
+            model = (DefaultTableModel) jTable2.getModel();
+        }
+        model.setRowCount(0);
+            for (FoodBevWorkRequest fbr : system.getFoodBevWorkRequestDirectory().getFoodBevWorkRequestList()) {
+                if(fbr.getStatus().equals(status)) {
+                    ArrayList<String> foodItemNames = new ArrayList<String>();
+                    long foodItemsTotalPrice = 0;
+                    for(FBItem fb: fbr.getFbItemDetails()) {
+                        foodItemNames.add(fb.getFbName());
+                        foodItemsTotalPrice+=fb.getPrice();
+                    }
+                    Object[] newRow = new Object[3];
+                    newRow[0] = fbr;
+                    newRow[1] = foodItemNames;
+                    newRow[2] = foodItemsTotalPrice;
+                    newRow[3] = fbr.getStatus();
+                    model.addRow(newRow);
+                }
+            }
+    }
+    
+    void updateWorkRequestStatus(FoodBevWorkRequest selectedFoodBevWorkRequest, String status) {
+        selectedFoodBevWorkRequest.setStatus(status);
+        int index = 0;
+        for(FoodBevWorkRequest fbr : system.getFoodBevWorkRequestDirectory().getFoodBevWorkRequestList()) {
+            if(fbr.getUserId().equals(selectedFoodBevWorkRequest.getUserId())) {
+                system.getFoodBevWorkRequestDirectory().updateFoodBevWorkRequest(fbr, index);
+                break;
+            }
+            index++;
+        }
     }
 
     /**
@@ -26,19 +77,128 @@ public class WorkRequest extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnApprove = new javax.swing.JButton();
+        btnReject = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "UserId", "Item Details", "Total Price", "Status"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        btnApprove.setText("Approve");
+        btnApprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApproveActionPerformed(evt);
+            }
+        });
+
+        btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "UserId", "Item Details", "Total Price", "Status"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(238, 238, 238)
+                        .addComponent(btnApprove)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnReject))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnApprove)
+                    .addComponent(btnReject))
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(313, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = jTable1.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to approve.");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        FoodBevWorkRequest selectedFoodBevWorkRequest = (FoodBevWorkRequest) model.getValueAt(selectedRowIndex, 0);
+        updateWorkRequestStatus(selectedFoodBevWorkRequest, "Approved");
+        CustomerTransaction ct = new CustomerTransaction();
+        ct.setUserId(selectedFoodBevWorkRequest.getUserId());
+        ct.setFacilityUsed("Food&Beverage");
+        ct.setPrice(selectedFoodBevWorkRequest.getToatlPrice());
+        system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
+        JOptionPane.showMessageDialog(this, "Order approved successfully");
+        populateWorkRequestTable("Pending");
+        populateWorkRequestTable("ApprovedOrReject");
+    }//GEN-LAST:event_btnApproveActionPerformed
+
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = jTable1.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to approve.");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        FoodBevWorkRequest selectedFoodBevWorkRequest = (FoodBevWorkRequest) model.getValueAt(selectedRowIndex, 0);
+        updateWorkRequestStatus(selectedFoodBevWorkRequest, "Rejected");
+        JOptionPane.showMessageDialog(this, "Order rejected successfully");
+        populateWorkRequestTable("Pending");
+        populateWorkRequestTable("ApprovedOrReject");
+    }//GEN-LAST:event_btnRejectActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnApprove;
+    private javax.swing.JButton btnReject;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

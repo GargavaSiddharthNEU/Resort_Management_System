@@ -22,4 +22,8 @@ public class CustomerTransactionDirectory {
         this.customerTransactionList = customerTransactionList;
     }
     
+    public void addCustomerTransaction(CustomerTransaction ct) {
+        this.customerTransactionList.add(ct);
+    }
+    
 }
