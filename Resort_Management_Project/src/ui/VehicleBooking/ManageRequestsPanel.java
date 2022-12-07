@@ -251,7 +251,7 @@ public class ManageRequestsPanel extends javax.swing.JPanel {
 
             float vehiclebooking_finalprice = selectedVehicleWorkRequest.getNumberOfHours() * selectedVehicleWorkRequest.getVehicleDetails().getPrice();
             ct.setUserId(selectedVehicleWorkRequest.getUserId());
-            ct.setFacilityUsed("Vehicle Booking");
+            ct.setFacilityUsed("Vehicle Booked - " + selectedVehicleWorkRequest.getVehicleDetails().getVehicleName() + " for " + selectedVehicleWorkRequest.getNumberOfHours() + " hours");
             ct.setPrice(vehiclebooking_finalprice);
             system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
             JOptionPane.showMessageDialog(this, "Request approved successfully");
