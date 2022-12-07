@@ -13,7 +13,11 @@ import java.util.ArrayList;
 public class FoodBevWorkRequestDirectory {
     
     ArrayList<FoodBevWorkRequest> foodBevWorkRequestList;
-
+    
+    public FoodBevWorkRequestDirectory() {
+        this.foodBevWorkRequestList = new ArrayList<FoodBevWorkRequest>();
+    }
+    
     public ArrayList<FoodBevWorkRequest> getFoodBevWorkRequestList() {
         return foodBevWorkRequestList;
     }

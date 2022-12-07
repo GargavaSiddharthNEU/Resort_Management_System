@@ -14,6 +14,10 @@ public class LaundryWorkRequestDirectory {
     
     ArrayList<LaundryWorkRequest> laundryWorkRequestList;
 
+    public LaundryWorkRequestDirectory() {
+        this.laundryWorkRequestList = new ArrayList<LaundryWorkRequest>();
+    }
+    
     public ArrayList<LaundryWorkRequest> getLaundryWorkRequestList() {
         return laundryWorkRequestList;
     }

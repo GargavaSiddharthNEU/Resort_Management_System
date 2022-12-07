@@ -14,6 +14,10 @@ public class GameWorkRequestDirectory {
     
     ArrayList<GameWorkRequest> gameWorkRequestList;
 
+    public GameWorkRequestDirectory() {
+        this.gameWorkRequestList = new ArrayList<GameWorkRequest>();
+    }
+    
     public ArrayList<GameWorkRequest> getGameWorkRequestList() {
         return gameWorkRequestList;
     }

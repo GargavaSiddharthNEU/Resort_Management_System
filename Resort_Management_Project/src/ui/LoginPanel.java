@@ -118,7 +118,7 @@ public class LoginPanel extends javax.swing.JPanel {
                 for (User temp : list) {
                     if (userName.equalsIgnoreCase(temp.getUserName()) && password.equalsIgnoreCase(temp.getPassword())) {
                         if (temp.getRoleType().equalsIgnoreCase("Customer")) {
-                            CustomerHomePanel customerHomePanel = new CustomerHomePanel(system);
+                            CustomerHomePanel customerHomePanel = new CustomerHomePanel(system, temp);
                             SplitPane.setRightComponent(customerHomePanel);
                         } else if (temp.getRoleType().equalsIgnoreCase("Admin")) {
 
