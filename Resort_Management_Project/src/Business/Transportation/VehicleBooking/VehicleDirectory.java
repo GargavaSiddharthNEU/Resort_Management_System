@@ -38,6 +38,18 @@ public class VehicleDirectory {
         return newVehicle;
     }
     
+    public Vehicle getVehicleByName(String vehicleName) {
+        
+        Vehicle selectedVehicle = new Vehicle();
+        for(Vehicle vehicle : vehicleDirectory) {
+            if(vehicle.getVehicleName().equals(vehicleName)) {
+                selectedVehicle = vehicle;
+                break;
+            }
+        }
+        return selectedVehicle;
+    }
+    
     public void deleteVehicle(Vehicle vehicle){
         vehicleDirectory.remove(vehicle);
     }
