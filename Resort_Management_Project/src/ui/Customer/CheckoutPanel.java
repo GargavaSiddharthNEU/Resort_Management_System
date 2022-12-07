@@ -4,6 +4,12 @@
  */
 package ui.Customer;
 
+import Business.EcoSystem;
+import Business.TransactionHistory.CustomerTransaction;
+import Business.User.User;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Asus
@@ -13,8 +19,17 @@ public class CheckoutPanel extends javax.swing.JPanel {
     /**
      * Creates new form CheckoutPanel
      */
-    public CheckoutPanel() {
+    EcoSystem system;
+    User user;
+
+    public CheckoutPanel(EcoSystem system, User user) {
         initComponents();
+        this.system = system;
+        this.user = user;
+
+        totalAmountTxt.setEditable(false);
+
+        populateTable();
     }
 
     /**
@@ -26,19 +41,127 @@ public class CheckoutPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        checkoutTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        totalAmountTxt = new javax.swing.JTextField();
+        checkoutBtn = new javax.swing.JButton();
+
+        checkoutTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "S.No", "Facility Used", "Price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(checkoutTable);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Checkout Page");
+
+        jLabel2.setText("Total Amount:");
+
+        checkoutBtn.setText("Checkout");
+        checkoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkoutBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(checkoutBtn)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(totalAmountTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(438, 438, 438)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(44, 44, 44)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel1)
+                .addGap(66, 66, 66)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(totalAmountTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(checkoutBtn)
+                .addContainerGap(130, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
+        // TODO add your handling code here:
+
+        JOptionPane.showMessageDialog(this, "Your total bill is");
+    }//GEN-LAST:event_checkoutBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton checkoutBtn;
+    private javax.swing.JTable checkoutTable;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField totalAmountTxt;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+
+        DefaultTableModel model = (DefaultTableModel) checkoutTable.getModel();
+        model.setRowCount(0);
+        int index = 1;
+        float totalAmount = 0;
+
+        for (CustomerTransaction transaction : system.getCustomerTransactionDirectory().getCustomerTransactionList()) {
+
+            if (transaction.getUserId().equals(user.getUserId())) {
+                totalAmount += transaction.getPrice();
+
+                Object[] row = new Object[3];
+
+                row[0] = index;
+                row[1] = transaction.getFacilityUsed();
+                row[2] = transaction.getPrice();
+
+                model.addRow(row);
+                index++;
+            }
+        }
+
+        totalAmountTxt.setText(String.valueOf(totalAmount));
+    }
 }

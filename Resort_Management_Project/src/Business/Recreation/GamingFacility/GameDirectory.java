@@ -11,9 +11,10 @@ import java.util.ArrayList;
  * @author siddh
  */
 public class GameDirectory {
+
     ArrayList<Game> gameDirectory;
 
-    public GameDirectory(){
+    public GameDirectory() {
         this.gameDirectory = new ArrayList<>();
     }
 
@@ -24,6 +25,17 @@ public class GameDirectory {
     public void setGameDirectory(ArrayList<Game> gameDirectory) {
         this.gameDirectory = gameDirectory;
     }
-    
-    
+
+    public Game getGameByName(String gameName) {
+
+        Game selectedGame = new Game();
+        for (Game game : gameDirectory) {
+            if (game.getGameName().equals(gameName)) {
+                selectedGame = game;
+                break;
+            }
+        }
+        return selectedGame;
+    }
+
 }

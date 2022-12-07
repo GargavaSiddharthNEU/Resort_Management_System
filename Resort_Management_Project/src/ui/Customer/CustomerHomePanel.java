@@ -67,6 +67,11 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         });
 
         checkOutBtn.setText("Checkout");
+        checkOutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkOutBtnActionPerformed(evt);
+            }
+        });
 
         bookFoodBtn.setText("Food and Beverage");
 
@@ -142,6 +147,12 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         VehicleBookingPanel bookVehicle = new VehicleBookingPanel(system, user);
         jSplitPane1.setRightComponent(bookVehicle);
     }//GEN-LAST:event_bookVehicleBtnActionPerformed
+
+    private void checkOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOutBtnActionPerformed
+        // TODO add your handling code here:
+        CheckoutPanel checkout = new CheckoutPanel(system, user);
+        jSplitPane1.setRightComponent(checkout);
+    }//GEN-LAST:event_checkOutBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
