@@ -8,12 +8,10 @@ import Business.EcoSystem;
 import Business.Transportation.VehicleBooking.Vehicle;
 import Business.User.User;
 import Business.WorkRequest.VehicleWorkRequest;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.MutableComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -130,7 +128,7 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -299,8 +297,6 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
                 String strDate = dateFormat.format(selectedDate);
                 Date bookingDate = dateFormat.parse(strDate);
 
-                System.out.println(bookingDate);
-
                 int numberOfHours = Integer.parseInt(numberOfHoursTxt.getText());
 
                 bookVehicle.setVehicleDetails(vehicleDetails);
@@ -311,6 +307,7 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
 
                 system.getVehicleWorkRequestDirectory().getVehicleWorkRequestList().add(bookVehicle);
 
+                JOptionPane.showMessageDialog(this, "Vehicle booking request sent to Contractor");
                 populateRequestTable();
             } else {
                 JOptionPane.showMessageDialog(this, "Choose a valid Vehicle for booking");
