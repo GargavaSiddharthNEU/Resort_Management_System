@@ -5,6 +5,12 @@
 package ui.FoodandBev;
 
 import Business.EcoSystem;
+import Business.FoodandBev.Menu.FBItem;
+import Business.TransactionHistory.CustomerTransaction;
+import Business.WorkRequest.FoodBevWorkRequest;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +25,27 @@ public class WorkRequest extends javax.swing.JPanel {
     public WorkRequest(EcoSystem system) {
         initComponents();
         this.system = system;
+        populatePendingWorkRequestTable();
+    }
+    
+    void populatePendingWorkRequestTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+
+            for (FoodBevWorkRequest fbr : system.getFoodBevWorkRequestDirectory().getFoodBevWorkRequestList()) {
+                ArrayList<String> foodItemNames = new ArrayList<String>();
+                long foodItemsTotalPrice = 0;
+                for(FBItem fb: fbr.getFbItemDetails()) {
+                    foodItemNames.add(fb.getFbName());
+                    foodItemsTotalPrice+=fb.getPrice();
+                }
+                    Object[] newRow = new Object[3];
+                    newRow[0] = fbr;
+                    newRow[1] = foodItemNames;
+                    newRow[2] = foodItemsTotalPrice;
+                    newRow[3] = fbr.getStatus();
+                    model.addRow(newRow);
+            }
     }
 
     /**
@@ -39,30 +66,35 @@ public class WorkRequest extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "UserId", "Item Details", "Status"
+                "UserId", "Item Details", "Total Price", "Status"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
         btnApprove.setText("Approve");
+        btnApprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApproveActionPerformed(evt);
+            }
+        });
 
         btnReject.setText("Reject");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "UserId", "Item Details", "Status"
+                "UserId", "Item Details", "Total Price", "Status"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -99,6 +131,23 @@ public class WorkRequest extends javax.swing.JPanel {
                 .addContainerGap(313, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = jTable1.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to approve.");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        FoodBevWorkRequest selectedFoodBevWorkRequest = (FoodBevWorkRequest) model.getValueAt(selectedRowIndex, 0);
+        CustomerTransaction ct = new CustomerTransaction();
+        ct.setUserId(selectedFoodBevWorkRequest.getUserId());
+        ct.setFacilityUsed("Food&Beverage");
+        
+        system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
+        JOptionPane.showMessageDialog(this, "Order Approved");
+    }//GEN-LAST:event_btnApproveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
