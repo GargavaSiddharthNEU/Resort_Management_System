@@ -25,27 +25,47 @@ public class WorkRequest extends javax.swing.JPanel {
     public WorkRequest(EcoSystem system) {
         initComponents();
         this.system = system;
-        populatePendingWorkRequestTable();
+        populateWorkRequestTable("Pending");
+        populateWorkRequestTable("ApprovedOrReject");
     }
     
-    void populatePendingWorkRequestTable() {
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    void populateWorkRequestTable(String status) {
+        DefaultTableModel model = new DefaultTableModel();
+        if(status.equals("Pending")) {
+            model = (DefaultTableModel) jTable1.getModel();
+        }
+        else {
+            model = (DefaultTableModel) jTable2.getModel();
+        }
         model.setRowCount(0);
-
             for (FoodBevWorkRequest fbr : system.getFoodBevWorkRequestDirectory().getFoodBevWorkRequestList()) {
-                ArrayList<String> foodItemNames = new ArrayList<String>();
-                long foodItemsTotalPrice = 0;
-                for(FBItem fb: fbr.getFbItemDetails()) {
-                    foodItemNames.add(fb.getFbName());
-                    foodItemsTotalPrice+=fb.getPrice();
-                }
+                if(fbr.getStatus().equals(status)) {
+                    ArrayList<String> foodItemNames = new ArrayList<String>();
+                    long foodItemsTotalPrice = 0;
+                    for(FBItem fb: fbr.getFbItemDetails()) {
+                        foodItemNames.add(fb.getFbName());
+                        foodItemsTotalPrice+=fb.getPrice();
+                    }
                     Object[] newRow = new Object[3];
                     newRow[0] = fbr;
                     newRow[1] = foodItemNames;
                     newRow[2] = foodItemsTotalPrice;
                     newRow[3] = fbr.getStatus();
                     model.addRow(newRow);
+                }
             }
+    }
+    
+    void updateWorkRequestStatus(FoodBevWorkRequest selectedFoodBevWorkRequest, String status) {
+        selectedFoodBevWorkRequest.setStatus(status);
+        int index = 0;
+        for(FoodBevWorkRequest fbr : system.getFoodBevWorkRequestDirectory().getFoodBevWorkRequestList()) {
+            if(fbr.getUserId().equals(selectedFoodBevWorkRequest.getUserId())) {
+                system.getFoodBevWorkRequestDirectory().updateFoodBevWorkRequest(fbr, index);
+                break;
+            }
+            index++;
+        }
     }
 
     /**
@@ -85,6 +105,11 @@ public class WorkRequest extends javax.swing.JPanel {
         });
 
         btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -141,13 +166,31 @@ public class WorkRequest extends javax.swing.JPanel {
         }
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         FoodBevWorkRequest selectedFoodBevWorkRequest = (FoodBevWorkRequest) model.getValueAt(selectedRowIndex, 0);
+        updateWorkRequestStatus(selectedFoodBevWorkRequest, "Approved");
         CustomerTransaction ct = new CustomerTransaction();
         ct.setUserId(selectedFoodBevWorkRequest.getUserId());
         ct.setFacilityUsed("Food&Beverage");
-        
+        ct.setPrice(selectedFoodBevWorkRequest.getToatlPrice());
         system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
-        JOptionPane.showMessageDialog(this, "Order Approved");
+        JOptionPane.showMessageDialog(this, "Order approved successfully");
+        populateWorkRequestTable("Pending");
+        populateWorkRequestTable("ApprovedOrReject");
     }//GEN-LAST:event_btnApproveActionPerformed
+
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = jTable1.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to approve.");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        FoodBevWorkRequest selectedFoodBevWorkRequest = (FoodBevWorkRequest) model.getValueAt(selectedRowIndex, 0);
+        updateWorkRequestStatus(selectedFoodBevWorkRequest, "Rejected");
+        JOptionPane.showMessageDialog(this, "Order rejected successfully");
+        populateWorkRequestTable("Pending");
+        populateWorkRequestTable("ApprovedOrReject");
+    }//GEN-LAST:event_btnRejectActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
