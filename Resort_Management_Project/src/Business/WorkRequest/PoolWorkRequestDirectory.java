@@ -14,6 +14,10 @@ public class PoolWorkRequestDirectory {
     
     ArrayList<PoolWorkRequest> poolWorkRequestList;
 
+    public PoolWorkRequestDirectory() {
+        this.poolWorkRequestList = new ArrayList<PoolWorkRequest>();
+    }
+    
     public ArrayList<PoolWorkRequest> getPoolWorkRequestList() {
         return poolWorkRequestList;
     }

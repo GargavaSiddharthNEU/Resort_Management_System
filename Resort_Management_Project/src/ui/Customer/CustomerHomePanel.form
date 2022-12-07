@@ -43,13 +43,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="checkOutBtn" min="-2" max="-2" attributes="0"/>
                           <Component id="shopBtn" min="-2" max="-2" attributes="0"/>
                           <Component id="bookFoodBtn" min="-2" max="-2" attributes="0"/>
                           <Component id="bookGameBtn" min="-2" max="-2" attributes="0"/>
                           <Component id="bookPoolBtn" min="-2" max="-2" attributes="0"/>
                           <Component id="bookVehicleBtn" min="-2" max="-2" attributes="0"/>
                           <Component id="bookLaundryBtn" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkOutBtn" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="53" max="32767" attributes="0"/>
                   </Group>

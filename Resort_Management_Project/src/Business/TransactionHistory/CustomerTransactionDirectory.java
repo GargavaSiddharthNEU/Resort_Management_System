@@ -14,6 +14,10 @@ public class CustomerTransactionDirectory {
     
     ArrayList<CustomerTransaction> customerTransactionList;
 
+    public CustomerTransactionDirectory() {
+        this.customerTransactionList = new ArrayList<CustomerTransaction>();
+    }
+    
     public ArrayList<CustomerTransaction> getCustomerTransactionList() {
         return customerTransactionList;
     }

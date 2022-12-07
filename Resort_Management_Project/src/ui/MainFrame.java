@@ -39,6 +39,7 @@ public class MainFrame extends javax.swing.JFrame {
         controlPanel = new javax.swing.JPanel();
         btnRegister = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         workArea = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -62,6 +63,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        btnLogout.setText("LOGOUT");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
         controlPanelLayout.setHorizontalGroup(
@@ -70,8 +78,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLogin)
-                    .addComponent(btnRegister))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(btnRegister)
+                    .addComponent(btnLogout))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,7 +89,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(btnRegister)
                 .addGap(18, 18, 18)
                 .addComponent(btnLogin)
-                .addContainerGap(597, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(btnLogout)
+                .addContainerGap(526, Short.MAX_VALUE))
         );
 
         SplitPane.setLeftComponent(controlPanel);
@@ -91,7 +102,6 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setText("WELCOME TO HOTEL MANAGEMENT");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("/Users/manikantareddythikkavarapu/Downloads/undraw-medicine-b1ol.png")); // NOI18N
         jLabel4.setText("jLabel4");
 
         javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
@@ -155,6 +165,13 @@ public class MainFrame extends javax.swing.JFrame {
         SplitPane.setRightComponent(loginPanel);
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        dB4OUtil.storeSystem(system);
+        LoginPanel loginPanel = new LoginPanel(system, SplitPane);
+        SplitPane.setRightComponent(loginPanel);
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -193,6 +210,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSplitPane SplitPane;
     private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnRegister;
     private javax.swing.JPanel controlPanel;
     private javax.swing.JLabel jLabel1;
