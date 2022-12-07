@@ -11,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import Business.User.User;
+import java.util.UUID;
 
 /**
  *
@@ -55,8 +56,6 @@ public class Register extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        txtUserId = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txtEmailAddress = new javax.swing.JTextField();
@@ -99,8 +98,6 @@ public class Register extends javax.swing.JPanel {
 
         jLabel11.setText("Phone Number");
 
-        jLabel12.setText("User Id");
-
         jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel13.setText("REGISTER PAGE");
 
@@ -132,7 +129,6 @@ public class Register extends javax.swing.JPanel {
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel14))
                         .addGap(34, 34, 34)
@@ -142,13 +138,12 @@ public class Register extends javax.swing.JPanel {
                             .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                             .addComponent(txtAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                             .addComponent(txtPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                            .addComponent(txtUserId, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                             .addComponent(cmbRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtAge)
                             .addComponent(txtFName, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                             .addComponent(txtEmailAddress)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(319, 319, 319)
+                        .addGap(299, 299, 299)
                         .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(341, Short.MAX_VALUE))
         );
@@ -191,15 +186,11 @@ public class Register extends javax.swing.JPanel {
                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
+                .addGap(35, 35, 35)
                 .addComponent(btnRegister)
-                .addContainerGap(379, Short.MAX_VALUE))
+                .addContainerGap(441, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -210,6 +201,9 @@ public class Register extends javax.swing.JPanel {
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
         User user = new User();
+        
+        UUID uuid = UUID.randomUUID();
+        String randomUUIDString = uuid.toString();
 
         String firstName = txtFName.getText();
         String lastName = txtLName.getText();
@@ -218,7 +212,7 @@ public class Register extends javax.swing.JPanel {
         String address = txtAddress.getText();
         String age = txtAge.getText();
         String phoneNumber = txtPhoneNumber.getText();
-        String userId = txtUserId.getText();
+        String userId = randomUUIDString;
         String roleType = (String) cmbRole.getSelectedItem();
         String emailAddress = txtEmailAddress.getText();
 
@@ -244,11 +238,6 @@ public class Register extends javax.swing.JPanel {
             return;
         }
 
-        if (validateUserID(userId) == null) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid user id!");
-            return;
-        }
-
         for (User p : system.getUserDirectory().getUsers()) {
             if (userName.equals(p.getUserName())) {
                 JOptionPane.showMessageDialog(this, "Person already exists !");
@@ -257,7 +246,6 @@ public class Register extends javax.swing.JPanel {
         }
         Integer a = validateAge(age);
         Long pn = validatePhoneNumber(phoneNumber);
-        Long id = validateUserID(userId);
 
         user.setFirstName(firstName);
         user.setLastName(lastName);
@@ -267,7 +255,7 @@ public class Register extends javax.swing.JPanel {
         user.setAge(a);
         user.setPhoneNumber(pn);
         user.setEmailId(emailAddress);
-        user.setUserId(id);
+        user.setUserId(userId);
 
         ArrayList<User> users = system.getUserDirectory().getUsers();
         users.add(user);
@@ -344,22 +332,12 @@ public class Register extends javax.swing.JPanel {
         }
     }
 
-    private Long validateUserID(String userId) {
-        try {
-            return Long.parseLong(userId);
-        } catch (NumberFormatException e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
     private javax.swing.JComboBox<String> cmbRole;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
@@ -374,7 +352,6 @@ public class Register extends javax.swing.JPanel {
     private javax.swing.JTextField txtLName;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtPhoneNumber;
-    private javax.swing.JTextField txtUserId;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 
@@ -386,7 +363,6 @@ public class Register extends javax.swing.JPanel {
         txtPhoneNumber.setText("");
         txtAddress.setText("");
         txtUserName.setText("");
-        txtUserId.setText("");
         txtEmailAddress.setText("");
     }
 
