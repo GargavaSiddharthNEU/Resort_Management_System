@@ -39,6 +39,7 @@ public class BookVehiclePanel extends javax.swing.JPanel {
         imageAreaPanel = new javax.swing.JPanel();
         imgVehicle = new javax.swing.JLabel();
 
+        btnManageVehicle.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btnManageVehicle.setText("MANAGE FLEET");
         btnManageVehicle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,6 +47,7 @@ public class BookVehiclePanel extends javax.swing.JPanel {
             }
         });
 
+        btnRequestQueue.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         btnRequestQueue.setText("MANAGE REQUESTS");
         btnRequestQueue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +83,7 @@ public class BookVehiclePanel extends javax.swing.JPanel {
                 .addComponent(btnRequestQueue)
                 .addGap(18, 18, 18)
                 .addComponent(btnHome)
-                .addContainerGap(399, Short.MAX_VALUE))
+                .addContainerGap(419, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(buttonPanel);

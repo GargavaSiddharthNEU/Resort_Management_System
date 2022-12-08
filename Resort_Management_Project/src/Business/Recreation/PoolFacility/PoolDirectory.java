@@ -4,6 +4,7 @@
  */
 package Business.Recreation.PoolFacility;
 
+import Business.Transportation.VehicleBooking.Vehicle;
 import java.util.ArrayList;
 
 /**
@@ -25,7 +26,20 @@ public class PoolDirectory {
         this.poolDirectory = poolDirectory;
     }
     
-        public Pool getPoolByName(String poolName) {
+    public Pool getPools(int index){
+        Pool newPool = new Pool();
+        newPool = poolDirectory.get(index);
+        return newPool;
+    }
+    
+    public Pool addPoolDetails(){
+        Pool newPool = new Pool();
+        poolDirectory.add(newPool);
+        
+        return newPool;
+    }
+    
+    public Pool getPoolByName(String poolName) {
         
         Pool selectedPool = new Pool();
         for(Pool pool : poolDirectory) {
@@ -35,6 +49,10 @@ public class PoolDirectory {
             }
         }
         return selectedPool;
+    }
+    
+    public void deletePool(Pool pool){
+        poolDirectory.remove(pool);
     }
     
 }
