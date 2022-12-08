@@ -171,6 +171,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="UPDATE"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

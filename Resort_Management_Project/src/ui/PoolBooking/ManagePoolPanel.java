@@ -24,7 +24,7 @@ public class ManagePoolPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManagePoolPanel
      */
-    public ManagePoolPanel() {
+    public ManagePoolPanel(EcoSystem system) {
         initComponents();
         this.system = system;
         
@@ -185,6 +185,11 @@ public class ManagePoolPanel extends javax.swing.JPanel {
         });
 
         btnUpdate.setText("UPDATE");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -316,6 +321,36 @@ public class ManagePoolPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+         try {
+            DefaultTableModel model = (DefaultTableModel) tblPool.getModel();
+
+            if (tblPool.getSelectedRowCount() == 1) {
+
+                String poolName = txtPoolName.getText();
+                float price = Float.parseFloat(txtPrice.getText());
+
+                int selectedRowIndex = tblPool.getSelectedRow();
+                Pool pool = system.getPoolDirectory().getPools(selectedRowIndex);
+
+                pool.setPoolName(poolName);
+                pool.setPrice(price);
+
+                populateTable();
+
+                JOptionPane.showMessageDialog(this, "Update successful!");
+            } else if (tblPool.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Table is empty");
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select single row");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

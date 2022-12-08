@@ -4,17 +4,23 @@
  */
 package ui.PoolBooking;
 
+import Business.EcoSystem;
+import javax.swing.JOptionPane;
+import ui.VehicleBooking.ManageVehiclePanel;
+
 /**
  *
  * @author siddh
  */
 public class BookPoolPanel extends javax.swing.JPanel {
+    private EcoSystem system;
 
     /**
      * Creates new form BookPoolPanel
      */
-    public BookPoolPanel() {
+    public BookPoolPanel(EcoSystem system) {
         initComponents();
+        this.system = system;
     }
 
     /**
@@ -34,10 +40,25 @@ public class BookPoolPanel extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
 
         btnManagePools.setText("MANAGE POOLS");
+        btnManagePools.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManagePoolsActionPerformed(evt);
+            }
+        });
 
         btnRequestQueue.setText("MANAGE REQUESTS");
+        btnRequestQueue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestQueueActionPerformed(evt);
+            }
+        });
 
         btnHome.setText("HOME");
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -45,13 +66,13 @@ public class BookPoolPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnHome, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnManagePools, javax.swing.GroupLayout.Alignment.LEADING))
+                .addComponent(btnManagePools)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(btnRequestQueue)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnHome)
+                    .addComponent(btnRequestQueue))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -61,9 +82,9 @@ public class BookPoolPanel extends javax.swing.JPanel {
                 .addComponent(btnManagePools)
                 .addGap(33, 33, 33)
                 .addComponent(btnRequestQueue)
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addComponent(btnHome)
-                .addContainerGap(380, Short.MAX_VALUE))
+                .addContainerGap(364, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -92,6 +113,26 @@ public class BookPoolPanel extends javax.swing.JPanel {
             .addComponent(jSplitPane1)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnManagePoolsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePoolsActionPerformed
+        // TODO add your handling code here:
+        try {
+            ManagePoolPanel managepoolPanel = new ManagePoolPanel(system);
+            jSplitPane1.setRightComponent(managepoolPanel);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnManagePoolsActionPerformed
+
+    private void btnRequestQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestQueueActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnRequestQueueActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnHomeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -391,36 +391,39 @@ public class ManageVehiclePanel extends javax.swing.JPanel {
 
     private void btnUpdateVehicleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateVehicleActionPerformed
         // TODO add your handling code here:
-         DefaultTableModel model = (DefaultTableModel) tblVehicle.getModel();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tblVehicle.getModel();
 
-           if (tblVehicle.getSelectedRowCount() == 1) {
-            
-            String vehicleNumber = txtVehicleNum.getText();
-            String vehicleName = txtVehicleName.getText();
-            int seater = Integer.parseInt((String)cmbSeater.getSelectedItem());
-            float price = Float.parseFloat(txtPrice.getText());
-            String category = (String)cmbCategory.getSelectedItem();
-            
-            
-            int selectedRowIndex = tblVehicle.getSelectedRow();
-        Vehicle vehicle = system.getVehicleDirectory().getVehicles(selectedRowIndex);
-            
-            
-        vehicle.setVehicleNumber(vehicleNumber);
-        vehicle.setVehicleName(vehicleName);
-        vehicle.setCategory(category);
-        vehicle.setSeater(seater);
-        vehicle.setPrice(price);
-       
-        
-        populateTable();
+            if (tblVehicle.getSelectedRowCount() == 1) {
 
-            JOptionPane.showMessageDialog(this, "Update successful!");
-        } else if (tblVehicle.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(this, "Table is empty");
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select single row");
+                String vehicleNumber = txtVehicleNum.getText();
+                String vehicleName = txtVehicleName.getText();
+                int seater = Integer.parseInt((String) cmbSeater.getSelectedItem());
+                float price = Float.parseFloat(txtPrice.getText());
+                String category = (String) cmbCategory.getSelectedItem();
+
+                int selectedRowIndex = tblVehicle.getSelectedRow();
+                Vehicle vehicle = system.getVehicleDirectory().getVehicles(selectedRowIndex);
+
+                vehicle.setVehicleNumber(vehicleNumber);
+                vehicle.setVehicleName(vehicleName);
+                vehicle.setCategory(category);
+                vehicle.setSeater(seater);
+                vehicle.setPrice(price);
+
+                populateTable();
+
+                JOptionPane.showMessageDialog(this, "Update successful!");
+            } else if (tblVehicle.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Table is empty");
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select single row");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
+
+
     }//GEN-LAST:event_btnUpdateVehicleActionPerformed
 
 
