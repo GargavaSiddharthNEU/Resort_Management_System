@@ -6,6 +6,7 @@ package ui.PoolBooking;
 
 import Business.EcoSystem;
 import javax.swing.JOptionPane;
+import ui.VehicleBooking.HomeVehiclePanel;
 import ui.VehicleBooking.ManageVehiclePanel;
 
 /**
@@ -93,7 +94,7 @@ public class BookPoolPanel extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 827, Short.MAX_VALUE)
+            .addGap(0, 799, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +107,7 @@ public class BookPoolPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1041, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,12 +127,22 @@ public class BookPoolPanel extends javax.swing.JPanel {
 
     private void btnRequestQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestQueueActionPerformed
         // TODO add your handling code here:
-        
+        try {
+            ManageRequestsPanel manageRequestsPanel = new ManageRequestsPanel(system);
+            jSplitPane1.setRightComponent(manageRequestsPanel);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_btnRequestQueueActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
-        
+        try {
+            HomePoolPanel homePoolPanel = new HomePoolPanel();
+            jSplitPane1.setRightComponent(homePoolPanel);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_btnHomeActionPerformed
 
 

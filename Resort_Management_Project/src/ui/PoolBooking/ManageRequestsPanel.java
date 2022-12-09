@@ -4,17 +4,87 @@
  */
 package ui.PoolBooking;
 
+import Business.EcoSystem;
+import Business.TransactionHistory.CustomerTransaction;
+import Business.WorkRequest.PoolWorkRequest;
+import Business.WorkRequest.VehicleWorkRequest;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author siddh
  */
 public class ManageRequestsPanel extends javax.swing.JPanel {
-
+    EcoSystem system;
     /**
      * Creates new form ManageRequestsPanel
      */
-    public ManageRequestsPanel() {
+    public ManageRequestsPanel(EcoSystem system) {
         initComponents();
+        
+        this.system = system;
+        populatePoolRequestTable();
+    }
+    
+    public void populatePoolRequestTable() {
+        ArrayList<PoolWorkRequest> pendingPoolRequest = new ArrayList<PoolWorkRequest>();
+        ArrayList<PoolWorkRequest> non_pendingPoolRequest = new ArrayList<PoolWorkRequest>();
+
+        for (PoolWorkRequest poolWRequest : system.getPoolWorkRequestDirectory().getPoolWorkRequestList()) {
+            if (poolWRequest.getStatus().equals("Pending")) {
+                pendingPoolRequest.add(poolWRequest);
+            } else {
+                non_pendingPoolRequest.add(poolWRequest);
+            }
+        }
+
+        populate_based_on_status(pendingPoolRequest, non_pendingPoolRequest);
+    }
+
+    public void populate_based_on_status(ArrayList<PoolWorkRequest> pendingPoolRequest, ArrayList<PoolWorkRequest> non_pendingPoolRequest) {
+        DefaultTableModel model = (DefaultTableModel) tblPoolRequests.getModel();
+        model.setRowCount(0);
+        for (PoolWorkRequest poolWRequest : pendingPoolRequest) {
+
+            Object[] newRow = new Object[6];
+            newRow[0] = poolWRequest;
+            newRow[1] = poolWRequest.getPoolDetails().getPoolName();
+            newRow[2] = poolWRequest.getPoolDetails().getPrice();
+            newRow[3] = poolWRequest.getBookingDate();
+            newRow[4] = poolWRequest.getNumberOfHours();
+            newRow[5] = poolWRequest.getStatus();
+
+            model.addRow(newRow);
+        }
+
+        DefaultTableModel modelNon_Pending = (DefaultTableModel) tblPoolConfirmed.getModel();
+        modelNon_Pending.setRowCount(0);
+        for (PoolWorkRequest poolWRequest : non_pendingPoolRequest) {
+
+             Object[] newRow = new Object[6];
+            newRow[0] = poolWRequest;
+            newRow[1] = poolWRequest.getPoolDetails().getPoolName();
+            newRow[2] = poolWRequest.getPoolDetails().getPrice();
+            newRow[3] = poolWRequest.getBookingDate();
+            newRow[4] = poolWRequest.getNumberOfHours();
+            newRow[5] = poolWRequest.getStatus();
+
+            modelNon_Pending.addRow(newRow);
+        }
+    }
+    
+    public void updateWorkRequestStatus(PoolWorkRequest selectedPool, String status) {
+        selectedPool.setStatus(status);
+        int index = 0;
+        for (PoolWorkRequest poolWRequest : system.getPoolWorkRequestDirectory().getPoolWorkRequestList()) {
+            if (poolWRequest.getUserId().equals(selectedPool.getUserId())) {
+                system.getPoolWorkRequestDirectory().updatePoolWorkRequest(poolWRequest, index);
+                break;
+            }
+            index++;
+        }
     }
 
     /**
@@ -79,8 +149,18 @@ public class ManageRequestsPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tblPoolConfirmed);
 
         btnApprove.setText("APPROVE");
+        btnApprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApproveActionPerformed(evt);
+            }
+        });
 
         btnReject.setText("REJECT");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -119,6 +199,49 @@ public class ManageRequestsPanel extends javax.swing.JPanel {
                 .addGap(100, 100, 100))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
+        // TODO add your handling code here:
+        try {
+            int selectedRowIndex = tblPoolRequests.getSelectedRow();
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row to approve.");
+                return;
+            }
+            DefaultTableModel model = (DefaultTableModel) tblPoolRequests.getModel();
+            PoolWorkRequest selectedPoolWorkRequest = (PoolWorkRequest) model.getValueAt(selectedRowIndex, 0);
+            updateWorkRequestStatus(selectedPoolWorkRequest, "Approved");
+            CustomerTransaction ct = new CustomerTransaction();
+
+            float poolbooking_finalprice = selectedPoolWorkRequest.getNumberOfHours() * selectedPoolWorkRequest.getPoolDetails().getPrice();
+            ct.setUserId(selectedPoolWorkRequest.getUserId());
+            ct.setFacilityUsed("Pool Booked - " + selectedPoolWorkRequest.getPoolDetails().getPoolName() + " for " + selectedPoolWorkRequest.getNumberOfHours() + " hours");
+            ct.setPrice(poolbooking_finalprice);
+            system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
+            JOptionPane.showMessageDialog(this, "Request approved successfully");
+            populatePoolRequestTable();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnApproveActionPerformed
+
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        try {
+            int selectedRowIndex = tblPoolRequests.getSelectedRow();
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row to approve.");
+                return;
+            }
+            DefaultTableModel model = (DefaultTableModel) tblPoolRequests.getModel();
+            PoolWorkRequest selectedPoolWorkRequest = (PoolWorkRequest) model.getValueAt(selectedRowIndex, 0);
+            updateWorkRequestStatus(selectedPoolWorkRequest, "Rejected");
+            JOptionPane.showMessageDialog(this, "Request rejected successfully");
+            populatePoolRequestTable();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnRejectActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
