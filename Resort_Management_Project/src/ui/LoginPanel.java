@@ -10,6 +10,9 @@ import javax.swing.JOptionPane;
 import Business.User.User;
 import ui.Customer.CustomerHomePanel;
 import ui.FoodandBev.FoodandBevPanel;
+import ui.GameBooking.BookGamePanel;
+import ui.LaundryBooking.BookLaundryPanel;
+import ui.PoolBooking.BookPoolPanel;
 import ui.VehicleBooking.BookVehiclePanel;
 /**
  *
@@ -126,10 +129,17 @@ public class LoginPanel extends javax.swing.JPanel {
                             BookVehiclePanel bookVehiclePanel = new BookVehiclePanel(system);
                             SplitPane.setRightComponent(bookVehiclePanel);
                         } else if (temp.getRoleType().equalsIgnoreCase("Pool Incharge")) {
-
+                            BookPoolPanel bookPoolPanel = new BookPoolPanel(system);
+                            SplitPane.setRightComponent(bookPoolPanel);
                         } else if (temp.getRoleType().equalsIgnoreCase("Food Manager")) {
                             FoodandBevPanel foodandBevPanel = new FoodandBevPanel(system);
                             SplitPane.setRightComponent(foodandBevPanel);
+                        }else if (temp.getRoleType().equalsIgnoreCase("Gaming Incharge")) {
+                            BookGamePanel bookGamePanel = new BookGamePanel(system);
+                            SplitPane.setRightComponent(bookGamePanel);
+                        }else if (temp.getRoleType().equalsIgnoreCase("Laundry Manager")) {
+                            BookLaundryPanel bookLaundryPanel = new BookLaundryPanel(system);
+                            SplitPane.setRightComponent(bookLaundryPanel);
                         }
                     } else {
                         index++;

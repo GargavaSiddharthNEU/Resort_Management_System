@@ -49,4 +49,9 @@ public class LaundryWorkRequest {
         this.status = status;
     }
     
+    @Override
+    public String toString() {
+        return userId;
+    }
+    
 }

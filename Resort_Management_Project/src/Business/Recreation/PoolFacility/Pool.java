@@ -11,7 +11,7 @@ package Business.Recreation.PoolFacility;
 public class Pool {
     String poolId;
     String poolName;
-    Integer price;
+    Float price;
 
     public String getPoolId() {
         return poolId;
@@ -29,13 +29,19 @@ public class Pool {
         this.poolName = poolName;
     }
 
-    public Integer getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
+
     
+    
+     @Override
+    public String toString(){
+        return poolName;
+    }
     
 }
