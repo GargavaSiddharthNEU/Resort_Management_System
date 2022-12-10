@@ -4,17 +4,91 @@
  */
 package ui.GameBooking;
 
+import Business.EcoSystem;
+import Business.TransactionHistory.CustomerTransaction;
+import Business.WorkRequest.GameWorkRequest;
+import Business.WorkRequest.VehicleWorkRequest;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author siddh
  */
 public class ManageGameRequestsPanel extends javax.swing.JPanel {
+     EcoSystem system;
 
     /**
      * Creates new form ManageGameRequestsPanel
      */
-    public ManageGameRequestsPanel() {
+    public ManageGameRequestsPanel(EcoSystem system) {
         initComponents();
+        
+        this.system = system;
+        populateGameRequestTable();
+    }
+    
+    public void populateGameRequestTable() {
+        ArrayList<GameWorkRequest> pendingGameRequest = new ArrayList<GameWorkRequest>();
+        ArrayList<GameWorkRequest> non_pendingGameRequest = new ArrayList<GameWorkRequest>();
+
+        for (GameWorkRequest gameWRequest : system.getGameWorkRequestDirectory().getGameWorkRequestList()) {
+            if (gameWRequest.getStatus().equals("Pending")) {
+                pendingGameRequest.add(gameWRequest);
+            } else {
+                non_pendingGameRequest.add(gameWRequest);
+            }
+        }
+
+        populate_based_on_status(pendingGameRequest, non_pendingGameRequest);
+    }
+
+    public void populate_based_on_status(ArrayList<GameWorkRequest> pendingGameRequest, ArrayList<GameWorkRequest> non_pendingGameRequest) {
+        DefaultTableModel model = (DefaultTableModel) tblGameRequests.getModel();
+        model.setRowCount(0);
+        for (GameWorkRequest gameWRequest : pendingGameRequest) {
+
+            Object[] newRow = new Object[7];
+            newRow[0] = gameWRequest;
+            newRow[1] = gameWRequest.getGameDetails().getGameName();
+            newRow[2] = gameWRequest.getGameDetails().getGameCategory();
+            newRow[3] = gameWRequest.getGameDetails().getPrice();
+            newRow[4] = gameWRequest.getNumberOfHours();
+            newRow[5] = gameWRequest.getBookingDate();
+            newRow[6] = gameWRequest.getStatus();
+
+            model.addRow(newRow);
+        }
+
+        DefaultTableModel modelNon_Pending = (DefaultTableModel) tblGameConfirmed.getModel();
+        modelNon_Pending.setRowCount(0);
+        for (GameWorkRequest gameWRequest : non_pendingGameRequest) {
+
+            Object[] newRow = new Object[7];
+            newRow[0] = gameWRequest;
+            newRow[1] = gameWRequest.getGameDetails().getGameName();
+            newRow[2] = gameWRequest.getGameDetails().getGameCategory();
+            newRow[3] = gameWRequest.getGameDetails().getPrice();
+            newRow[4] = gameWRequest.getNumberOfHours();
+            newRow[5] = gameWRequest.getBookingDate();
+            newRow[6] = gameWRequest.getStatus();
+
+            modelNon_Pending.addRow(newRow);
+        }
+
+    }
+    
+    public void updateWorkRequestStatus(GameWorkRequest selectedGame, String status) {
+        selectedGame.setStatus(status);
+        int index = 0;
+        for (GameWorkRequest gameWRequest : system.getGameWorkRequestDirectory().getGameWorkRequestList()) {
+            if (gameWRequest.getUserId().equals(selectedGame.getUserId())) {
+                system.getGameWorkRequestDirectory().updateGameWorkRequest(gameWRequest, index);
+                break;
+            }
+            index++;
+        }
     }
 
     /**
@@ -79,8 +153,18 @@ public class ManageGameRequestsPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tblGameConfirmed);
 
         btnApprove.setText("APPROVE");
+        btnApprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApproveActionPerformed(evt);
+            }
+        });
 
         btnReject.setText("REJECT");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -120,6 +204,35 @@ public class ManageGameRequestsPanel extends javax.swing.JPanel {
                 .addGap(90, 90, 90))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
+        // TODO add your handling code here:
+         try {
+            int selectedRowIndex = tblGameRequests.getSelectedRow();
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row to approve.");
+                return;
+            }
+            DefaultTableModel model = (DefaultTableModel) tblGameRequests.getModel();
+            GameWorkRequest selectedGameWorkRequest = (GameWorkRequest) model.getValueAt(selectedRowIndex, 0);
+            updateWorkRequestStatus(selectedGameWorkRequest, "Approved");
+            CustomerTransaction ct = new CustomerTransaction();
+
+            float gamebooking_finalprice = selectedGameWorkRequest.getNumberOfHours() * selectedGameWorkRequest.getGameDetails().getPrice();
+            ct.setUserId(selectedGameWorkRequest.getUserId());
+            ct.setFacilityUsed("Game Booked - " + selectedGameWorkRequest.getGameDetails().getGameName() + " for " + selectedGameWorkRequest.getNumberOfHours() + " hours");
+            ct.setPrice(gamebooking_finalprice);
+            system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
+            JOptionPane.showMessageDialog(this, "Request approved successfully");
+            populateGameRequestTable();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnApproveActionPerformed
+
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRejectActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -104,7 +104,7 @@ public class ManageGamePanel extends javax.swing.JPanel {
      private void populateTable() {
         //new test
          
-         DefaultTableModel model = (DefaultTableModel) tblGame.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblGame.getModel();
         
         model.setRowCount(0);
 
@@ -326,10 +326,54 @@ public class ManageGamePanel extends javax.swing.JPanel {
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
+        try {
+            int selectedRowIndex = tblGame.getSelectedRow();
+
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row for viewing");
+                return;
+            }
+
+            DefaultTableModel model = (DefaultTableModel) tblGame.getModel();
+            Game selectedGame = (Game) model.getValueAt(selectedRowIndex, 0);
+
+            txtGameName.setText(selectedGame.getGameName());
+            cmbCategory.setSelectedItem(selectedGame.getGameCategory());
+            txtPrice.setText(String.valueOf(selectedGame.getPrice()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        try {
+            DefaultTableModel model = (DefaultTableModel) tblGame.getModel();
+
+            if (tblGame.getSelectedRowCount() == 1) {
+
+                String gameName = txtGameName.getText();
+                float price = Float.parseFloat(txtPrice.getText());
+                String category = (String) cmbCategory.getSelectedItem();
+
+                int selectedRowIndex = tblGame.getSelectedRow();
+                Game game = system.getGameDirectory().getGames(selectedRowIndex);
+
+                game.setGameName(gameName);
+                game.setGameCategory(category);
+                game.setPrice(price);
+
+                populateTable();
+
+                JOptionPane.showMessageDialog(this, "Update successful!");
+            } else if (tblGame.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Table is empty");
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select single row");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
 
