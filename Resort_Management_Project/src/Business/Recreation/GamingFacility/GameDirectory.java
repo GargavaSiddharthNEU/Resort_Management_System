@@ -25,6 +25,19 @@ public class GameDirectory {
     public void setGameDirectory(ArrayList<Game> gameDirectory) {
         this.gameDirectory = gameDirectory;
     }
+    
+     public Game getGames(int index){
+        Game newGame = new Game();
+        newGame = gameDirectory.get(index);
+        return newGame;
+    }
+    
+    public Game addGameDetails(){
+        Game newGame = new Game();
+        gameDirectory.add(newGame);
+        
+        return newGame;
+    }
 
     public Game getGameByName(String gameName) {
 
@@ -36,6 +49,10 @@ public class GameDirectory {
             }
         }
         return selectedGame;
+    }
+    
+    public void deleteGame(Game game){
+        gameDirectory.remove(game);
     }
 
 }
