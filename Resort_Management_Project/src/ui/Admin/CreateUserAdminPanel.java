@@ -2,30 +2,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ui;
+package ui.Admin;
 
-import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
+import Business.User.User;
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-import Business.User.User;
-import java.util.UUID;
 
 /**
  *
- * @author manikantareddythikkavarapu
+ * @author Asus
  */
-public class Register extends javax.swing.JPanel {
-
-    private EcoSystem system;
-    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+public class CreateUserAdminPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form Register
+     * Creates new form ManageRolesPanel
      */
-    public Register(EcoSystem system) {
+    EcoSystem system;
+
+    public CreateUserAdminPanel(EcoSystem system) {
         initComponents();
         this.system = system;
     }
@@ -39,52 +37,30 @@ public class Register extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        txtFName = new javax.swing.JTextField();
-        txtLName = new javax.swing.JTextField();
-        txtUserName = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
-        cmbRole = new javax.swing.JComboBox<>();
-        btnRegister = new javax.swing.JButton();
+        txtAge = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        txtEmailAddress = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
+        txtFName = new javax.swing.JTextField();
         txtPhoneNumber = new javax.swing.JTextField();
+        txtLName = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        txtUserName = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtAge = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        txtEmailAddress = new javax.swing.JTextField();
-
-        setBackground(new java.awt.Color(255, 250, 250));
-
-        jLabel1.setText("First Name");
-
-        txtFName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFNameActionPerformed(evt);
-            }
-        });
-
-        cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Admin", "Vehicle Contractor", "Pool Incharge", "Gaming Incharge", "Laundry Manager", "Janitor", "Food Manager" }));
-        cmbRole.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbRoleActionPerformed(evt);
-            }
-        });
-
-        btnRegister.setText("REGISTER");
-        btnRegister.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegisterActionPerformed(evt);
-            }
-        });
+        cmbRole = new javax.swing.JComboBox<>();
+        createUserBtn = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         jLabel2.setText("User Name");
+
+        jLabel14.setText("Email Address");
 
         jLabel3.setText("Last Name");
 
@@ -92,44 +68,51 @@ public class Register extends javax.swing.JPanel {
 
         jLabel5.setText("Roletype");
 
+        jLabel1.setText("First Name");
+
         jLabel8.setText("Address");
 
         jLabel10.setText("Age");
 
         jLabel11.setText("Phone Number");
 
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel13.setText("REGISTER PAGE");
+        cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vehicle Contractor", "Pool Incharge", "Gaming Incharge", "Janitor", "Food Manager", "Laundry Manager", "Souvenir Shop Manager" }));
 
-        jLabel14.setText("Email Address");
-
-        txtEmailAddress.addActionListener(new java.awt.event.ActionListener() {
+        createUserBtn.setText("Create New User");
+        createUserBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailAddressActionPerformed(evt);
+                createUserBtnActionPerformed(evt);
             }
         });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setText("Create User Role");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(461, 461, 461)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(325, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(295, 295, 295)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(186, 186, 186)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(createUserBtn)
+                        .addGap(397, 397, 397))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel14))
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -141,18 +124,15 @@ public class Register extends javax.swing.JPanel {
                             .addComponent(cmbRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtAge)
                             .addComponent(txtFName)
-                            .addComponent(txtEmailAddress)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(299, 299, 299)
-                        .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(341, Short.MAX_VALUE))
+                            .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(276, 276, 276))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jLabel13)
-                .addGap(18, 18, 18)
+                .addGap(47, 47, 47)
+                .addComponent(jLabel6)
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -188,100 +168,82 @@ public class Register extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(btnRegister)
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(createUserBtn)
+                .addContainerGap(194, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFNameActionPerformed
+    private void createUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFNameActionPerformed
 
-    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        // TODO add your handling code here:
-        User user = new User();
-        
-        UUID uuid = UUID.randomUUID();
-        String randomUUIDString = uuid.toString();
+        try {
+            User user = new User();
 
-        String firstName = txtFName.getText();
-        String lastName = txtLName.getText();
-        String userName = txtUserName.getText();
-        String password = txtPassword.getText();
-        String address = txtAddress.getText();
-        String age = txtAge.getText();
-        String phoneNumber = txtPhoneNumber.getText();
-        String userId = randomUUIDString;
-        String roleType = (String) cmbRole.getSelectedItem();
-        String emailAddress = txtEmailAddress.getText();
+            UUID uuid = UUID.randomUUID();
+            String randomUUIDString = uuid.toString();
 
-        if (firstName.isEmpty() || lastName.isEmpty() || userName.isEmpty()|| password.isEmpty()
-                || phoneNumber.isEmpty()|| userId.isEmpty()|| age.isEmpty()|| address.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter all details !");
-            //clearAllFields();
-            return;
-        }
+            String firstName = txtFName.getText();
+            String lastName = txtLName.getText();
+            String userName = txtUserName.getText();
+            String password = txtPassword.getText();
+            String address = txtAddress.getText();
+            String age = txtAge.getText();
+            String phoneNumber = txtPhoneNumber.getText();
+            String userId = randomUUIDString;
+            String roleType = (String) cmbRole.getSelectedItem();
+            String emailAddress = txtEmailAddress.getText();
 
-        if (validatePhoneNumber(phoneNumber) == null) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid phone number !");
-            return;
-        }
-        
-        if(validateEmailAddress(emailAddress) == null) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid email address !");
-            return;
-        }
-
-        if (validateAge(age) == null) {
-            JOptionPane.showMessageDialog(this, "Please enter a valid age!");
-            return;
-        }
-
-        for (User p : system.getUserDirectory().getUsers()) {
-            if (userName.equals(p.getUserName())) {
-                JOptionPane.showMessageDialog(this, "Person already exists !");
+            if (firstName.isEmpty() || lastName.isEmpty() || userName.isEmpty() || password.isEmpty()
+                    || phoneNumber.isEmpty() || userId.isEmpty() || age.isEmpty() || address.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter all details !");
                 return;
             }
+
+            if (validatePhoneNumber(phoneNumber) == null) {
+                JOptionPane.showMessageDialog(this, "Please enter a valid phone number !");
+                return;
+            }
+
+            if (validateEmailAddress(emailAddress) == null) {
+                JOptionPane.showMessageDialog(this, "Please enter a valid email address !");
+                return;
+            }
+
+            if (validateAge(age) == null) {
+                JOptionPane.showMessageDialog(this, "Please enter a valid age!");
+                return;
+            }
+
+            for (User p : system.getUserDirectory().getUsers()) {
+                if (userName.equals(p.getUserName())) {
+                    JOptionPane.showMessageDialog(this, "Username already in use!");
+                    return;
+                }
+            }
+            Integer a = validateAge(age);
+            Long pn = validatePhoneNumber(phoneNumber);
+
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
+            user.setUserName(userName);
+            user.setPassword(password);
+            user.setRoleType(roleType);
+            user.setAge(a);
+            user.setPhoneNumber(pn);
+            user.setEmailId(emailAddress);
+            user.setUserId(userId);
+
+            ArrayList<User> users = system.getUserDirectory().getUsers();
+            users.add(user);
+            system.getUserDirectory().setUsers(users);
+
+            JOptionPane.showMessageDialog(this, "User successfully created!");
+            clearAllFields();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Enter valid values for adding an user");
         }
-        Integer a = validateAge(age);
-        Long pn = validatePhoneNumber(phoneNumber);
-
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setUserName(userName);
-        user.setPassword(password);
-        user.setRoleType(roleType);
-        user.setAge(a);
-        user.setAddress(address);
-        user.setPhoneNumber(pn);
-        user.setEmailId(emailAddress);
-        user.setUserId(userId);
-
-        ArrayList<User> users = system.getUserDirectory().getUsers();
-        users.add(user);
-        system.getUserDirectory().setUsers(users);
-
-        JOptionPane.showMessageDialog(this, "Profile successfully added !");
-        dB4OUtil.storeSystem(system);
-        clearAllFields();
-    }//GEN-LAST:event_btnRegisterActionPerformed
-
-    private void cmbRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRoleActionPerformed
-        // TODO add your handling code here:
-        String roleType = (String) cmbRole.getSelectedItem();
-        if (roleType.equals("Customer")) {
-
-        } else if (roleType.equals("Admin")) {
-
-        } else {
-
-        }
-    }//GEN-LAST:event_cmbRoleActionPerformed
-
-    private void txtEmailAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailAddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailAddressActionPerformed
+    }//GEN-LAST:event_createUserBtnActionPerformed
 
     private Integer validateAge(String age) {
         try {
@@ -312,7 +274,18 @@ public class Register extends javax.swing.JPanel {
         }
 
     }
-    
+
+    private void clearAllFields() {
+        txtAge.setText("");
+        txtFName.setText("");
+        txtLName.setText("");
+        txtPassword.setText("");
+        txtPhoneNumber.setText("");
+        txtAddress.setText("");
+        txtUserName.setText("");
+        txtEmailAddress.setText("");
+    }
+
     private String validateEmailAddress(String emailAddress) {
         try {
 
@@ -334,17 +307,17 @@ public class Register extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegister;
     private javax.swing.JComboBox<String> cmbRole;
+    private javax.swing.JButton createUserBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
@@ -355,16 +328,4 @@ public class Register extends javax.swing.JPanel {
     private javax.swing.JTextField txtPhoneNumber;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
-
-    private void clearAllFields() {
-        txtAge.setText("");
-        txtFName.setText("");
-        txtLName.setText("");
-        txtPassword.setText("");
-        txtPhoneNumber.setText("");
-        txtAddress.setText("");
-        txtUserName.setText("");
-        txtEmailAddress.setText("");
-    }
-
 }

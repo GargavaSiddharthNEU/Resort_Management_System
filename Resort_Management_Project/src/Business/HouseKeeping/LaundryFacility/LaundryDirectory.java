@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.HouseKeeping.LaundryFacility;
-
-import Business.Recreation.PoolFacility.Pool;
 import java.util.ArrayList;
 
 /**
@@ -54,5 +52,5 @@ public class LaundryDirectory {
     public void deleteLaundry(Laundry laundry){
         laundryDirectory.remove(laundry);
     }
-    
+
 }

@@ -21,5 +21,15 @@ public class SouvenirDirectory {
         this.souvenirDirectory = souvenirDirectory;
     }
     
-    
+    public Souvenir getSouvenirByName(String souvenirName) {
+
+        Souvenir selectedSouvenir = new Souvenir();
+        for (Souvenir souvenir : souvenirDirectory) {
+            if (souvenir.getSouvenirName().equals(souvenirName)) {
+                selectedSouvenir = souvenir;
+                break;
+            }
+        }
+        return selectedSouvenir;
+    }
 }

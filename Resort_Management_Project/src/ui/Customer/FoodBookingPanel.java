@@ -4,6 +4,16 @@
  */
 package ui.Customer;
 
+import Business.EcoSystem;
+import Business.FoodandBev.Menu.FBItem;
+import Business.User.User;
+import Business.WorkRequest.FoodBevWorkRequest;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.MutableComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Subbu
@@ -13,8 +23,31 @@ public class FoodBookingPanel extends javax.swing.JPanel {
     /**
      * Creates new form FoodBookingPanel
      */
-    public FoodBookingPanel() {
+    EcoSystem system;
+    User user;
+    ArrayList<FBItem> foodOrderList;
+
+    public FoodBookingPanel(EcoSystem system, User user) {
         initComponents();
+
+        foodOrderList = new ArrayList<FBItem>();
+        this.system = system;
+        this.user = user;
+
+        MutableComboBoxModel<String> model = new DefaultComboBoxModel<String>();
+
+        for (FBItem itemList : system.getFBItemDirectory().getFbItemDirectoryList()) {
+            model.addElement(itemList.getFbName());
+        }
+
+        chooseFoodDropdown.setModel(model);
+
+        itemNameTxt.setEditable(false);
+        itemCategoryTxt.setEditable(false);
+        itemPriceTxt.setEditable(false);
+
+        populateRequestTable();
+
     }
 
     /**
@@ -26,19 +59,347 @@ public class FoodBookingPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        chooseFoodDropdown = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        itemNameTxt = new javax.swing.JTextField();
+        viewDetailsBtn = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        itemCategoryTxt = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        itemPriceTxt = new javax.swing.JTextField();
+        addItemBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        itemListTable = new javax.swing.JTable();
+        bookOrderBtn = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        orderStatusTable = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        removeItemBtn = new javax.swing.JButton();
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Book Food and Beverages");
+
+        jLabel2.setText("Choose a Food or Beverage:");
+
+        jLabel3.setText("Item Name:");
+
+        viewDetailsBtn.setText("View Details");
+        viewDetailsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewDetailsBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Item Category:");
+
+        jLabel5.setText("Item Price:");
+
+        addItemBtn.setText("Add Item");
+        addItemBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addItemBtnActionPerformed(evt);
+            }
+        });
+
+        itemListTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Item Name", "Item Category", "Item Price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Float.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(itemListTable);
+
+        bookOrderBtn.setText("Book Order");
+        bookOrderBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookOrderBtnActionPerformed(evt);
+            }
+        });
+
+        orderStatusTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "List of Items", "Total Price", "Order Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Float.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(orderStatusTable);
+
+        jLabel6.setText("Food and Beverage Order Status");
+
+        removeItemBtn.setText("Remove Item");
+        removeItemBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeItemBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(210, 210, 210)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(chooseFoodDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(viewDetailsBtn))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 966, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(itemNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(itemCategoryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jLabel5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(itemPriceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(addItemBtn)))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 966, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(697, 697, 697)
+                                    .addComponent(removeItemBtn)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bookOrderBtn)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(374, 374, 374)
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(372, 372, 372)
+                        .addComponent(jLabel1)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(chooseFoodDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewDetailsBtn))
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(itemNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(itemCategoryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(itemPriceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addItemBtn))
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(removeItemBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bookOrderBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(116, 116, 116))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void viewDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsBtnActionPerformed
+        // TODO add your handling code here:
+
+        try {
+            if (chooseFoodDropdown.getSelectedItem() != null) {
+
+                String itemName = String.valueOf(chooseFoodDropdown.getSelectedItem());
+                FBItem itemDetails = system.getFBItemDirectory().getItemByName(itemName);
+
+                itemNameTxt.setText(itemDetails.getFbName());
+                itemCategoryTxt.setText(itemDetails.getCategory());
+                itemPriceTxt.setText(String.valueOf(itemDetails.getPrice()));
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Choose a valid Food or Beverage item for viewing");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_viewDetailsBtnActionPerformed
+
+    private void addItemBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addItemBtnActionPerformed
+        // TODO add your handling code here:
+
+        try {
+
+            DefaultTableModel itemListModel = (DefaultTableModel) itemListTable.getModel();
+
+            if (chooseFoodDropdown.getSelectedItem() != null) {
+
+                String itemName = String.valueOf(chooseFoodDropdown.getSelectedItem());
+                FBItem itemDetails = system.getFBItemDirectory().getItemByName(itemName);
+
+                Object[] newRow = new Object[3];
+                newRow[0] = itemDetails.getFbName();
+                newRow[1] = itemDetails.getCategory();
+                newRow[2] = itemDetails.getPrice();
+
+                itemListModel.addRow(newRow);
+                foodOrderList.add(itemDetails);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Choose a valid Food or Beverage item for adding to list");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Choose a valid Food or Beverage item for adding to list");
+        }
+    }//GEN-LAST:event_addItemBtnActionPerformed
+
+    private void removeItemBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeItemBtnActionPerformed
+        // TODO add your handling code here:
+
+        try {
+            int index = itemListTable.getSelectedRow();
+
+            if (index < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a Food or Beverage item to be removed from list");
+                return;
+            }
+
+            DefaultTableModel model = (DefaultTableModel) itemListTable.getModel();
+            String itemName = String.valueOf(model.getValueAt(index, 0));
+            FBItem itemDetails = system.getFBItemDirectory().getItemByName(itemName);
+
+            model.removeRow(index);
+            foodOrderList.remove(itemDetails);
+
+            JOptionPane.showMessageDialog(this, "Food or Beverage item removed successfully from list");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Please select a Food or Beverage item to be removed from list");
+        }
+    }//GEN-LAST:event_removeItemBtnActionPerformed
+
+    private void bookOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookOrderBtnActionPerformed
+        // TODO add your handling code here:
+
+        FoodBevWorkRequest bookFoodBev = new FoodBevWorkRequest();
+
+        try {
+            DefaultTableModel model = (DefaultTableModel) itemListTable.getModel();
+            if (model.getRowCount() != 0) {
+
+                bookFoodBev.setFbItemDetails(foodOrderList);
+                bookFoodBev.setUserId(user.getUserId());
+                bookFoodBev.setStatus("Pending");
+
+                system.getFoodBevWorkRequestDirectory().getFoodBevWorkRequestList().add(bookFoodBev);
+
+                JOptionPane.showMessageDialog(this, "Food and Beverage order request sent to Manager");
+
+                foodOrderList = new ArrayList<FBItem>();
+                populateRequestTable();
+
+                model.setRowCount(0);
+            } else {
+                JOptionPane.showMessageDialog(this, "Choose valid Food and Beverage items for booking");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_bookOrderBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addItemBtn;
+    private javax.swing.JButton bookOrderBtn;
+    private javax.swing.JComboBox<String> chooseFoodDropdown;
+    private javax.swing.JTextField itemCategoryTxt;
+    private javax.swing.JTable itemListTable;
+    private javax.swing.JTextField itemNameTxt;
+    private javax.swing.JTextField itemPriceTxt;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable orderStatusTable;
+    private javax.swing.JButton removeItemBtn;
+    private javax.swing.JButton viewDetailsBtn;
     // End of variables declaration//GEN-END:variables
+
+    private void populateRequestTable() {
+
+        try {
+            DefaultTableModel model = (DefaultTableModel) orderStatusTable.getModel();
+            model.setRowCount(0);
+
+            for (FoodBevWorkRequest fbWorkRequest : system.getFoodBevWorkRequestDirectory().getFoodBevWorkRequestList()) {
+
+                String itemsList = "";
+                float orderPrice = 0;
+                if (fbWorkRequest.getUserId().equals(user.getUserId())) {
+
+                    for (FBItem item : fbWorkRequest.getFbItemDetails()) {
+                        itemsList += item.getFbName() + ", ";
+                        orderPrice += item.getPrice();
+                    }
+
+                    Object[] newRow = new Object[3];
+                    newRow[0] = itemsList;
+                    newRow[1] = orderPrice;
+                    newRow[2] = fbWorkRequest.getStatus();
+
+                    model.addRow(newRow);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
 }

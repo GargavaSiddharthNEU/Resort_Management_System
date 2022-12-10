@@ -15,8 +15,9 @@ import javax.swing.table.DefaultTableModel;
  * @author siddh
  */
 public class ManageGamePanel extends javax.swing.JPanel {
+
     private EcoSystem system;
-    
+
     String mainValidationString = "";
     String validationString1 = "";
     String validationString2 = "";
@@ -26,31 +27,31 @@ public class ManageGamePanel extends javax.swing.JPanel {
      */
     public ManageGamePanel(EcoSystem system) {
         initComponents();
-        
+
         this.system = system;
         populateTable();
     }
-    
-     private void resetGameData() {
+
+    private void resetGameData() {
         cmbCategory.setSelectedItem("Choose Category");
         txtGameName.setText("");
         txtPrice.setText("");
     }
-    
+
     public boolean areDataFieldsEmpty() {
         validationString1 = "";
 
         if (txtGameName.getText().isEmpty()) {
             validationString1 += "Game Name, ";
         }
-        if (txtPrice.getText() == null) {
+        if (txtPrice.getText().isEmpty() || txtPrice.getText().equals("")) {
             validationString1 += "Price per hour, ";
         }
-        
-        if(cmbCategory.getSelectedIndex() == 0){
+
+        if (cmbCategory.getSelectedIndex() == 0) {
             validationString1 += "Category, ";
         }
-        
+
         return isNotValid(validationString1);
     }
 
@@ -88,24 +89,24 @@ public class ManageGamePanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please enter only numbers for these fields: " + mainValidationString);
         }
     }
-    
+
     private boolean gameDetailsExistence() {
         String gameName = txtGameName.getText();
         boolean exist = false;
-            for (Game game : system.getGameDirectory().getGameDirectory()) {
-                if (gameName.equals(game.getGameName())) {
-                    exist = true;
-                    break;
-                }
+        for (Game game : system.getGameDirectory().getGameDirectory()) {
+            if (gameName.equals(game.getGameName())) {
+                exist = true;
+                break;
             }
+        }
         return exist;
     }
-    
-     private void populateTable() {
+
+    private void populateTable() {
         //new test
-         
+
         DefaultTableModel model = (DefaultTableModel) tblGame.getModel();
-        
+
         model.setRowCount(0);
 
         for (Game game : system.getGameDirectory().getGameDirectory()) {
@@ -114,7 +115,6 @@ public class ManageGamePanel extends javax.swing.JPanel {
             row[0] = game;
             row[1] = game.getGameCategory();
             row[2] = game.getPrice();
-            
 
             model.addRow(row);
         }
@@ -272,11 +272,11 @@ public class ManageGamePanel extends javax.swing.JPanel {
             boolean validation1 = areDataFieldsEmpty();
             boolean validation2 = areDataTypesCorrect();
 
-            String gameName = txtGameName.getText();
-            String category = (String) cmbCategory.getSelectedItem();
-            Float price = Float.parseFloat(txtPrice.getText());
-
             if (!validation1 && !validation2) {
+
+                String gameName = txtGameName.getText();
+                String category = (String) cmbCategory.getSelectedItem();
+                Float price = Float.parseFloat(txtPrice.getText());
 
                 if (!gameDetailsExistence()) {
                     Game game = system.getGameDirectory().addGameDetails();

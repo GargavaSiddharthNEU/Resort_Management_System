@@ -104,14 +104,14 @@ public class GameBookingPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Game Name", "Game Category", "Booking Date", "Price per hour", "Number of hours", "Request Status"
+                "Game Name", "Game Category", "Booking Date", "Price per hour", "Number of hours", "Total price", "Request Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Float.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -315,13 +315,14 @@ public class GameBookingPanel extends javax.swing.JPanel {
             for (GameWorkRequest gameWorkRequest : system.getGameWorkRequestDirectory().getGameWorkRequestList()) {
 
                 if (gameWorkRequest.getUserId().equals(user.getUserId())) {
-                    Object[] newRow = new Object[6];
+                    Object[] newRow = new Object[7];
                     newRow[0] = gameWorkRequest.getGameDetails().getGameName();
                     newRow[1] = gameWorkRequest.getGameDetails().getGameCategory();
                     newRow[2] = gameWorkRequest.getBookingDate();
                     newRow[3] = gameWorkRequest.getGameDetails().getPrice();
                     newRow[4] = gameWorkRequest.getNumberOfHours();
-                    newRow[5] = gameWorkRequest.getStatus();
+                    newRow[5] = (gameWorkRequest.getNumberOfHours()*gameWorkRequest.getGameDetails().getPrice());
+                    newRow[6] = gameWorkRequest.getStatus();
 
                     model.addRow(newRow);
                 }

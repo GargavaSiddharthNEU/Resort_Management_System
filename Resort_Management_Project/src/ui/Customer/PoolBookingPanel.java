@@ -100,14 +100,14 @@ public class PoolBookingPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Pool Name", "Booking Date", "Price per hour", "Number of hours", "Request Status"
+                "Pool Name", "Booking Date", "Price per hour", "Number of hours", "Total Price", "Request Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Float.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -192,12 +192,13 @@ public class PoolBookingPanel extends javax.swing.JPanel {
                             .addComponent(choosePoolDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(viewPoolBtn))))
                 .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(priceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
-                        .addComponent(poolNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(poolNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(priceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -302,12 +303,13 @@ public class PoolBookingPanel extends javax.swing.JPanel {
             for (PoolWorkRequest poolWorkRequest : system.getPoolWorkRequestDirectory().getPoolWorkRequestList()) {
 
                 if (poolWorkRequest.getUserId().equals(user.getUserId())) {
-                    Object[] newRow = new Object[5];
+                    Object[] newRow = new Object[6];
                     newRow[0] = poolWorkRequest.getPoolDetails().getPoolName();
                     newRow[1] = poolWorkRequest.getBookingDate();
                     newRow[2] = poolWorkRequest.getPoolDetails().getPrice();
                     newRow[3] = poolWorkRequest.getNumberOfHours();
-                    newRow[4] = poolWorkRequest.getStatus();
+                    newRow[4] = (poolWorkRequest.getPoolDetails().getPrice()*poolWorkRequest.getNumberOfHours());
+                    newRow[5] = poolWorkRequest.getStatus();
 
                     model.addRow(newRow);
                 }
