@@ -12,7 +12,7 @@ public class Game {
     String gameId;
     String gameCategory;
     String gameName;
-    Integer price;
+    Float price;
 
     public String getGameId() {
         return gameId;
@@ -38,13 +38,14 @@ public class Game {
         this.gameName = gameName;
     }
 
-    public Integer getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
+    
     
     @Override
     public String toString(){
