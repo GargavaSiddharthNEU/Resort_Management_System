@@ -17,14 +17,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author siddh
  */
-public class ManageRequestsPanel extends javax.swing.JPanel {
+public class ManageVehicleRequestsPanel extends javax.swing.JPanel {
 
     EcoSystem system;
 
     /**
      * Creates new form ManageRequests
      */
-    public ManageRequestsPanel(EcoSystem system) {
+    public ManageVehicleRequestsPanel(EcoSystem system) {
         initComponents();
 
         this.system = system;

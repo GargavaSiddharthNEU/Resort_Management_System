@@ -232,6 +232,20 @@ public class ManageGameRequestsPanel extends javax.swing.JPanel {
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         // TODO add your handling code here:
+         try {
+            int selectedRowIndex = tblGameRequests.getSelectedRow();
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row to approve.");
+                return;
+            }
+            DefaultTableModel model = (DefaultTableModel) tblGameRequests.getModel();
+            GameWorkRequest selectedGameWorkRequest = (GameWorkRequest) model.getValueAt(selectedRowIndex, 0);
+            updateWorkRequestStatus(selectedGameWorkRequest, "Rejected");
+            JOptionPane.showMessageDialog(this, "Request rejected successfully");
+            populateGameRequestTable();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_btnRejectActionPerformed
 
 

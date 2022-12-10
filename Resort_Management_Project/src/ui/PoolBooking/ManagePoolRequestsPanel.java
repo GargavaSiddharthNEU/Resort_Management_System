@@ -16,12 +16,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author siddh
  */
-public class ManageRequestsPanel extends javax.swing.JPanel {
+public class ManagePoolRequestsPanel extends javax.swing.JPanel {
     EcoSystem system;
     /**
      * Creates new form ManageRequestsPanel
      */
-    public ManageRequestsPanel(EcoSystem system) {
+    public ManagePoolRequestsPanel(EcoSystem system) {
         initComponents();
         
         this.system = system;

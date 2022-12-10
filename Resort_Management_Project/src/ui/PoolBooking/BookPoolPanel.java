@@ -128,7 +128,7 @@ public class BookPoolPanel extends javax.swing.JPanel {
     private void btnRequestQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestQueueActionPerformed
         // TODO add your handling code here:
         try {
-            ManageRequestsPanel manageRequestsPanel = new ManageRequestsPanel(system);
+            ManagePoolRequestsPanel manageRequestsPanel = new ManagePoolRequestsPanel(system);
             jSplitPane1.setRightComponent(manageRequestsPanel);
         } catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());

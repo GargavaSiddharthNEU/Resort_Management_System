@@ -5,6 +5,8 @@
 package ui.GameBooking;
 
 import Business.EcoSystem;
+import javax.swing.JOptionPane;
+import ui.LaundryBooking.ManageLaundryPanel;
 
 /**
  *
@@ -110,14 +112,32 @@ public class BookGamePanel extends javax.swing.JPanel {
 
     private void btnManageGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageGameActionPerformed
         // TODO add your handling code here:
+        try {
+            ManageGamePanel managegamePanel = new ManageGamePanel(system);
+            jSplitPane1.setRightComponent(managegamePanel);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_btnManageGameActionPerformed
 
     private void btnRequestQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestQueueActionPerformed
         // TODO add your handling code here:
+        try {
+            ManageGameRequestsPanel managegameRequestsPanel  = new ManageGameRequestsPanel(system);
+            jSplitPane1.setRightComponent(managegameRequestsPanel);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_btnRequestQueueActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
+        try {
+            HomeGamePanel homeGamePanel = new HomeGamePanel();
+            jSplitPane1.setRightComponent(homeGamePanel);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_btnHomeActionPerformed
 
 

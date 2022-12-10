@@ -41,9 +41,9 @@ public class ManageGamePanel extends javax.swing.JPanel {
         validationString1 = "";
 
         if (txtGameName.getText().isEmpty()) {
-            validationString1 += "Vehicle Name, ";
+            validationString1 += "Game Name, ";
         }
-        if (txtPrice.getText().isEmpty()) {
+        if (txtPrice.getText() == null) {
             validationString1 += "Price per hour, ";
         }
         
