@@ -6,7 +6,7 @@ package ui.Admin;
 
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class ManageJanitorSchedule extends javax.swing.JPanel {
 
@@ -14,9 +14,8 @@ public class ManageJanitorSchedule extends javax.swing.JPanel {
      * Creates new form ManageJanitorSchedule
      */
     public ManageJanitorSchedule() {
-        initComponents();
+        initComponents(); 
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

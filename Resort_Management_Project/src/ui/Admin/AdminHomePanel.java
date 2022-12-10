@@ -8,7 +8,7 @@ import Business.EcoSystem;
 
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class AdminHomePanel extends javax.swing.JPanel {
 
