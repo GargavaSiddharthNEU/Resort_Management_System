@@ -4,17 +4,121 @@
  */
 package ui.GameBooking;
 
+import Business.EcoSystem;
+import Business.Recreation.GamingFacility.Game;
+import Business.Transportation.VehicleBooking.Vehicle;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author siddh
  */
 public class ManageGamePanel extends javax.swing.JPanel {
+    private EcoSystem system;
+    
+    String mainValidationString = "";
+    String validationString1 = "";
+    String validationString2 = "";
 
     /**
      * Creates new form ManageGamePanel
      */
-    public ManageGamePanel() {
+    public ManageGamePanel(EcoSystem system) {
         initComponents();
+        
+        this.system = system;
+        populateTable();
+    }
+    
+     private void resetGameData() {
+        cmbCategory.setSelectedItem("Choose Category");
+        txtGameName.setText("");
+        txtPrice.setText("");
+    }
+    
+    public boolean areDataFieldsEmpty() {
+        validationString1 = "";
+
+        if (txtGameName.getText().isEmpty()) {
+            validationString1 += "Vehicle Name, ";
+        }
+        if (txtPrice.getText().isEmpty()) {
+            validationString1 += "Price per hour, ";
+        }
+        
+        if(cmbCategory.getSelectedIndex() == 0){
+            validationString1 += "Category, ";
+        }
+        
+        return isNotValid(validationString1);
+    }
+
+    public boolean areDataTypesCorrect() {
+        validationString2 = "";
+        if (!validateFloatDataType(txtPrice.getText())) {
+            validationString2 += "Price, ";
+        }
+        return isNotValid(validationString2);
+    }
+
+    public boolean isNotValid(String str) {
+        if (str.equals("")) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean validateFloatDataType(String str) {
+        try {
+            Float.parseFloat(str);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public void validationErrorMessagesDialog(boolean validation1, boolean validation2) {
+        if (validation1) {
+            mainValidationString = validationString1;
+            JOptionPane.showMessageDialog(this, "Please update the data for these fields: " + mainValidationString);
+        } else if (validation2) {
+            mainValidationString = validationString2;
+            JOptionPane.showMessageDialog(this, "Please enter only numbers for these fields: " + mainValidationString);
+        }
+    }
+    
+    private boolean gameDetailsExistence() {
+        String gameName = txtGameName.getText();
+        boolean exist = false;
+            for (Game game : system.getGameDirectory().getGameDirectory()) {
+                if (gameName.equals(game.getGameName())) {
+                    exist = true;
+                    break;
+                }
+            }
+        return exist;
+    }
+    
+     private void populateTable() {
+        //new test
+         
+         DefaultTableModel model = (DefaultTableModel) tblGame.getModel();
+        
+        model.setRowCount(0);
+
+        for (Game game : system.getGameDirectory().getGameDirectory()) {
+            Object[] row = new Object[3];
+
+            row[0] = game;
+            row[1] = game.getGameCategory();
+            row[2] = game.getPrice();
+            
+
+            model.addRow(row);
+        }
+
     }
 
     /**
@@ -34,7 +138,7 @@ public class ManageGamePanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtCategory = new javax.swing.JComboBox<>();
+        cmbCategory = new javax.swing.JComboBox<>();
         btnAdd = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
@@ -69,15 +173,35 @@ public class ManageGamePanel extends javax.swing.JPanel {
 
         jLabel4.setText("Category");
 
-        txtCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Category", "Indoor", "Outdoor" }));
+        cmbCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Category", "Indoor", "Outdoor" }));
 
         btnAdd.setText("ADD");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnView.setText("VIEW");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setText("UPDATE");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -95,7 +219,7 @@ public class ManageGamePanel extends javax.swing.JPanel {
                             .addComponent(jLabel4))
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCategory, 0, 209, Short.MAX_VALUE)
+                            .addComponent(cmbCategory, 0, 209, Short.MAX_VALUE)
                             .addComponent(txtGameName))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
@@ -131,7 +255,7 @@ public class ManageGamePanel extends javax.swing.JPanel {
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(104, 104, 104)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
@@ -142,19 +266,85 @@ public class ManageGamePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        try {
+            boolean validation1 = areDataFieldsEmpty();
+            boolean validation2 = areDataTypesCorrect();
+
+            String gameName = txtGameName.getText();
+            String category = (String) cmbCategory.getSelectedItem();
+            Float price = Float.parseFloat(txtPrice.getText());
+
+            if (!validation1 && !validation2) {
+
+                if (!gameDetailsExistence()) {
+                    Game game = system.getGameDirectory().addGameDetails();
+                    game.setGameName(gameName);
+                    game.setPrice(price);
+                    game.setGameCategory(category);
+
+                    JOptionPane.showMessageDialog(this, "Game Name " + gameName + " added");
+                    resetGameData();
+                    populateTable();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Game details already exists with the Game Name "
+                            + " : " + gameName);
+                }
+            } else {
+                validationErrorMessagesDialog(validation1, validation2);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        try {
+            int selectedRowIndex = tblGame.getSelectedRow();
+
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row for deletion");
+                return;
+            }
+
+            DefaultTableModel model = (DefaultTableModel) tblGame.getModel();
+            Game selectedGame = (Game) model.getValueAt(selectedRowIndex, 0);
+
+            system.getGameDirectory().deleteGame(selectedGame);
+
+            JOptionPane.showMessageDialog(this, "Game Deleted");
+
+            populateTable();
+            resetGameData();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnView;
+    private javax.swing.JComboBox<String> cmbCategory;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblGame;
-    private javax.swing.JComboBox<String> txtCategory;
     private javax.swing.JTextField txtGameName;
     private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables
