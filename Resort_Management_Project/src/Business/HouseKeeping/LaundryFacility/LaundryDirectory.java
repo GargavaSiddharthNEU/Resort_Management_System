@@ -25,5 +25,15 @@ public class LaundryDirectory {
         this.laundryDirectory = laundryDirectory;
     }
     
-    
+    public Laundry getLaundryByName(String laundryCategory) {
+        
+        Laundry selectedLaundry = new Laundry();
+        for(Laundry laundry : laundryDirectory) {
+            if(laundry.getCategory().equals(laundryCategory)) {
+                selectedLaundry = laundry;
+                break;
+            }
+        }
+        return selectedLaundry;
+    }
 }

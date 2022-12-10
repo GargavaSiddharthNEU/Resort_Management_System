@@ -31,7 +31,6 @@ public class EcoSystem {
     SouvenirDirectory souvenirDirectory;
     PoolDirectory poolDirectory;
     GameDirectory gameDirectory;
-//    ScheduleDirectory scheduleDirectory;
     LaundryDirectory laundryDirectory;
     FBItemDirectory fBItemDirectory;
     FoodBevWorkRequestDirectory foodBevWorkRequestDirectory;
@@ -137,14 +136,6 @@ public class EcoSystem {
         this.gameDirectory = gameDirectory;
     }
 
-//    public ScheduleDirectory getScheduleDirectory() {
-//        return scheduleDirectory;
-//    }
-//
-//    public void setScheduleDirectory(ScheduleDirectory scheduleDirectory) {
-//        this.scheduleDirectory = scheduleDirectory;
-//    }
-
     public LaundryDirectory getLaundryDirectory() {
         return laundryDirectory;
     }
@@ -175,7 +166,6 @@ public class EcoSystem {
         souvenirDirectory = new SouvenirDirectory();
         poolDirectory = new PoolDirectory();
         gameDirectory = new GameDirectory();
-//        scheduleDirectory = new ScheduleDirectory();
         laundryDirectory = new LaundryDirectory();
         fBItemDirectory = new FBItemDirectory();
         foodBevWorkRequestDirectory = new FoodBevWorkRequestDirectory();
