@@ -5,6 +5,9 @@
 package ui.LaundryBooking;
 
 import Business.EcoSystem;
+import javax.swing.JOptionPane;
+import ui.LaundryBooking.ManageLaundryPanel;
+import ui.PoolBooking.HomePoolPanel;
 
 /**
  *
@@ -32,17 +35,54 @@ public class BookLaundryPanel extends javax.swing.JPanel {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
+        btnManageLaundry = new javax.swing.JButton();
+        btnRequestQueue = new javax.swing.JButton();
+        btnHome = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+
+        btnManageLaundry.setText("MANAGE CATEGORY");
+        btnManageLaundry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageLaundryActionPerformed(evt);
+            }
+        });
+
+        btnRequestQueue.setText("MANAGE REQUESTS");
+        btnRequestQueue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestQueueActionPerformed(evt);
+            }
+        });
+
+        btnHome.setText("HOME");
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 237, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRequestQueue)
+                    .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnManageLaundry))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 777, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(184, 184, 184)
+                .addComponent(btnManageLaundry)
+                .addGap(29, 29, 29)
+                .addComponent(btnRequestQueue)
+                .addGap(35, 35, 35)
+                .addComponent(btnHome)
+                .addContainerGap(424, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -51,7 +91,7 @@ public class BookLaundryPanel extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 719, Short.MAX_VALUE)
+            .addGap(0, 820, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -65,7 +105,7 @@ public class BookLaundryPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1065, Short.MAX_VALUE)
+                .addComponent(jSplitPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -74,8 +114,41 @@ public class BookLaundryPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnManageLaundryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageLaundryActionPerformed
+        // TODO add your handling code here:
+         try {
+            ManageLaundryPanel managelaundryPanel = new ManageLaundryPanel(system);
+            jSplitPane1.setRightComponent(managelaundryPanel);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnManageLaundryActionPerformed
+
+    private void btnRequestQueueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestQueueActionPerformed
+        // TODO add your handling code here:
+         try {
+            ManageRequestsPanel manageRequestsPanel  = new ManageRequestsPanel(system);
+            jSplitPane1.setRightComponent(manageRequestsPanel);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnRequestQueueActionPerformed
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+        try {
+            HomeLaundryPanel homeLaundryPanel = new HomeLaundryPanel();
+            jSplitPane1.setRightComponent(homeLaundryPanel);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnHomeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnManageLaundry;
+    private javax.swing.JButton btnRequestQueue;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
