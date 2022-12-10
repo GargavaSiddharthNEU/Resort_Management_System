@@ -25,7 +25,7 @@
               <EmptySpace pref="325" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="createUserBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="397" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -37,10 +37,8 @@
                               <Component id="jLabel4" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
                               <Component id="jLabel10" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel8" alignment="0" pref="106" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -113,7 +111,7 @@
                   <Component id="txtEmailAddress" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="createUserBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="194" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -138,9 +136,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmailAddress">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailAddressActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -160,9 +155,6 @@
     <Component class="javax.swing.JTextField" name="txtAddress">
     </Component>
     <Component class="javax.swing.JTextField" name="txtFName">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFNameActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPhoneNumber">
     </Component>
@@ -205,10 +197,13 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="createUserBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Create New User"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createUserBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>

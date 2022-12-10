@@ -286,7 +286,7 @@ public class ShopPanel extends javax.swing.JPanel {
             }
 
             DefaultTableModel model = (DefaultTableModel) souvenirListTable.getModel();
-            String souvenirName = String.valueOf(model.getValueAt(index, 1));
+            String souvenirName = String.valueOf(model.getValueAt(index, 0));
             Souvenir souvenirDetails = system.getSouvenirDirectory().getSouvenirByName(souvenirName);
 
             model.removeRow(index);

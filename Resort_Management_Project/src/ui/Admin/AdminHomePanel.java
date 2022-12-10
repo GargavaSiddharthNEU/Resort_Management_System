@@ -4,6 +4,8 @@
  */
 package ui.Admin;
 
+import Business.EcoSystem;
+
 /**
  *
  * @author Asus
@@ -13,8 +15,11 @@ public class AdminHomePanel extends javax.swing.JPanel {
     /**
      * Creates new form AdminHomePanel
      */
-    public AdminHomePanel() {
+    EcoSystem system;
+
+    public AdminHomePanel(EcoSystem system) {
         initComponents();
+        this.system = system;
     }
 
     /**
@@ -28,25 +33,35 @@ public class AdminHomePanel extends javax.swing.JPanel {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        manageUserBtn = new javax.swing.JButton();
+        manageScheduleBtn = new javax.swing.JButton();
+        homeBtn = new javax.swing.JButton();
+        createUserBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        jButton1.setText("Manage Users");
-
-        jButton2.setText("Manage Janitor Schedule");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        manageUserBtn.setText("Manage Users");
+        manageUserBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                manageUserBtnActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Home");
+        manageScheduleBtn.setText("Manage Janitor Schedule");
+        manageScheduleBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageScheduleBtnActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Create New User");
+        homeBtn.setText("Home");
+
+        createUserBtn.setText("Create New User");
+        createUserBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createUserBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -55,23 +70,23 @@ public class AdminHomePanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(createUserBtn)
+                    .addComponent(homeBtn)
+                    .addComponent(manageScheduleBtn)
+                    .addComponent(manageUserBtn))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(118, 118, 118)
-                .addComponent(jButton4)
+                .addComponent(createUserBtn)
                 .addGap(36, 36, 36)
-                .addComponent(jButton1)
+                .addComponent(manageUserBtn)
                 .addGap(40, 40, 40)
-                .addComponent(jButton2)
+                .addComponent(manageScheduleBtn)
                 .addGap(37, 37, 37)
-                .addComponent(jButton3)
+                .addComponent(homeBtn)
                 .addContainerGap(453, Short.MAX_VALUE))
         );
 
@@ -110,19 +125,31 @@ public class AdminHomePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void manageScheduleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageScheduleBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_manageScheduleBtnActionPerformed
+
+    private void createUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserBtnActionPerformed
+        // TODO add your handling code here:
+        CreateUserAdminPanel createUserPanel = new CreateUserAdminPanel(system);
+        jSplitPane1.setRightComponent(createUserPanel);
+    }//GEN-LAST:event_createUserBtnActionPerformed
+
+    private void manageUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUserBtnActionPerformed
+        // TODO add your handling code here:
+        ManageUserPanel manageUserPanel = new ManageUserPanel(system);
+        jSplitPane1.setRightComponent(manageUserPanel);
+    }//GEN-LAST:event_manageUserBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton createUserBtn;
+    private javax.swing.JButton homeBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JButton manageScheduleBtn;
+    private javax.swing.JButton manageUserBtn;
     // End of variables declaration//GEN-END:variables
 }

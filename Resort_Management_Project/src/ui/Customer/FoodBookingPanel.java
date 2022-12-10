@@ -310,7 +310,7 @@ public class FoodBookingPanel extends javax.swing.JPanel {
             }
 
             DefaultTableModel model = (DefaultTableModel) itemListTable.getModel();
-            String itemName = String.valueOf(model.getValueAt(index, 1));
+            String itemName = String.valueOf(model.getValueAt(index, 0));
             FBItem itemDetails = system.getFBItemDirectory().getItemByName(itemName);
 
             model.removeRow(index);

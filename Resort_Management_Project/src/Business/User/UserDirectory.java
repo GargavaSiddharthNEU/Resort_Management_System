@@ -31,4 +31,27 @@ public class UserDirectory {
         users.add(person);
         return person;
     }
+    
+    public User getUserById(String userId) {
+        
+        User selectedUser = new User();
+        for(User user : users) {
+            if(user.getUserId().equals(userId)) {
+                selectedUser = user;
+                break;
+            }
+        }
+        return selectedUser;
+    }
+    
+    public ArrayList<User> getUsersByRole(String userRole) {
+        
+        ArrayList<User> selectedUsers = new ArrayList<User>();
+        for(User user : users) {
+            if(user.getRoleType().equals(userRole)) {
+                selectedUsers.add(user);
+            }
+        }
+        return selectedUsers;
+    }
 }

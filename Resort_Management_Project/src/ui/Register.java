@@ -253,6 +253,7 @@ public class Register extends javax.swing.JPanel {
         user.setPassword(password);
         user.setRoleType(roleType);
         user.setAge(a);
+        user.setAddress(address);
         user.setPhoneNumber(pn);
         user.setEmailId(emailAddress);
         user.setUserId(userId);

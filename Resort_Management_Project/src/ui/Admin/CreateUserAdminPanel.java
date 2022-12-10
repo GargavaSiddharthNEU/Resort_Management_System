@@ -4,6 +4,14 @@
  */
 package ui.Admin;
 
+import Business.EcoSystem;
+import Business.User.User;
+import java.util.ArrayList;
+import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Asus
@@ -13,8 +21,11 @@ public class CreateUserAdminPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageRolesPanel
      */
-    public CreateUserAdminPanel() {
+    EcoSystem system;
+
+    public CreateUserAdminPanel(EcoSystem system) {
         initComponents();
+        this.system = system;
     }
 
     /**
@@ -44,7 +55,7 @@ public class CreateUserAdminPanel extends javax.swing.JPanel {
         txtPassword = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cmbRole = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        createUserBtn = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         jLabel2.setText("User Name");
@@ -53,23 +64,11 @@ public class CreateUserAdminPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Last Name");
 
-        txtEmailAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailAddressActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("Password");
 
         jLabel5.setText("Roletype");
 
         jLabel1.setText("First Name");
-
-        txtFName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFNameActionPerformed(evt);
-            }
-        });
 
         jLabel8.setText("Address");
 
@@ -79,7 +78,12 @@ public class CreateUserAdminPanel extends javax.swing.JPanel {
 
         cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vehicle Contractor", "Pool Incharge", "Gaming Incharge", "Janitor", "Food Manager", "Laundry Manager", "Souvenir Shop Manager" }));
 
-        jButton1.setText("Create New User");
+        createUserBtn.setText("Create New User");
+        createUserBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createUserBtnActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setText("Create User Role");
@@ -96,7 +100,7 @@ public class CreateUserAdminPanel extends javax.swing.JPanel {
                 .addContainerGap(325, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(createUserBtn)
                         .addGap(397, 397, 397))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,9 +111,8 @@ public class CreateUserAdminPanel extends javax.swing.JPanel {
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)))
+                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel14))
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -166,23 +169,146 @@ public class CreateUserAdminPanel extends javax.swing.JPanel {
                     .addComponent(jLabel14)
                     .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
-                .addComponent(jButton1)
+                .addComponent(createUserBtn)
                 .addContainerGap(194, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtEmailAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailAddressActionPerformed
+    private void createUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailAddressActionPerformed
 
-    private void txtFNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFNameActionPerformed
+        try {
+            User user = new User();
 
+            UUID uuid = UUID.randomUUID();
+            String randomUUIDString = uuid.toString();
+
+            String firstName = txtFName.getText();
+            String lastName = txtLName.getText();
+            String userName = txtUserName.getText();
+            String password = txtPassword.getText();
+            String address = txtAddress.getText();
+            String age = txtAge.getText();
+            String phoneNumber = txtPhoneNumber.getText();
+            String userId = randomUUIDString;
+            String roleType = (String) cmbRole.getSelectedItem();
+            String emailAddress = txtEmailAddress.getText();
+
+            if (firstName.isEmpty() || lastName.isEmpty() || userName.isEmpty() || password.isEmpty()
+                    || phoneNumber.isEmpty() || userId.isEmpty() || age.isEmpty() || address.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter all details !");
+                return;
+            }
+
+            if (validatePhoneNumber(phoneNumber) == null) {
+                JOptionPane.showMessageDialog(this, "Please enter a valid phone number !");
+                return;
+            }
+
+            if (validateEmailAddress(emailAddress) == null) {
+                JOptionPane.showMessageDialog(this, "Please enter a valid email address !");
+                return;
+            }
+
+            if (validateAge(age) == null) {
+                JOptionPane.showMessageDialog(this, "Please enter a valid age!");
+                return;
+            }
+
+            for (User p : system.getUserDirectory().getUsers()) {
+                if (userName.equals(p.getUserName())) {
+                    JOptionPane.showMessageDialog(this, "Username already in use!");
+                    return;
+                }
+            }
+            Integer a = validateAge(age);
+            Long pn = validatePhoneNumber(phoneNumber);
+
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
+            user.setUserName(userName);
+            user.setPassword(password);
+            user.setRoleType(roleType);
+            user.setAge(a);
+            user.setPhoneNumber(pn);
+            user.setEmailId(emailAddress);
+            user.setUserId(userId);
+
+            ArrayList<User> users = system.getUserDirectory().getUsers();
+            users.add(user);
+            system.getUserDirectory().setUsers(users);
+
+            JOptionPane.showMessageDialog(this, "User successfully created!");
+            clearAllFields();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Enter valid values for adding an user");
+        }
+    }//GEN-LAST:event_createUserBtnActionPerformed
+
+    private Integer validateAge(String age) {
+        try {
+            return Integer.parseInt(age);
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    private Long validatePhoneNumber(String phoneNumber) {
+        try {
+
+            String cellPhoneNumberRegex = "^\\d{10}$";
+
+            Pattern cellPhoneNumberPattern = Pattern.compile(cellPhoneNumberRegex);
+            Matcher cellPhoneNumberMatcher = cellPhoneNumberPattern.matcher(phoneNumber);
+
+            if (cellPhoneNumberMatcher.matches()) {
+                return Long.parseLong(phoneNumber);
+            } else {
+                //JOptionPane.showMessageDialog(this, "Invalid Phone Number!");
+                return null;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+
+    }
+
+    private void clearAllFields() {
+        txtAge.setText("");
+        txtFName.setText("");
+        txtLName.setText("");
+        txtPassword.setText("");
+        txtPhoneNumber.setText("");
+        txtAddress.setText("");
+        txtUserName.setText("");
+        txtEmailAddress.setText("");
+    }
+
+    private String validateEmailAddress(String emailAddress) {
+        try {
+
+            String emailAddressRegex = "^(.+)@(\\S+)$";
+
+            Pattern emailPattern = Pattern.compile(emailAddressRegex);
+            Matcher emailMatcher = emailPattern.matcher(txtEmailAddress.getText());
+
+            if (emailMatcher.matches()) {
+                return emailAddress;
+            } else {
+//                JOptionPane.showMessageDialog(this, "Invalid Email Address!");
+                return null;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbRole;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton createUserBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
