@@ -11,7 +11,7 @@ package Business.HouseKeeping.LaundryFacility;
 public class Laundry {
     String laundryId;
     String category;
-    Integer price;
+    Float price;
 
     public String getLaundryId() {
         return laundryId;
@@ -29,13 +29,20 @@ public class Laundry {
         this.category = category;
     }
 
-    public Integer getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
+    
+    @Override
+    public String toString(){
+        return category;
+    }
+
+    
     
     
 }

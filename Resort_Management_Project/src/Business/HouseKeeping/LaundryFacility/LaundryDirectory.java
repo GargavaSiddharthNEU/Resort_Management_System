@@ -4,6 +4,7 @@
  */
 package Business.HouseKeeping.LaundryFacility;
 
+import Business.Recreation.PoolFacility.Pool;
 import java.util.ArrayList;
 
 /**
@@ -25,5 +26,33 @@ public class LaundryDirectory {
         this.laundryDirectory = laundryDirectory;
     }
     
+    public Laundry getLaundries(int index){
+        Laundry newLaundry = new Laundry();
+        newLaundry = laundryDirectory.get(index);
+        return newLaundry;
+    }
+    
+    public Laundry addLaundryDetails(){
+        Laundry newLaundry = new Laundry();
+        laundryDirectory.add(newLaundry);
+        
+        return newLaundry;
+    }
+    
+    public Laundry getLaundryByName(String laundryName) {
+        
+        Laundry selectedLaundry = new Laundry();
+        for(Laundry laundry : laundryDirectory) {
+            if(laundry.getCategory().equals(laundryName)) {
+                selectedLaundry = laundry;
+                break;
+            }
+        }
+        return selectedLaundry;
+    }
+    
+    public void deleteLaundry(Laundry laundry){
+        laundryDirectory.remove(laundry);
+    }
     
 }

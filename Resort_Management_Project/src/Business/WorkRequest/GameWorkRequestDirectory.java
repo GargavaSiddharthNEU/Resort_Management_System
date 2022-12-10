@@ -26,4 +26,8 @@ public class GameWorkRequestDirectory {
         this.gameWorkRequestList = gameWorkRequestList;
     }
     
+    public void updateGameWorkRequest(GameWorkRequest gameWRequest, int index) {
+        this.gameWorkRequestList.set(index, gameWRequest);
+    }
+    
 }

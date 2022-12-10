@@ -5,6 +5,7 @@
 package ui.VehicleBooking;
 
 import Business.EcoSystem;
+import Business.FoodandBev.Menu.FBItem;
 import Business.Transportation.VehicleBooking.Vehicle;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -15,6 +16,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ManageVehiclePanel extends javax.swing.JPanel {
     private EcoSystem system;
+    
+    String mainValidationString = "";
+    String validationString1 = "";
+    String validationString2 = "";
 
     /**
      * Creates new form ManageVehicle
@@ -27,11 +32,81 @@ public class ManageVehiclePanel extends javax.swing.JPanel {
     }
     
     private void resetVehicleData() {
-        //txtCategory.setText("");
+        cmbCategory.setSelectedItem("Choose Category");
         txtVehicleName.setText("");
         txtVehicleNum.setText("");
-        //txtSeater.setText("");
+        cmbSeater.setSelectedItem("Choose Seater");
         txtPrice.setText("");
+    }
+    
+    public boolean areDataFieldsEmpty() {
+        validationString1 = "";
+        if (txtVehicleNum.getText().isEmpty()) {
+            validationString1 += "Vehicle Number, ";
+        }
+        if (txtVehicleName.getText().isEmpty()) {
+            validationString1 += "Vehicle Name, ";
+        }
+        if (txtPrice.getText() == null) {
+            validationString1 += "Price per hour, ";
+        }
+        
+        if(cmbCategory.getSelectedIndex() == 0){
+            validationString1 += "Category, ";
+        }
+        
+        if(cmbSeater.getSelectedIndex() == 0){
+            validationString1 += "Seater, ";
+        }
+        
+        return isNotValid(validationString1);
+    }
+
+    public boolean areDataTypesCorrect() {
+        validationString2 = "";
+        if (!validateFloatDataType(txtPrice.getText())) {
+            validationString2 += "Price, ";
+        }
+        return isNotValid(validationString2);
+    }
+
+    public boolean isNotValid(String str) {
+        if (str.equals("")) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean validateFloatDataType(String str) {
+        try {
+            Float.parseFloat(str);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public void validationErrorMessagesDialog(boolean validation1, boolean validation2) {
+        if (validation1) {
+            mainValidationString = validationString1;
+            JOptionPane.showMessageDialog(this, "Please update the data for these fields: " + mainValidationString);
+        } else if (validation2) {
+            mainValidationString = validationString2;
+            JOptionPane.showMessageDialog(this, "Please enter only numbers for these fields: " + mainValidationString);
+        }
+    }
+    
+    private boolean vehicleDetailsExistence() {
+        String vehicleNumber = txtVehicleNum.getText();
+        boolean exist = false;
+            for (Vehicle vehicle : system.getVehicleDirectory().getVehicleDirectory()) {
+                if (vehicleNumber.equals(vehicle.getVehicleNumber())) {
+                    exist = true;
+                    break;
+                }
+            }
+        return exist;
     }
     
      private void populateTable() {
@@ -142,9 +217,9 @@ public class ManageVehiclePanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblVehicle);
 
-        cmbCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SUV", "Hatchback", "Sedan" }));
+        cmbCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Category", "SUV", "Hatchback", "Sedan" }));
 
-        cmbSeater.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3", "4", "5", "6", "7" }));
+        cmbSeater.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Seater", "3", "4", "5", "6", "7" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -153,173 +228,202 @@ public class ManageVehiclePanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
+                        .addGap(439, 439, 439)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 959, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(cmbCategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtVehicleName, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(46, 46, 46)
-                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(31, 31, 31)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtVehicleNum, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cmbSeater, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 959, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtVehicleName, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(50, 50, 50)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cmbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(104, 104, 104)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbSeater, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtVehicleNum, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnUpdateVehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(435, 435, 435)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
+                        .addGap(83, 83, 83)
                         .addComponent(btnAddVehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
+                        .addGap(47, 47, 47)
                         .addComponent(btnDeleteVehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnViewVehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(btnUpdateVehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(329, Short.MAX_VALUE))
+                        .addGap(29, 29, 29)
+                        .addComponent(btnViewVehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtVehicleName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)
-                        .addComponent(txtVehicleNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(45, 45, 45)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtVehicleName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtVehicleNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel4)
                     .addComponent(cmbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
                     .addComponent(cmbSeater, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddVehicle)
                     .addComponent(btnDeleteVehicle)
                     .addComponent(btnViewVehicle)
                     .addComponent(btnUpdateVehicle))
-                .addGap(35, 35, 35))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddVehicleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddVehicleActionPerformed
         // TODO add your handling code here:
-        String vehicleName = txtVehicleName.getText();
-        String vehicleNumber = txtVehicleNum.getText();
-        String category = (String)cmbCategory.getSelectedItem();
-        Integer seater = Integer.parseInt((String)cmbSeater.getSelectedItem());
-        Float price = Float.parseFloat(txtPrice.getText());
-        
-        Vehicle vehicle = system.getVehicleDirectory().addVehicleDetails();
-        vehicle.setVehicleName(vehicleName);
-        vehicle.setVehicleNumber(vehicleNumber);
-        vehicle.setPrice(price);
-        vehicle.setSeater(seater);
-        vehicle.setCategory(category);
-        
-        JOptionPane.showMessageDialog(this, "Vehicle added");
-        resetVehicleData();
-        populateTable();
+        try {
+            boolean validation1 = areDataFieldsEmpty();
+            boolean validation2 = areDataTypesCorrect();
+
+            String vehicleName = txtVehicleName.getText();
+            String category = (String) cmbCategory.getSelectedItem();
+            Integer seater = Integer.parseInt((String) cmbSeater.getSelectedItem());
+            Float price = Float.parseFloat(txtPrice.getText());
+
+            if (!validation1 && !validation2) {
+                String vehicleNumber = txtVehicleNum.getText();
+
+                if (!vehicleDetailsExistence()) {
+                    Vehicle vehicle = system.getVehicleDirectory().addVehicleDetails();
+                    vehicle.setVehicleName(vehicleName);
+                    vehicle.setVehicleNumber(vehicleNumber);
+                    vehicle.setPrice(price);
+                    vehicle.setSeater(seater);
+                    vehicle.setCategory(category);
+
+                    JOptionPane.showMessageDialog(this, "Vehicle number " + vehicleNumber + " added");
+                    resetVehicleData();
+                    populateTable();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Vehicle details already exists with the Vehicle Number"
+                            + " : " + vehicleNumber);
+                }
+            } else {
+                validationErrorMessagesDialog(validation1, validation2);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+
     }//GEN-LAST:event_btnAddVehicleActionPerformed
 
     private void btnDeleteVehicleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteVehicleActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblVehicle.getSelectedRow();
+        try {
+            int selectedRowIndex = tblVehicle.getSelectedRow();
 
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row for deletion");
-            return;
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row for deletion");
+                return;
+            }
+
+            DefaultTableModel model = (DefaultTableModel) tblVehicle.getModel();
+            Vehicle selectedVehicle = (Vehicle) model.getValueAt(selectedRowIndex, 0);
+
+            system.getVehicleDirectory().deleteVehicle(selectedVehicle);
+
+            JOptionPane.showMessageDialog(this, "Vehicle Deleted");
+
+            populateTable();
+            resetVehicleData();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
 
-        DefaultTableModel model = (DefaultTableModel) tblVehicle.getModel();
-        Vehicle selectedVehicle = (Vehicle) model.getValueAt(selectedRowIndex, 0);
-
-        system.getVehicleDirectory().deleteVehicle(selectedVehicle);
-
-        JOptionPane.showMessageDialog(this, "Vehicle Deleted");
-
-        populateTable();
-        resetVehicleData();
+        
     }//GEN-LAST:event_btnDeleteVehicleActionPerformed
 
     private void btnViewVehicleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewVehicleActionPerformed
         // TODO add your handling code here:
-         int selectedRowIndex = tblVehicle.getSelectedRow();
+        try {
+            int selectedRowIndex = tblVehicle.getSelectedRow();
 
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row for viewing");
-            return;
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row for viewing");
+                return;
+            }
+
+            DefaultTableModel model = (DefaultTableModel) tblVehicle.getModel();
+            Vehicle selectedVehicle = (Vehicle) model.getValueAt(selectedRowIndex, 0);
+
+            txtVehicleNum.setText(selectedVehicle.getVehicleNumber());
+            txtVehicleName.setText(selectedVehicle.getVehicleName());
+            cmbCategory.setSelectedItem(selectedVehicle.getCategory());
+            cmbSeater.setSelectedItem(String.valueOf(selectedVehicle.getSeater()));
+            txtPrice.setText(String.valueOf(selectedVehicle.getPrice()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
 
-        DefaultTableModel model = (DefaultTableModel) tblVehicle.getModel();
-        Vehicle selectedVehicle = (Vehicle) model.getValueAt(selectedRowIndex, 0);
-        
-        txtVehicleNum.setText(selectedVehicle.getVehicleNumber());
-        txtVehicleName.setText(selectedVehicle.getVehicleName());
-        cmbCategory.setSelectedItem(selectedVehicle.getCategory());
-        cmbSeater.setSelectedItem(String.valueOf(selectedVehicle.getSeater()));
-        txtPrice.setText(String.valueOf(selectedVehicle.getPrice()));
+
         
     }//GEN-LAST:event_btnViewVehicleActionPerformed
 
     private void btnUpdateVehicleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateVehicleActionPerformed
         // TODO add your handling code here:
-         DefaultTableModel model = (DefaultTableModel) tblVehicle.getModel();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tblVehicle.getModel();
 
-           if (tblVehicle.getSelectedRowCount() == 1) {
-            
-            String vehicleNumber = txtVehicleNum.getText();
-            String vehicleName = txtVehicleName.getText();
-            int seater = Integer.parseInt((String)cmbSeater.getSelectedItem());
-            float price = Float.parseFloat(txtPrice.getText());
-            String category = (String)cmbCategory.getSelectedItem();
-            
-            
-            int selectedRowIndex = tblVehicle.getSelectedRow();
-        Vehicle vehicle = system.getVehicleDirectory().getVehicles(selectedRowIndex);
-            
-            
-        vehicle.setVehicleNumber(vehicleNumber);
-        vehicle.setVehicleName(vehicleName);
-        vehicle.setCategory(category);
-        vehicle.setSeater(seater);
-        vehicle.setPrice(price);
-       
-        
-        populateTable();
+            if (tblVehicle.getSelectedRowCount() == 1) {
 
-            JOptionPane.showMessageDialog(this, "Update successful!");
-        } else if (tblVehicle.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(this, "Table is empty");
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select single row");
+                String vehicleNumber = txtVehicleNum.getText();
+                String vehicleName = txtVehicleName.getText();
+                int seater = Integer.parseInt((String) cmbSeater.getSelectedItem());
+                float price = Float.parseFloat(txtPrice.getText());
+                String category = (String) cmbCategory.getSelectedItem();
+
+                int selectedRowIndex = tblVehicle.getSelectedRow();
+                Vehicle vehicle = system.getVehicleDirectory().getVehicles(selectedRowIndex);
+
+                vehicle.setVehicleNumber(vehicleNumber);
+                vehicle.setVehicleName(vehicleName);
+                vehicle.setCategory(category);
+                vehicle.setSeater(seater);
+                vehicle.setPrice(price);
+
+                populateTable();
+
+                JOptionPane.showMessageDialog(this, "Update successful!");
+            } else if (tblVehicle.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Table is empty");
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select single row");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
+
+
     }//GEN-LAST:event_btnUpdateVehicleActionPerformed
 
 

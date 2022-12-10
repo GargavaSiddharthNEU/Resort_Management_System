@@ -70,7 +70,7 @@ public class Register extends javax.swing.JPanel {
             }
         });
 
-        cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Admin", "Vehicle Contractor", "Pool Incharge", "Gaming Incharge", "Janitor", "Food Manager" }));
+        cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Admin", "Vehicle Contractor", "Pool Incharge", "Gaming Incharge", "Laundry Manager", "Janitor", "Food Manager" }));
         cmbRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbRoleActionPerformed(evt);
@@ -133,14 +133,14 @@ public class Register extends javax.swing.JPanel {
                             .addComponent(jLabel14))
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                            .addComponent(txtLName, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                            .addComponent(txtAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                            .addComponent(txtPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                            .addComponent(txtUserName)
+                            .addComponent(txtLName)
+                            .addComponent(txtPassword)
+                            .addComponent(txtAddress)
+                            .addComponent(txtPhoneNumber)
                             .addComponent(cmbRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtAge)
-                            .addComponent(txtFName, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                            .addComponent(txtFName)
                             .addComponent(txtEmailAddress)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(299, 299, 299)
