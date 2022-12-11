@@ -4,6 +4,9 @@
  */
 package Business.HouseKeeping.RoomCleaning;
 
+import Business.User.User;
+import java.util.Date;
+
 /**
  *
  * @author siddh
@@ -12,8 +15,9 @@ public class Schedule {
     String scheduleId;
     String roomNumber;
     String time;
-    String date;
-    String userId;
+    Date date;
+    User user;
+    String status;
 
     public String getScheduleId() {
         return scheduleId;
@@ -39,21 +43,28 @@ public class Schedule {
         this.time = time;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
-    
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
     
 }

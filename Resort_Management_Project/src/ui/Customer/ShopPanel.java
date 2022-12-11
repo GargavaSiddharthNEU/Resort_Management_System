@@ -141,48 +141,47 @@ public class ShopPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(souvenirNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(souvenirPriceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(addSouvenirBtn)
-                .addGap(106, 106, 106))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(215, 215, 215)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(chooseSouvenirDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(viewDetailsBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 28, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buySouvenirBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(removeSouvenirBtn)
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel4)
+                        .addGap(142, 142, 142)
+                        .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(subTotalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 966, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                        .addComponent(souvenirNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76)
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(souvenirPriceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(addSouvenirBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buySouvenirBtn, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(removeSouvenirBtn)
+                                .addGap(34, 34, 34)
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(subTotalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 966, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(186, 186, 186)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(chooseSouvenirDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(viewDetailsBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(446, 446, 446)
+                        .addComponent(jLabel1)))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(45, 45, 45)
                 .addComponent(jLabel1)
-                .addGap(49, 49, 49)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(chooseSouvenirDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,6 +225,7 @@ public class ShopPanel extends javax.swing.JPanel {
                 itemListModel.addRow(newRow);
                 totalPrice += souvenirDetails.getPrice();
                 subTotalTxt.setText(String.valueOf(totalPrice));
+                clearFields();
 
             } else {
                 JOptionPane.showMessageDialog(this, "Choose a valid Souvenir item for adding to list");
@@ -249,6 +249,8 @@ public class ShopPanel extends javax.swing.JPanel {
                 system.getCustomerTransactionDirectory().getCustomerTransactionList().add(shopBill);
 
                 JOptionPane.showMessageDialog(this, "Souvenir items order placed. Please pickup during checkout");
+                clearFields();
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Choose atleast one souvenir item for placing an order");
             }
@@ -297,6 +299,9 @@ public class ShopPanel extends javax.swing.JPanel {
             subTotalTxt.setText(String.valueOf(totalPrice));
 
             JOptionPane.showMessageDialog(this, "Souvenir item removed successfully from list");
+            
+            clearFields();
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Please select a Souvenir item to be removed from list");
         }
@@ -320,4 +325,10 @@ public class ShopPanel extends javax.swing.JPanel {
     private javax.swing.JTextField subTotalTxt;
     private javax.swing.JButton viewDetailsBtn;
     // End of variables declaration//GEN-END:variables
+
+    private void clearFields() {
+        
+        souvenirNameTxt.setText("");
+        souvenirPriceTxt.setText("");
+    }
 }

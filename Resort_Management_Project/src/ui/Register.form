@@ -23,11 +23,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
-                      <Component id="jLabel13" min="-2" pref="146" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
@@ -43,35 +39,37 @@
                           <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtUserName" max="32767" attributes="0"/>
-                              <Component id="txtLName" max="32767" attributes="0"/>
-                              <Component id="txtPassword" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtAddress" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtPhoneNumber" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cmbRole" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtAge" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtFName" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="txtEmailAddress" min="-2" pref="289" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="txtPassword" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cmbRole" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtAddress" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtPhoneNumber" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtAge" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtEmailAddress" alignment="0" pref="289" max="32767" attributes="0"/>
+                          <Component id="txtUserName" max="32767" attributes="0"/>
+                          <Component id="txtLName" max="32767" attributes="0"/>
+                          <Component id="txtFName" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="299" max="-2" attributes="0"/>
-                      <Component id="btnRegister" min="-2" pref="96" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="352" max="-2" attributes="0"/>
+                      <Component id="btnRegister" min="-2" pref="110" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="339" max="-2" attributes="0"/>
+                      <Component id="jLabel13" min="-2" pref="146" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="249" max="32767" attributes="0"/>
+              <EmptySpace pref="494" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtFName" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -116,9 +114,9 @@
                   <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtEmailAddress" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Component id="btnRegister" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="441" max="32767" attributes="0"/>
+              <EmptySpace pref="414" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

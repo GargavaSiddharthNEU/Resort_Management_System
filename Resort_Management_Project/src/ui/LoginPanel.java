@@ -12,17 +12,20 @@ import ui.Admin.AdminHomePanel;
 import ui.Customer.CustomerHomePanel;
 import ui.FoodandBev.FoodandBevPanel;
 import ui.GameBooking.BookGamePanel;
+import ui.JanitorSchedule.JanitorPanel;
 import ui.LaundryBooking.BookLaundryPanel;
 import ui.PoolBooking.BookPoolPanel;
 import ui.VehicleBooking.BookVehiclePanel;
+
 /**
  *
  * @author manikantareddythikkavarapu
  */
 public class LoginPanel extends javax.swing.JPanel {
+
     private EcoSystem system;
     private javax.swing.JSplitPane SplitPane;
-    
+
     /**
      * Creates new form LoginPanel
      */
@@ -111,8 +114,8 @@ public class LoginPanel extends javax.swing.JPanel {
         String userName = txtEUserName.getText();
         String password = txtEPassword.getText();
         ArrayList<User> list = system.getUserDirectory().getUsers();
-        
-         if (userName.isEmpty() || password.isEmpty()) {
+
+        if (userName.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter all the details !!");
         } else {
             if (list.isEmpty()) {
@@ -136,12 +139,15 @@ public class LoginPanel extends javax.swing.JPanel {
                         } else if (temp.getRoleType().equalsIgnoreCase("Food Manager")) {
                             FoodandBevPanel foodandBevPanel = new FoodandBevPanel(system);
                             SplitPane.setRightComponent(foodandBevPanel);
-                        }else if (temp.getRoleType().equalsIgnoreCase("Gaming Incharge")) {
+                        } else if (temp.getRoleType().equalsIgnoreCase("Gaming Incharge")) {
                             BookGamePanel bookGamePanel = new BookGamePanel(system);
                             SplitPane.setRightComponent(bookGamePanel);
-                        }else if (temp.getRoleType().equalsIgnoreCase("Laundry Manager")) {
+                        } else if (temp.getRoleType().equalsIgnoreCase("Laundry Manager")) {
                             BookLaundryPanel bookLaundryPanel = new BookLaundryPanel(system);
                             SplitPane.setRightComponent(bookLaundryPanel);
+                        } else if (temp.getRoleType().equalsIgnoreCase("Janitor")) {
+                            JanitorPanel janitorPanel = new JanitorPanel(system, temp);
+                            SplitPane.setRightComponent(janitorPanel);
                         }
                     } else {
                         index++;
@@ -152,7 +158,7 @@ public class LoginPanel extends javax.swing.JPanel {
                 }
             }
         }
-                        
+
 //                JOptionPane.showMessageDialog(this, "Invalid User");
     }//GEN-LAST:event_btnLoginUserActionPerformed
 
