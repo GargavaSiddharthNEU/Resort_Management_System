@@ -6,7 +6,7 @@ package Business;
 
 import Business.FoodandBev.Menu.FBItemDirectory;
 import Business.HouseKeeping.LaundryFacility.LaundryDirectory;
-//import Business.HouseKeeping.RoomCleaning.ScheduleDirectory;
+import Business.HouseKeeping.RoomCleaning.JanitorScheduleDirectory;
 import Business.Recreation.GamingFacility.GameDirectory;
 import Business.Recreation.PoolFacility.PoolDirectory;
 import Business.Shopping.InhouseShopping.SouvenirDirectory;
@@ -39,6 +39,7 @@ public class EcoSystem {
     PoolWorkRequestDirectory poolWorkRequestDirectory;
     VehicleWorkRequestDirectory vehicleWorkRequestDirectory;
     CustomerTransactionDirectory customerTransactionDirectory;
+    JanitorScheduleDirectory janitorScheduleDirectory;
 
     public FoodBevWorkRequestDirectory getFoodBevWorkRequestDirectory() {
         return foodBevWorkRequestDirectory;
@@ -152,6 +153,14 @@ public class EcoSystem {
         this.fBItemDirectory = fBItemDirectory;
     }
 
+    public JanitorScheduleDirectory getJanitorScheduleDirectory() {
+        return janitorScheduleDirectory;
+    }
+
+    public void setJanitorScheduleDirectory(JanitorScheduleDirectory janitorScheduleDirectory) {
+        this.janitorScheduleDirectory = janitorScheduleDirectory;
+    }
+
     public static EcoSystem getInstance() {
         if (ecoSystem == null) {
             ecoSystem = new EcoSystem();
@@ -174,5 +183,7 @@ public class EcoSystem {
         poolWorkRequestDirectory = new PoolWorkRequestDirectory();
         vehicleWorkRequestDirectory = new VehicleWorkRequestDirectory();
         customerTransactionDirectory = new CustomerTransactionDirectory();
+        janitorScheduleDirectory = new JanitorScheduleDirectory();
+        
     }
 }
