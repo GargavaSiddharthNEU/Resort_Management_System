@@ -29,6 +29,14 @@ public class SouvenirDirectory {
         this.souvenirDirectory.add(sv);
     }
     
+    public void deleteSouvenirData(Souvenir sv) {
+        this.souvenirDirectory.remove(sv);
+    }
+    
+    public void updateExistingSouvenirData(Souvenir sv, int index) {
+        this.souvenirDirectory.set(index, sv);
+    }
+    
     public Souvenir getSouvenirByName(String souvenirName) {
 
         Souvenir selectedSouvenir = new Souvenir();
