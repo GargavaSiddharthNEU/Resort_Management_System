@@ -56,6 +56,11 @@ public class AdminHomePanel extends javax.swing.JPanel {
         });
 
         homeBtn.setText("Home");
+        homeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeBtnActionPerformed(evt);
+            }
+        });
 
         createUserBtn.setText("Create New User");
         createUserBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -159,6 +164,12 @@ public class AdminHomePanel extends javax.swing.JPanel {
         AdminAnalyticsPanel adminAnalyticsPanel = new AdminAnalyticsPanel(system);
         jSplitPane1.setRightComponent(adminAnalyticsPanel);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
+        // TODO add your handling code here:
+        AdminRightPanel adminRightPanel = new AdminRightPanel();
+        jSplitPane1.setRightComponent(adminRightPanel);
+    }//GEN-LAST:event_homeBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
