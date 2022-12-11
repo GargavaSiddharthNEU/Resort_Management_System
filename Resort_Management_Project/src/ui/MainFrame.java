@@ -32,7 +32,6 @@ public class MainFrame extends javax.swing.JFrame {
         system = dB4OUtil.retrieveSystem();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-
         File fileRoot = new File("/Users/manikantareddythikkavarapu/NetBeansProjects/Resort_Management_System/Resort_Management_Project/src");
 
         DefaultMutableTreeNode root = new DefaultMutableTreeNode(fileRoot);

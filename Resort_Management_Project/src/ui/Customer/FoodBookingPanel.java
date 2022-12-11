@@ -209,11 +209,11 @@ public class FoodBookingPanel extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(bookOrderBtn)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(374, 374, 374)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(372, 372, 372)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(384, 384, 384)
+                        .addComponent(jLabel6)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -289,6 +289,8 @@ public class FoodBookingPanel extends javax.swing.JPanel {
 
                 itemListModel.addRow(newRow);
                 foodOrderList.add(itemDetails);
+                
+                clearFields();
 
             } else {
                 JOptionPane.showMessageDialog(this, "Choose a valid Food or Beverage item for adding to list");
@@ -343,6 +345,8 @@ public class FoodBookingPanel extends javax.swing.JPanel {
                 populateRequestTable();
 
                 model.setRowCount(0);
+                clearFields();
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Choose valid Food and Beverage items for booking");
             }
@@ -401,5 +405,13 @@ public class FoodBookingPanel extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+    }
+
+    private void clearFields() {
+        
+        itemNameTxt.setText("");
+        itemPriceTxt.setText("");
+        itemCategoryTxt.setText("");
+        
     }
 }
