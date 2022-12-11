@@ -65,6 +65,11 @@ public class AdminHomePanel extends javax.swing.JPanel {
         });
 
         jButton1.setText("Analytics");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,28 +77,28 @@ public class AdminHomePanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addComponent(createUserBtn)
-                    .addComponent(homeBtn)
-                    .addComponent(manageScheduleBtn)
-                    .addComponent(manageUserBtn))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(manageScheduleBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(createUserBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(manageUserBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(homeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(118, 118, 118)
-                .addComponent(createUserBtn)
-                .addGap(36, 36, 36)
-                .addComponent(manageUserBtn)
-                .addGap(40, 40, 40)
-                .addComponent(manageScheduleBtn)
-                .addGap(35, 35, 35)
-                .addComponent(jButton1)
-                .addGap(41, 41, 41)
-                .addComponent(homeBtn)
-                .addContainerGap(385, Short.MAX_VALUE))
+                .addComponent(createUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(manageUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(manageScheduleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(320, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -133,6 +138,8 @@ public class AdminHomePanel extends javax.swing.JPanel {
 
     private void manageScheduleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageScheduleBtnActionPerformed
         // TODO add your handling code here:
+        ManageJanitorSchedule manageSchedule = new ManageJanitorSchedule(system);
+        jSplitPane1.setRightComponent(manageSchedule);
     }//GEN-LAST:event_manageScheduleBtnActionPerformed
 
     private void createUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserBtnActionPerformed
@@ -146,6 +153,12 @@ public class AdminHomePanel extends javax.swing.JPanel {
         ManageUserPanel manageUserPanel = new ManageUserPanel(system);
         jSplitPane1.setRightComponent(manageUserPanel);
     }//GEN-LAST:event_manageUserBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        AdminAnalyticsPanel adminAnalyticsPanel = new AdminAnalyticsPanel(system);
+        jSplitPane1.setRightComponent(adminAnalyticsPanel);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -209,11 +209,11 @@ public class FoodBookingPanel extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(bookOrderBtn)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(374, 374, 374)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(372, 372, 372)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(384, 384, 384)
+                        .addComponent(jLabel6)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

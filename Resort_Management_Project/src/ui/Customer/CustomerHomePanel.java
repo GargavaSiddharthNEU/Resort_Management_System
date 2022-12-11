@@ -24,6 +24,8 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         initComponents();
         this.system = system;
         this.user = user;
+        
+        jLabel3.setText(user.getFirstName() + " " + user.getLastName());
     }
 
     /**
@@ -45,6 +47,10 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         checkOutBtn = new javax.swing.JButton();
         bookFoodBtn = new javax.swing.JButton();
         userRightPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         bookVehicleBtn.setText("Book Vehicle");
         bookVehicleBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -101,47 +107,79 @@ public class CustomerHomePanel extends javax.swing.JPanel {
             userLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(userLeftPanelLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(userLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(shopBtn)
-                    .addComponent(bookFoodBtn)
-                    .addComponent(bookGameBtn)
-                    .addComponent(bookPoolBtn)
-                    .addComponent(bookVehicleBtn)
-                    .addComponent(bookLaundryBtn)
-                    .addComponent(checkOutBtn))
+                .addGroup(userLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(bookFoodBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bookVehicleBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bookPoolBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bookGameBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bookLaundryBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(shopBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(checkOutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         userLeftPanelLayout.setVerticalGroup(
             userLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(userLeftPanelLayout.createSequentialGroup()
                 .addGap(121, 121, 121)
-                .addComponent(bookVehicleBtn)
+                .addComponent(bookVehicleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(bookPoolBtn)
+                .addComponent(bookPoolBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(bookGameBtn)
+                .addComponent(bookGameBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(bookFoodBtn)
+                .addComponent(bookFoodBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(bookLaundryBtn)
+                .addComponent(bookLaundryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(shopBtn)
-                .addGap(43, 43, 43)
-                .addComponent(checkOutBtn)
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addComponent(shopBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74)
+                .addComponent(checkOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(userLeftPanel);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Customer Home Panel");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("Welcome to the Customer Panel");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        jLabel4.setText("Choose a facility to use from the sidebar.");
 
         javax.swing.GroupLayout userRightPanelLayout = new javax.swing.GroupLayout(userRightPanel);
         userRightPanel.setLayout(userRightPanelLayout);
         userRightPanelLayout.setHorizontalGroup(
             userRightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGroup(userRightPanelLayout.createSequentialGroup()
+                .addGroup(userRightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(userRightPanelLayout.createSequentialGroup()
+                        .addGap(267, 267, 267)
+                        .addComponent(jLabel1))
+                    .addGroup(userRightPanelLayout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3))
+                    .addGroup(userRightPanelLayout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addComponent(jLabel4)))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
         userRightPanelLayout.setVerticalGroup(
             userRightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(userRightPanelLayout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jLabel1)
+                .addGap(116, 116, 116)
+                .addGroup(userRightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addContainerGap(542, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(userRightPanel);
@@ -150,7 +188,7 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(jSplitPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,6 +246,10 @@ public class CustomerHomePanel extends javax.swing.JPanel {
     private javax.swing.JButton bookPoolBtn;
     private javax.swing.JButton bookVehicleBtn;
     private javax.swing.JButton checkOutBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton shopBtn;
     private javax.swing.JPanel userLeftPanel;
