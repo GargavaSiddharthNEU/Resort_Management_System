@@ -8,12 +8,16 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Subbu
+ * @author Asus
  */
-public class ScheduleDirectory {
+public class JanitorScheduleDirectory {
     
     ArrayList<Schedule> scheduleDirectory;
 
+    public JanitorScheduleDirectory() {
+        this.scheduleDirectory = new ArrayList<Schedule>();
+    }
+    
     public ArrayList<Schedule> getScheduleDirectory() {
         return scheduleDirectory;
     }

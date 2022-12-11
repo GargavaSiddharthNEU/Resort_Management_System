@@ -54,10 +54,25 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         });
 
         bookPoolBtn.setText("Book Pool");
+        bookPoolBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookPoolBtnActionPerformed(evt);
+            }
+        });
 
         bookGameBtn.setText("Book Games");
+        bookGameBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookGameBtnActionPerformed(evt);
+            }
+        });
 
         bookLaundryBtn.setText("Laundry");
+        bookLaundryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookLaundryBtnActionPerformed(evt);
+            }
+        });
 
         shopBtn.setText("Souvenir Shop");
         shopBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -67,8 +82,18 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         });
 
         checkOutBtn.setText("Checkout");
+        checkOutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkOutBtnActionPerformed(evt);
+            }
+        });
 
         bookFoodBtn.setText("Food and Beverage");
+        bookFoodBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookFoodBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout userLeftPanelLayout = new javax.swing.GroupLayout(userLeftPanel);
         userLeftPanel.setLayout(userLeftPanelLayout);
@@ -135,6 +160,8 @@ public class CustomerHomePanel extends javax.swing.JPanel {
 
     private void shopBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopBtnActionPerformed
         // Redirect User to Shopping Panel
+        ShopPanel bookShop = new ShopPanel(system, user);
+        jSplitPane1.setRightComponent(bookShop);
     }//GEN-LAST:event_shopBtnActionPerformed
 
     private void bookVehicleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookVehicleBtnActionPerformed
@@ -142,6 +169,36 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         VehicleBookingPanel bookVehicle = new VehicleBookingPanel(system, user);
         jSplitPane1.setRightComponent(bookVehicle);
     }//GEN-LAST:event_bookVehicleBtnActionPerformed
+
+    private void checkOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOutBtnActionPerformed
+        // TODO add your handling code here:
+        CheckoutPanel checkout = new CheckoutPanel(system, user);
+        jSplitPane1.setRightComponent(checkout);
+    }//GEN-LAST:event_checkOutBtnActionPerformed
+
+    private void bookFoodBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookFoodBtnActionPerformed
+        // TODO add your handling code here:
+        FoodBookingPanel bookFood = new FoodBookingPanel(system, user);
+        jSplitPane1.setRightComponent(bookFood);
+    }//GEN-LAST:event_bookFoodBtnActionPerformed
+
+    private void bookPoolBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookPoolBtnActionPerformed
+        // TODO add your handling code here:
+        PoolBookingPanel bookPool = new PoolBookingPanel(system, user);
+        jSplitPane1.setRightComponent(bookPool);
+    }//GEN-LAST:event_bookPoolBtnActionPerformed
+
+    private void bookGameBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookGameBtnActionPerformed
+        // TODO add your handling code here:
+        GameBookingPanel bookGame = new GameBookingPanel(system, user);
+        jSplitPane1.setRightComponent(bookGame);
+    }//GEN-LAST:event_bookGameBtnActionPerformed
+
+    private void bookLaundryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookLaundryBtnActionPerformed
+        // TODO add your handling code here:
+        LaundryPanel bookLaundry = new LaundryPanel(system, user);
+        jSplitPane1.setRightComponent(bookLaundry);
+    }//GEN-LAST:event_bookLaundryBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

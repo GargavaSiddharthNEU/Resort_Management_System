@@ -14,7 +14,16 @@ public class LaundryWorkRequest {
     
     String userId;
     Laundry laundryDetails;
+    int numberOfClothes;
     String status;
+
+    public int getNumberOfClothes() {
+        return numberOfClothes;
+    }
+
+    public void setNumberOfClothes(int numberOfClothes) {
+        this.numberOfClothes = numberOfClothes;
+    }
 
     public String getUserId() {
         return userId;
@@ -38,6 +47,11 @@ public class LaundryWorkRequest {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+    
+    @Override
+    public String toString() {
+        return userId;
     }
     
 }

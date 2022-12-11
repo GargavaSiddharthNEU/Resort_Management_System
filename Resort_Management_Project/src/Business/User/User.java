@@ -15,6 +15,7 @@ public class User {
     private String userName;
     private String password;
     private int age;
+    private String address;
     private String emailId;
     private Long phoneNumber;
     private String roleType;
@@ -55,6 +56,14 @@ public class User {
         return password;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
     public void setPassword(String password) {
         this.password = password;
     }

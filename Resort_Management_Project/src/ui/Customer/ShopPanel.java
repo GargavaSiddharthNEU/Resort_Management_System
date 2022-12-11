@@ -4,17 +4,47 @@
  */
 package ui.Customer;
 
+import Business.EcoSystem;
+import Business.Shopping.InhouseShopping.Souvenir;
+import Business.TransactionHistory.CustomerTransaction;
+import Business.User.User;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.MutableComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class ShopPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ShopPanel
      */
-    public ShopPanel() {
+    EcoSystem system;
+    User user;
+    float totalPrice;
+
+    public ShopPanel(EcoSystem system, User user) {
         initComponents();
+
+        this.system = system;
+        this.user = user;
+        totalPrice = 0;
+
+        MutableComboBoxModel<String> model = new DefaultComboBoxModel<String>();
+
+        for (Souvenir souvenirList : system.getSouvenirDirectory().getSouvenirDirectory()) {
+            model.addElement(souvenirList.getSouvenirName());
+        }
+
+        chooseSouvenirDropdown.setModel(model);
+
+        souvenirNameTxt.setEditable(false);
+        subTotalTxt.setEditable(false);
+        souvenirPriceTxt.setEditable(false);
+
     }
 
     /**
@@ -26,19 +56,268 @@ public class ShopPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        souvenirPriceTxt = new javax.swing.JTextField();
+        addSouvenirBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        souvenirListTable = new javax.swing.JTable();
+        buySouvenirBtn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        chooseSouvenirDropdown = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        souvenirNameTxt = new javax.swing.JTextField();
+        viewDetailsBtn = new javax.swing.JButton();
+        removeSouvenirBtn = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        subTotalTxt = new javax.swing.JTextField();
+
+        addSouvenirBtn.setText("Add Item");
+        addSouvenirBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSouvenirBtnActionPerformed(evt);
+            }
+        });
+
+        souvenirListTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Souvenir Name", "Souvenir Price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Float.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(souvenirListTable);
+
+        buySouvenirBtn.setText("Buy Items");
+        buySouvenirBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buySouvenirBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Shop for Souvenirs");
+
+        jLabel2.setText("Choose a Souvenir:");
+
+        jLabel3.setText("Souvenir Name:");
+
+        viewDetailsBtn.setText("View Details");
+        viewDetailsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewDetailsBtnActionPerformed(evt);
+            }
+        });
+
+        removeSouvenirBtn.setText("Remove Item");
+        removeSouvenirBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeSouvenirBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Souvenir Price:");
+
+        jLabel4.setText("Sub-Total:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(souvenirNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(souvenirPriceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(addSouvenirBtn)
+                .addGap(106, 106, 106))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(215, 215, 215)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(chooseSouvenirDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(viewDetailsBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buySouvenirBtn)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(removeSouvenirBtn)
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(subTotalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 966, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1)
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(chooseSouvenirDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewDetailsBtn))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(souvenirNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(souvenirPriceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addSouvenirBtn))
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(subTotalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(removeSouvenirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(buySouvenirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(233, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addSouvenirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSouvenirBtnActionPerformed
+        // TODO add your handling code here:
+
+        try {
+
+            DefaultTableModel itemListModel = (DefaultTableModel) souvenirListTable.getModel();
+
+            if (chooseSouvenirDropdown.getSelectedItem() != null) {
+
+                String itemName = String.valueOf(chooseSouvenirDropdown.getSelectedItem());
+                Souvenir souvenirDetails = system.getSouvenirDirectory().getSouvenirByName(itemName);
+
+                Object[] newRow = new Object[2];
+                newRow[0] = souvenirDetails.getSouvenirName();
+                newRow[1] = souvenirDetails.getPrice();
+
+                itemListModel.addRow(newRow);
+                totalPrice += souvenirDetails.getPrice();
+                subTotalTxt.setText(String.valueOf(totalPrice));
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Choose a valid Souvenir item for adding to list");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Choose a valid Souvenir item for adding to list");
+        }
+    }//GEN-LAST:event_addSouvenirBtnActionPerformed
+
+    private void buySouvenirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buySouvenirBtnActionPerformed
+        // TODO add your handling code here:
+
+        try {
+            if (souvenirListTable.getRowCount() != 0) {
+                CustomerTransaction shopBill = new CustomerTransaction();
+
+                shopBill.setUserId(user.getUserId());
+                shopBill.setFacilityUsed("Items purchased in souvenir shop");
+                shopBill.setPrice(totalPrice);
+
+                system.getCustomerTransactionDirectory().getCustomerTransactionList().add(shopBill);
+
+                JOptionPane.showMessageDialog(this, "Souvenir items order placed. Please pickup during checkout");
+            } else {
+                JOptionPane.showMessageDialog(this, "Choose atleast one souvenir item for placing an order");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Choose valid souvenir items for buying");
+        }
+    }//GEN-LAST:event_buySouvenirBtnActionPerformed
+
+    private void viewDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsBtnActionPerformed
+        // TODO add your handling code here:
+
+        try {
+            if (chooseSouvenirDropdown.getSelectedItem() != null) {
+
+                String souvenirName = String.valueOf(chooseSouvenirDropdown.getSelectedItem());
+                Souvenir souvenirDetails = system.getSouvenirDirectory().getSouvenirByName(souvenirName);
+
+                souvenirNameTxt.setText(souvenirDetails.getSouvenirName());
+                souvenirPriceTxt.setText(String.valueOf(souvenirDetails.getPrice()));
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Choose a valid Souvenir item for viewing");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Choose a valid Souvenir item for viewing");
+        }
+    }//GEN-LAST:event_viewDetailsBtnActionPerformed
+
+    private void removeSouvenirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeSouvenirBtnActionPerformed
+        // TODO add your handling code here:
+
+        try {
+            int index = souvenirListTable.getSelectedRow();
+
+            if (index < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a Souvenir item to be removed from list");
+                return;
+            }
+
+            DefaultTableModel model = (DefaultTableModel) souvenirListTable.getModel();
+            String souvenirName = String.valueOf(model.getValueAt(index, 0));
+            Souvenir souvenirDetails = system.getSouvenirDirectory().getSouvenirByName(souvenirName);
+
+            model.removeRow(index);
+            totalPrice -= souvenirDetails.getPrice();
+            subTotalTxt.setText(String.valueOf(totalPrice));
+
+            JOptionPane.showMessageDialog(this, "Souvenir item removed successfully from list");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Please select a Souvenir item to be removed from list");
+        }
+    }//GEN-LAST:event_removeSouvenirBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addSouvenirBtn;
+    private javax.swing.JButton buySouvenirBtn;
+    private javax.swing.JComboBox<String> chooseSouvenirDropdown;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton removeSouvenirBtn;
+    private javax.swing.JTable souvenirListTable;
+    private javax.swing.JTextField souvenirNameTxt;
+    private javax.swing.JTextField souvenirPriceTxt;
+    private javax.swing.JTextField subTotalTxt;
+    private javax.swing.JButton viewDetailsBtn;
     // End of variables declaration//GEN-END:variables
 }

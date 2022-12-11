@@ -90,16 +90,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Book Pool"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bookPoolBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="bookGameBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Book Games"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bookGameBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="bookLaundryBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Laundry"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bookLaundryBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="shopBtn">
               <Properties>
@@ -113,11 +122,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Checkout"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkOutBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="bookFoodBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Food and Beverage"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bookFoodBtnActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

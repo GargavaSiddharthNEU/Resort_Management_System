@@ -8,18 +8,16 @@ import Business.EcoSystem;
 import Business.Transportation.VehicleBooking.Vehicle;
 import Business.User.User;
 import Business.WorkRequest.VehicleWorkRequest;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.MutableComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class VehicleBookingPanel extends javax.swing.JPanel {
 
@@ -123,14 +121,14 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Vehicle Name", "Vehicle Number", "Booking Date", "Price per hour", "Number of hours", "Request Status"
+                "Vehicle Name", "Vehicle Number", "Booking Date", "Price per hour", "Number of hours", "Total price", "Request Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Float.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -281,7 +279,7 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Choose a valid Vehicle for booking");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, "Choose a valid Vehicle for booking");
         }
     }//GEN-LAST:event_viewVehicleBtnActionPerformed
 
@@ -299,8 +297,6 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
                 String strDate = dateFormat.format(selectedDate);
                 Date bookingDate = dateFormat.parse(strDate);
 
-                System.out.println(bookingDate);
-
                 int numberOfHours = Integer.parseInt(numberOfHoursTxt.getText());
 
                 bookVehicle.setVehicleDetails(vehicleDetails);
@@ -311,12 +307,13 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
 
                 system.getVehicleWorkRequestDirectory().getVehicleWorkRequestList().add(bookVehicle);
 
+                JOptionPane.showMessageDialog(this, "Vehicle booking request sent to Contractor");
                 populateRequestTable();
             } else {
-                JOptionPane.showMessageDialog(this, "Choose a valid Vehicle for booking");
+                JOptionPane.showMessageDialog(this, "Enter valid values for date and number of hours for booking a Vehicle");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, "Enter valid values for date and number of hours for booking a Vehicle");
         }
     }//GEN-LAST:event_bookVehicleBtnActionPerformed
 
@@ -355,13 +352,14 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
             for (VehicleWorkRequest vehicleWorkRequest : system.getVehicleWorkRequestDirectory().getVehicleWorkRequestList()) {
 
                 if (vehicleWorkRequest.getUserId().equals(user.getUserId())) {
-                    Object[] newRow = new Object[6];
+                    Object[] newRow = new Object[7];
                     newRow[0] = vehicleWorkRequest.getVehicleDetails().getVehicleName();
                     newRow[1] = vehicleWorkRequest.getVehicleDetails().getVehicleNumber();
                     newRow[2] = vehicleWorkRequest.getBookingDate();
                     newRow[3] = vehicleWorkRequest.getVehicleDetails().getPrice();
                     newRow[4] = vehicleWorkRequest.getNumberOfHours();
-                    newRow[5] = vehicleWorkRequest.getStatus();
+                    newRow[5] = (vehicleWorkRequest.getVehicleDetails().getPrice()*vehicleWorkRequest.getNumberOfHours());
+                    newRow[6] = vehicleWorkRequest.getStatus();
 
                     model.addRow(newRow);
                 }
