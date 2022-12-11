@@ -11,6 +11,7 @@ import Business.User.User;
 import ui.Admin.AdminHomePanel;
 import ui.Customer.CustomerHomePanel;
 import ui.FoodandBev.FoodandBevPanel;
+import ui.Shopping.ShopPanel;
 import ui.GameBooking.BookGamePanel;
 import ui.JanitorSchedule.JanitorPanel;
 import ui.LaundryBooking.BookLaundryPanel;
@@ -148,6 +149,9 @@ public class LoginPanel extends javax.swing.JPanel {
                         } else if (temp.getRoleType().equalsIgnoreCase("Janitor")) {
                             JanitorPanel janitorPanel = new JanitorPanel(system, temp);
                             SplitPane.setRightComponent(janitorPanel);
+                        } else if (temp.getRoleType().equalsIgnoreCase("Shop Manager")) {
+                            ShopPanel shopPanel = new ShopPanel(system);
+                            SplitPane.setRightComponent(shopPanel);
                         }
                     } else {
                         index++;
