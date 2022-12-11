@@ -5,8 +5,11 @@
 package ui.VehicleBooking;
 
 import Business.EcoSystem;
+import Business.Email.EmailNotification;
+import Business.Email.EmailTest;
 import Business.FoodandBev.Menu.FBItem;
 import Business.TransactionHistory.CustomerTransaction;
+import Business.User.User;
 import Business.WorkRequest.FoodBevWorkRequest;
 import Business.WorkRequest.VehicleWorkRequest;
 import java.util.ArrayList;
@@ -53,7 +56,7 @@ public class ManageVehicleRequestsPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for (VehicleWorkRequest vehicleWRequest : pendingVehicleRequest) {
 
-            Object[] newRow = new Object[8];
+            Object[] newRow = new Object[9];
             newRow[0] = vehicleWRequest;
             newRow[1] = vehicleWRequest.getVehicleDetails().getVehicleNumber();
             newRow[2] = vehicleWRequest.getVehicleDetails().getVehicleName();
@@ -61,7 +64,8 @@ public class ManageVehicleRequestsPanel extends javax.swing.JPanel {
             newRow[4] = vehicleWRequest.getVehicleDetails().getSeater();
             newRow[5] = vehicleWRequest.getVehicleDetails().getPrice();
             newRow[6] = vehicleWRequest.getNumberOfHours();
-            newRow[7] = vehicleWRequest.getStatus();
+            newRow[7] = vehicleWRequest.getBookingDate();
+            newRow[8] = vehicleWRequest.getStatus();
 
             model.addRow(newRow);
         }
@@ -70,7 +74,7 @@ public class ManageVehicleRequestsPanel extends javax.swing.JPanel {
         modelNon_Pending.setRowCount(0);
         for (VehicleWorkRequest vehicleWRequest : non_pendingVehicleRequest) {
 
-            Object[] newRow = new Object[8];
+            Object[] newRow = new Object[9];
             newRow[0] = vehicleWRequest;
             newRow[1] = vehicleWRequest.getVehicleDetails().getVehicleNumber();
             newRow[2] = vehicleWRequest.getVehicleDetails().getVehicleName();
@@ -78,7 +82,8 @@ public class ManageVehicleRequestsPanel extends javax.swing.JPanel {
             newRow[4] = vehicleWRequest.getVehicleDetails().getSeater();
             newRow[5] = vehicleWRequest.getVehicleDetails().getPrice();
             newRow[6] = vehicleWRequest.getNumberOfHours();
-            newRow[7] = vehicleWRequest.getStatus();
+            newRow[7] = vehicleWRequest.getBookingDate();
+            newRow[8] = vehicleWRequest.getStatus();
 
             modelNon_Pending.addRow(newRow);
         }
@@ -143,17 +148,17 @@ public class ManageVehicleRequestsPanel extends javax.swing.JPanel {
 
         tblVehicleRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "User ID", "Vehicle Number", "Vehicle Name", "Category", "Seater", "Price per hour", "Number of hours", "Status"
+                "User ID", "Vehicle Number", "Vehicle Name", "Category", "Seater", "Price per hour", "No of hours", "Date", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -164,17 +169,17 @@ public class ManageVehicleRequestsPanel extends javax.swing.JPanel {
 
         tblVehicleConfirmed.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "User ID", "Vehicle Number", "Vehicle Name", "Category", "Seater", "Price per hour", "Number of hours", "Status"
+                "User ID", "Vehicle Number", "Vehicle Name", "Category", "Seater", "Price per hour", "No of hours", "Date", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -243,18 +248,27 @@ public class ManageVehicleRequestsPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Please select a row to approve.");
                 return;
             }
+            
             DefaultTableModel model = (DefaultTableModel) tblVehicleRequests.getModel();
             VehicleWorkRequest selectedVehicleWorkRequest = (VehicleWorkRequest) model.getValueAt(selectedRowIndex, 0);
             updateWorkRequestStatus(selectedVehicleWorkRequest, "Approved");
             CustomerTransaction ct = new CustomerTransaction();
-
+            User getUser = system.getUserDirectory().getUserById(selectedVehicleWorkRequest.getUserId());
+            
             float vehiclebooking_finalprice = selectedVehicleWorkRequest.getNumberOfHours() * selectedVehicleWorkRequest.getVehicleDetails().getPrice();
             ct.setUserId(selectedVehicleWorkRequest.getUserId());
             ct.setFacilityUsed("Vehicle Booked - " + selectedVehicleWorkRequest.getVehicleDetails().getVehicleName() + " for " + selectedVehicleWorkRequest.getNumberOfHours() + " hours");
             ct.setPrice(vehiclebooking_finalprice);
             system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
-            JOptionPane.showMessageDialog(this, "Request approved successfully");
+            new EmailNotification().SendEmailOfNotification(getUser, "Vehicle");
+
+//              EmailTest etest = new EmailTest();
+//              etest.setupServerProperties();
+//              etest.draftEmail(getUser,"Vehicle");
+//              etest.sendEmail();
+            JOptionPane.showMessageDialog(this, "Request approved successfully and email notification sent");
             populateVehicleRequestTable();
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }

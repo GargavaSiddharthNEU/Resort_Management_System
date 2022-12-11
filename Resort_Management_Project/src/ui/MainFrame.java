@@ -6,6 +6,7 @@ package ui;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
+import javax.swing.JFrame;
 
 
 /**
@@ -24,6 +25,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
