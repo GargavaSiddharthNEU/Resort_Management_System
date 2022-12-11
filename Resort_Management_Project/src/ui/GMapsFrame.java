@@ -6,6 +6,8 @@ package ui;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.event.MouseInputListener;
 import org.jxmapviewer.OSMTileFactoryInfo;
 import org.jxmapviewer.VirtualEarthTileFactoryInfo;
@@ -14,12 +16,19 @@ import org.jxmapviewer.input.ZoomMouseWheelListenerCenter;
 import org.jxmapviewer.viewer.DefaultTileFactory;
 import org.jxmapviewer.viewer.GeoPosition;
 import org.jxmapviewer.viewer.TileFactoryInfo;
+import org.jxmapviewer.viewer.WaypointPainter;
+import waypoint.EventWaypoint;
+import waypoint.MyWaypoint;
+import waypoint.WaypointRender;
 
 /**
  *
  * @author manikantareddythikkavarapu
  */
 public class GMapsFrame extends javax.swing.JFrame {
+
+    private final Set<MyWaypoint> waypoints = new HashSet<>();
+    private EventWaypoint event;
 
     /**
      * Creates new form GMapsFrame
@@ -28,30 +37,59 @@ public class GMapsFrame extends javax.swing.JFrame {
         initComponents();
         init();
     }
-    
-   private void init() {
+
+    private void init() {
         TileFactoryInfo info = new OSMTileFactoryInfo();
         DefaultTileFactory tileFactory = new DefaultTileFactory(info);
         jXMapViewer.setTileFactory(tileFactory);
-        GeoPosition geo = new GeoPosition(11.4873739, 105.0147696);
+        GeoPosition geo = new GeoPosition(42.3367, -71.0875);
         jXMapViewer.setAddressLocation(geo);
         jXMapViewer.setZoom(12);
+        
+        addWaypoint(new MyWaypoint("Test 001", event, new GeoPosition(42.3367, -71.0875)));
 
         //  Create event mouse move
         MouseInputListener mm = new PanMouseInputListener(jXMapViewer);
 //        jXMapViewer.addMouseListener(mm);
         jXMapViewer.addMouseMotionListener(mm);
         jXMapViewer.addMouseWheelListener(new ZoomMouseWheelListenerCenter(jXMapViewer));
-        
-        jXMapViewer.addMouseListener(new MouseAdapter(){
-        public void mouseClicked(MouseEvent e) {
-            if(e.getClickCount() == 1){
-                java.awt.Point p = e.getPoint();
-                GeoPosition geo = jXMapViewer.convertPointToGeoPosition(p);
-                System.out.println("X:"+geo.getLatitude()+",Y:"+geo.getLongitude());
+
+        jXMapViewer.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 1) {
+                    java.awt.Point p = e.getPoint();
+                    GeoPosition geo = jXMapViewer.convertPointToGeoPosition(p);
+                    System.out.println("X:" + geo.getLatitude() + ",Y:" + geo.getLongitude());
+                    clearWaypoint();
+                    addWaypoint(new MyWaypoint("Test 001", event, new GeoPosition(geo.getLatitude(), geo.getLongitude())));
+                }
             }
-     }
-});
+        });
+    }
+
+    private void addWaypoint(MyWaypoint waypoint) {
+        for (MyWaypoint d : waypoints) {
+            jXMapViewer.remove(d.getButton());
+        }
+        waypoints.add(waypoint);
+        initWaypoint();
+    }
+
+    private void initWaypoint() {
+        WaypointPainter<MyWaypoint> wp = new WaypointRender();
+        wp.setWaypoints(waypoints);
+        jXMapViewer.setOverlayPainter(wp);
+        for (MyWaypoint d : waypoints) {
+            jXMapViewer.add(d.getButton());
+        }
+    }
+
+    private void clearWaypoint() {
+        for (MyWaypoint d : waypoints) {
+            jXMapViewer.remove(d.getButton());
+        }
+        waypoints.clear();
+        initWaypoint();
     }
 
     /**
