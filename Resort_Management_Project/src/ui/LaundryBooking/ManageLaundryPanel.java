@@ -247,20 +247,19 @@ public class ManageLaundryPanel extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        try{
+        try {
             boolean validation1 = areDataFieldsEmpty();
             boolean validation2 = areDataTypesCorrect();
 
-            Float price = Float.parseFloat(txtPrice.getText());
-
             if (!validation1 && !validation2) {
                 String laundryName = txtCategory.getText();
+                Float price = Float.parseFloat(txtPrice.getText());
 
                 if (!laundryDetailsExistence()) {
                     Laundry laundry = system.getLaundryDirectory().addLaundryDetails();
                     laundry.setCategory(laundryName);
                     laundry.setPrice(price);
-                    
+
                     JOptionPane.showMessageDialog(this, "Laundry category - " + laundryName + " added");
                     resetLaundryData();
                     populateTable();
@@ -271,7 +270,7 @@ public class ManageLaundryPanel extends javax.swing.JPanel {
             } else {
                 validationErrorMessagesDialog(validation1, validation2);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_btnAddActionPerformed

@@ -47,8 +47,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnRequestQueue" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnHome" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
                           <Component id="btnManageLaundry" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnHome" alignment="0" min="-2" pref="197" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="18" max="32767" attributes="0"/>
                   </Group>

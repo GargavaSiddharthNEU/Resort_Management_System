@@ -304,13 +304,12 @@ public class ManageVehiclePanel extends javax.swing.JPanel {
             boolean validation1 = areDataFieldsEmpty();
             boolean validation2 = areDataTypesCorrect();
 
-            String vehicleName = txtVehicleName.getText();
-            String category = (String) cmbCategory.getSelectedItem();
-            Integer seater = Integer.parseInt((String) cmbSeater.getSelectedItem());
-            Float price = Float.parseFloat(txtPrice.getText());
-
             if (!validation1 && !validation2) {
                 String vehicleNumber = txtVehicleNum.getText();
+                String vehicleName = txtVehicleName.getText();
+                String category = (String) cmbCategory.getSelectedItem();
+                Integer seater = Integer.parseInt((String) cmbSeater.getSelectedItem());
+                Float price = Float.parseFloat(txtPrice.getText());
 
                 if (!vehicleDetailsExistence()) {
                     Vehicle vehicle = system.getVehicleDirectory().addVehicleDetails();

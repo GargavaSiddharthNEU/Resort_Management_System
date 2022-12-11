@@ -5,7 +5,9 @@
 package ui.GameBooking;
 
 import Business.EcoSystem;
+import Business.Email.EmailNotification;
 import Business.TransactionHistory.CustomerTransaction;
+import Business.User.User;
 import Business.WorkRequest.GameWorkRequest;
 import Business.WorkRequest.VehicleWorkRequest;
 import java.util.ArrayList;
@@ -217,12 +219,19 @@ public class ManageGameRequestsPanel extends javax.swing.JPanel {
             GameWorkRequest selectedGameWorkRequest = (GameWorkRequest) model.getValueAt(selectedRowIndex, 0);
             updateWorkRequestStatus(selectedGameWorkRequest, "Approved");
             CustomerTransaction ct = new CustomerTransaction();
+            
+            //User definition for email notif
+            User getUser = system.getUserDirectory().getUserById(selectedGameWorkRequest.getUserId());
 
             float gamebooking_finalprice = selectedGameWorkRequest.getNumberOfHours() * selectedGameWorkRequest.getGameDetails().getPrice();
             ct.setUserId(selectedGameWorkRequest.getUserId());
             ct.setFacilityUsed("Game Booked - " + selectedGameWorkRequest.getGameDetails().getGameName() + " for " + selectedGameWorkRequest.getNumberOfHours() + " hours");
             ct.setPrice(gamebooking_finalprice);
             system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
+            
+             //email notification
+            new EmailNotification().SendEmailOfNotification(getUser, "Game");
+            
             JOptionPane.showMessageDialog(this, "Request approved successfully");
             populateGameRequestTable();
         } catch (Exception e) {

@@ -5,7 +5,9 @@
 package ui.PoolBooking;
 
 import Business.EcoSystem;
+import Business.Email.EmailNotification;
 import Business.TransactionHistory.CustomerTransaction;
+import Business.User.User;
 import Business.WorkRequest.PoolWorkRequest;
 import Business.WorkRequest.VehicleWorkRequest;
 import java.util.ArrayList;
@@ -212,12 +214,18 @@ public class ManagePoolRequestsPanel extends javax.swing.JPanel {
             PoolWorkRequest selectedPoolWorkRequest = (PoolWorkRequest) model.getValueAt(selectedRowIndex, 0);
             updateWorkRequestStatus(selectedPoolWorkRequest, "Approved");
             CustomerTransaction ct = new CustomerTransaction();
+            //User definition for email notif
+            User getUser = system.getUserDirectory().getUserById(selectedPoolWorkRequest.getUserId());
 
             float poolbooking_finalprice = selectedPoolWorkRequest.getNumberOfHours() * selectedPoolWorkRequest.getPoolDetails().getPrice();
             ct.setUserId(selectedPoolWorkRequest.getUserId());
             ct.setFacilityUsed("Pool Booked - " + selectedPoolWorkRequest.getPoolDetails().getPoolName() + " for " + selectedPoolWorkRequest.getNumberOfHours() + " hours");
             ct.setPrice(poolbooking_finalprice);
             system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
+            
+            //email notification
+            new EmailNotification().SendEmailOfNotification(getUser, "Pool");
+            
             JOptionPane.showMessageDialog(this, "Request approved successfully");
             populatePoolRequestTable();
         } catch (Exception e) {
