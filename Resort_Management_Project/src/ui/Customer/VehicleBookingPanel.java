@@ -8,11 +8,15 @@ import Business.EcoSystem;
 import Business.Transportation.VehicleBooking.Vehicle;
 import Business.User.User;
 import Business.WorkRequest.VehicleWorkRequest;
+import java.awt.Color;
+import java.awt.Component;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.MutableComboBoxModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -45,8 +49,9 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
         vehicleSeaterTxt.setEditable(false);
         priceTxt.setEditable(false);
         vehicleNumberTxt.setEditable(false);
-        
+
         populateRequestTable();
+        formatRows();
     }
 
     /**
@@ -303,7 +308,8 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Vehicle booking request sent to Contractor");
                 populateRequestTable();
                 clearFields();
-                
+                formatRows();
+
             } else {
                 JOptionPane.showMessageDialog(this, "Enter valid values for date and number of hours for booking a Vehicle");
             }
@@ -353,7 +359,7 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
                     newRow[2] = vehicleWorkRequest.getBookingDate();
                     newRow[3] = vehicleWorkRequest.getVehicleDetails().getPrice();
                     newRow[4] = vehicleWorkRequest.getNumberOfHours();
-                    newRow[5] = (vehicleWorkRequest.getVehicleDetails().getPrice()*vehicleWorkRequest.getNumberOfHours());
+                    newRow[5] = (vehicleWorkRequest.getVehicleDetails().getPrice() * vehicleWorkRequest.getNumberOfHours());
                     newRow[6] = vehicleWorkRequest.getStatus();
 
                     model.addRow(newRow);
@@ -363,9 +369,9 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
-    
+
     private void clearFields() {
-        
+
         vehicleNameTxt.setText("");
         vehicleCategoryTxt.setText("");
         priceTxt.setText("");
@@ -374,4 +380,21 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
         numberOfHoursTxt.setText("");
         vehicleBookingDateTxt.setCalendar(null);
     }
+
+    private void formatRows() {
+
+        DefaultTableModel model = (DefaultTableModel) vehicleWorkQueueTable.getModel();
+
+        vehicleWorkQueueTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                String status = String.valueOf(model.getValueAt(row, 6));
+                c.setBackground(status.equals("Pending") ? Color.WHITE : status.equals("Approved") ? Color.GREEN : Color.RED);
+                return c;
+            }
+        });
+
+    }
+
 }
