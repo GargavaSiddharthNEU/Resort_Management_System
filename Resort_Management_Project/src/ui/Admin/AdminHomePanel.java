@@ -37,6 +37,7 @@ public class AdminHomePanel extends javax.swing.JPanel {
         manageScheduleBtn = new javax.swing.JButton();
         homeBtn = new javax.swing.JButton();
         createUserBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -63,6 +64,8 @@ public class AdminHomePanel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Analytics");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -70,6 +73,7 @@ public class AdminHomePanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
                     .addComponent(createUserBtn)
                     .addComponent(homeBtn)
                     .addComponent(manageScheduleBtn)
@@ -85,9 +89,11 @@ public class AdminHomePanel extends javax.swing.JPanel {
                 .addComponent(manageUserBtn)
                 .addGap(40, 40, 40)
                 .addComponent(manageScheduleBtn)
-                .addGap(37, 37, 37)
+                .addGap(35, 35, 35)
+                .addComponent(jButton1)
+                .addGap(41, 41, 41)
                 .addComponent(homeBtn)
-                .addContainerGap(453, Short.MAX_VALUE))
+                .addContainerGap(385, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -145,6 +151,7 @@ public class AdminHomePanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton createUserBtn;
     private javax.swing.JButton homeBtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

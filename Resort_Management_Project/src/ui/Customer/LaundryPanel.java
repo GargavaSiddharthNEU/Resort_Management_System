@@ -22,13 +22,12 @@ public class LaundryPanel extends javax.swing.JPanel {
     /**
      * Creates new form LaundryPanel
      */
-    
     EcoSystem system;
     User user;
-    
+
     public LaundryPanel(EcoSystem system, User user) {
         initComponents();
-        
+
         this.system = system;
         this.user = user;
 
@@ -214,7 +213,8 @@ public class LaundryPanel extends javax.swing.JPanel {
 
                 JOptionPane.showMessageDialog(this, "Laundry booking request sent to Manager");
                 populateRequestTable();
-                
+                clearFields();
+
             } else {
                 JOptionPane.showMessageDialog(this, "Enter valid number of clothes values for booking Laundry");
             }
@@ -262,7 +262,7 @@ public class LaundryPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateRequestTable() {
-        
+
         try {
             DefaultTableModel model = (DefaultTableModel) laundryWorkQueueTable.getModel();
             model.setRowCount(0);
@@ -274,7 +274,7 @@ public class LaundryPanel extends javax.swing.JPanel {
                     newRow[0] = laundryWorkRequest.getLaundryDetails().getCategory();
                     newRow[2] = laundryWorkRequest.getLaundryDetails().getPrice();
                     newRow[3] = laundryWorkRequest.getNumberOfClothes();
-                    newRow[4] = (laundryWorkRequest.getLaundryDetails().getPrice()*laundryWorkRequest.getNumberOfClothes());
+                    newRow[4] = (laundryWorkRequest.getLaundryDetails().getPrice() * laundryWorkRequest.getNumberOfClothes());
                     newRow[5] = laundryWorkRequest.getStatus();
 
                     model.addRow(newRow);
@@ -283,5 +283,13 @@ public class LaundryPanel extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+    }
+
+    private void clearFields() {
+
+        categoryNameTxt.setText("");
+        priceTxt.setText("");
+        numberOfClothesTxt.setText("");
+
     }
 }

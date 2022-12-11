@@ -226,6 +226,7 @@ public class ShopPanel extends javax.swing.JPanel {
                 itemListModel.addRow(newRow);
                 totalPrice += souvenirDetails.getPrice();
                 subTotalTxt.setText(String.valueOf(totalPrice));
+                clearFields();
 
             } else {
                 JOptionPane.showMessageDialog(this, "Choose a valid Souvenir item for adding to list");
@@ -249,6 +250,8 @@ public class ShopPanel extends javax.swing.JPanel {
                 system.getCustomerTransactionDirectory().getCustomerTransactionList().add(shopBill);
 
                 JOptionPane.showMessageDialog(this, "Souvenir items order placed. Please pickup during checkout");
+                clearFields();
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Choose atleast one souvenir item for placing an order");
             }
@@ -297,6 +300,9 @@ public class ShopPanel extends javax.swing.JPanel {
             subTotalTxt.setText(String.valueOf(totalPrice));
 
             JOptionPane.showMessageDialog(this, "Souvenir item removed successfully from list");
+            
+            clearFields();
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Please select a Souvenir item to be removed from list");
         }
@@ -320,4 +326,10 @@ public class ShopPanel extends javax.swing.JPanel {
     private javax.swing.JTextField subTotalTxt;
     private javax.swing.JButton viewDetailsBtn;
     // End of variables declaration//GEN-END:variables
+
+    private void clearFields() {
+        
+        souvenirNameTxt.setText("");
+        souvenirPriceTxt.setText("");
+    }
 }

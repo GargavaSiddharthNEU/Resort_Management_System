@@ -309,6 +309,8 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
 
                 JOptionPane.showMessageDialog(this, "Vehicle booking request sent to Contractor");
                 populateRequestTable();
+                clearFields();
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Enter valid values for date and number of hours for booking a Vehicle");
             }
@@ -367,5 +369,16 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+    }
+    
+    private void clearFields() {
+        
+        vehicleNameTxt.setText("");
+        vehicleCategoryTxt.setText("");
+        priceTxt.setText("");
+        vehicleSeaterTxt.setText("");
+        vehicleNumberTxt.setText("");
+        numberOfHoursTxt.setText("");
+        vehicleBookingDateTxt.setCalendar(null);
     }
 }

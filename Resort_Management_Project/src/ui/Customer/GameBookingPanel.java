@@ -276,6 +276,8 @@ public class GameBookingPanel extends javax.swing.JPanel {
 
                 JOptionPane.showMessageDialog(this, "Game booking request sent to Incharge");
                 populateRequestTable();
+                clearFields();
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Enter valid date and number of hours for booking a Game");
             }
@@ -330,5 +332,14 @@ public class GameBookingPanel extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+    }
+
+    private void clearFields() {
+        
+        gameNameTxt.setText("");
+        gameCategoryTxt.setText("");
+        priceTxt.setText("");
+        numberOfHoursTxt.setText("");
+        gameBookingDateTxt.setCalendar(null);
     }
 }

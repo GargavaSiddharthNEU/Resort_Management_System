@@ -266,6 +266,8 @@ public class PoolBookingPanel extends javax.swing.JPanel {
 
                 JOptionPane.showMessageDialog(this, "Pool booking request sent to Manager");
                 populateRequestTable();
+                clearFields();
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Enter valid date and number of hours for booking a Pool");
             }
@@ -317,5 +319,13 @@ public class PoolBookingPanel extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+    }
+    
+    private void clearFields() {
+        
+        poolNameTxt.setText("");
+        priceTxt.setText("");
+        numberOfHoursTxt.setText("");
+        poolBookingDateTxt.setCalendar(null);
     }
 }
