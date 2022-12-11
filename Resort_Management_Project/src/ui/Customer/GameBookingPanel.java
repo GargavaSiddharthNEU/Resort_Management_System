@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class GameBookingPanel extends javax.swing.JPanel {
 
@@ -246,7 +246,7 @@ public class GameBookingPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Choose a valid Game for booking");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, "Choose a valid Game for booking");
         }
     }//GEN-LAST:event_viewGameBtnActionPerformed
 
@@ -277,10 +277,10 @@ public class GameBookingPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Game booking request sent to Incharge");
                 populateRequestTable();
             } else {
-                JOptionPane.showMessageDialog(this, "Choose a valid Game for booking");
+                JOptionPane.showMessageDialog(this, "Enter valid date and number of hours for booking a Game");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, "Enter valid date and number of hours for booking a Game");
         }
     }//GEN-LAST:event_bookGameBtnActionPerformed
 

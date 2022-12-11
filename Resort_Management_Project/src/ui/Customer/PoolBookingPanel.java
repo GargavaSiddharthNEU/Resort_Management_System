@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class PoolBookingPanel extends javax.swing.JPanel {
 
@@ -236,7 +236,7 @@ public class PoolBookingPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Choose a valid Pool for booking");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, "Choose a valid Pool for booking");
         }
     }//GEN-LAST:event_viewPoolBtnActionPerformed
 
@@ -267,10 +267,10 @@ public class PoolBookingPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Pool booking request sent to Manager");
                 populateRequestTable();
             } else {
-                JOptionPane.showMessageDialog(this, "Choose a valid Pool for booking");
+                JOptionPane.showMessageDialog(this, "Enter valid date and number of hours for booking a Pool");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, "Enter valid date and number of hours for booking a Pool");
         }
     }//GEN-LAST:event_bookPoolBtnActionPerformed
 

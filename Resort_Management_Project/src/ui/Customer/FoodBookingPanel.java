@@ -266,7 +266,7 @@ public class FoodBookingPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Choose a valid Food or Beverage item for viewing");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, "Choose a valid Food or Beverage item for viewing");
         }
     }//GEN-LAST:event_viewDetailsBtnActionPerformed
 
@@ -347,7 +347,7 @@ public class FoodBookingPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Choose valid Food and Beverage items for booking");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, "Choose valid Food and Beverage items for booking");
         }
     }//GEN-LAST:event_bookOrderBtnActionPerformed
 

@@ -15,21 +15,20 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class ShopPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ShopPanel
      */
-    
     EcoSystem system;
     User user;
     float totalPrice;
-    
+
     public ShopPanel(EcoSystem system, User user) {
         initComponents();
-       
+
         this.system = system;
         this.user = user;
         totalPrice = 0;
@@ -227,7 +226,7 @@ public class ShopPanel extends javax.swing.JPanel {
                 itemListModel.addRow(newRow);
                 totalPrice += souvenirDetails.getPrice();
                 subTotalTxt.setText(String.valueOf(totalPrice));
-                
+
             } else {
                 JOptionPane.showMessageDialog(this, "Choose a valid Souvenir item for adding to list");
             }
@@ -240,15 +239,19 @@ public class ShopPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         try {
-            CustomerTransaction shopBill = new CustomerTransaction();
-            
-            shopBill.setUserId(user.getUserId());
-            shopBill.setFacilityUsed("Items purchased in souvenir shop");
-            shopBill.setPrice(totalPrice);
-            
-            system.getCustomerTransactionDirectory().getCustomerTransactionList().add(shopBill);
-            
-            JOptionPane.showMessageDialog(this, "Souvenir items order placed. Please pickup during checkout");
+            if (souvenirListTable.getRowCount() != 0) {
+                CustomerTransaction shopBill = new CustomerTransaction();
+
+                shopBill.setUserId(user.getUserId());
+                shopBill.setFacilityUsed("Items purchased in souvenir shop");
+                shopBill.setPrice(totalPrice);
+
+                system.getCustomerTransactionDirectory().getCustomerTransactionList().add(shopBill);
+
+                JOptionPane.showMessageDialog(this, "Souvenir items order placed. Please pickup during checkout");
+            } else {
+                JOptionPane.showMessageDialog(this, "Choose atleast one souvenir item for placing an order");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Choose valid souvenir items for buying");
         }
@@ -270,7 +273,7 @@ public class ShopPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Choose a valid Souvenir item for viewing");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, "Choose a valid Souvenir item for viewing");
         }
     }//GEN-LAST:event_viewDetailsBtnActionPerformed
 
@@ -292,7 +295,7 @@ public class ShopPanel extends javax.swing.JPanel {
             model.removeRow(index);
             totalPrice -= souvenirDetails.getPrice();
             subTotalTxt.setText(String.valueOf(totalPrice));
-            
+
             JOptionPane.showMessageDialog(this, "Souvenir item removed successfully from list");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Please select a Souvenir item to be removed from list");
