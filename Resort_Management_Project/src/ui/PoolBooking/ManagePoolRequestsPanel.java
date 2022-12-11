@@ -226,7 +226,7 @@ public class ManagePoolRequestsPanel extends javax.swing.JPanel {
             //email notification
             new EmailNotification().SendEmailOfNotification(getUser, "Pool");
             
-            JOptionPane.showMessageDialog(this, "Request approved successfully");
+            JOptionPane.showMessageDialog(this, "Request approved successfully and email notification sent");
             populatePoolRequestTable();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());

@@ -338,6 +338,7 @@ public class ManagePoolPanel extends javax.swing.JPanel {
                 pool.setPrice(price);
 
                 populateTable();
+                resetPoolData();
 
                 JOptionPane.showMessageDialog(this, "Update successful!");
             } else if (tblPool.getRowCount() == 0) {
