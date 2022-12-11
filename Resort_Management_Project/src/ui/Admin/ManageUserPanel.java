@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class ManageUserPanel extends javax.swing.JPanel {
 
@@ -309,7 +309,6 @@ public class ManageUserPanel extends javax.swing.JPanel {
 
     private void viewUsersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewUsersBtnActionPerformed
         // TODO add your handling code here:
-
         displayUserRoles();
     }//GEN-LAST:event_viewUsersBtnActionPerformed
 
@@ -332,19 +331,9 @@ public class ManageUserPanel extends javax.swing.JPanel {
 
             JOptionPane.showMessageDialog(this, "User removed successfully");
             displayUserRoles();
-            
-            txtUserId.setText("");
-            txtFName.setText("");
-            txtLName.setText("");
-            txtUserName.setText("");
-            txtPassword.setText("");
-            txtAddress.setText("");
-            txtPhoneNumber.setText("");
-            txtAge.setText("");
-            txtEmailAddress.setText("");
-            txtFName.setText("");
-            cmbRoleUpdate.setSelectedIndex(0);
-            
+
+            clearFields();
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Please select a User to be deleted");
         }
@@ -352,10 +341,10 @@ public class ManageUserPanel extends javax.swing.JPanel {
 
     private void updateRoleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateRoleBtnActionPerformed
         // TODO add your handling code here:
-        
+
         try {
             User selectedUser = new User();
-            
+
             selectedUser.setUserId(txtUserId.getText());
             selectedUser.setFirstName(txtFName.getText());
             selectedUser.setLastName(txtLName.getText());
@@ -365,11 +354,16 @@ public class ManageUserPanel extends javax.swing.JPanel {
             selectedUser.setAddress(txtAddress.getText());
             selectedUser.setPhoneNumber(Long.valueOf(txtPhoneNumber.getText()));
             selectedUser.setEmailId(txtEmailAddress.getText());
-            selectedUser.setAge(Integer.valueOf(txtAge.getText()));
+            selectedUser.setAge(Integer.parseInt(txtAge.getText()));
 
-        } catch (NumberFormatException e) {
+            system.getUserDirectory().updateUser(selectedUser);
 
-            JOptionPane.showMessageDialog(this, "Enter valid inputs");
+            JOptionPane.showMessageDialog(this, "User Record updated successfully");
+            displayUserRoles();
+            clearFields();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Enter valid inputs for updating");
         }
     }//GEN-LAST:event_updateRoleBtnActionPerformed
 
@@ -431,5 +425,21 @@ public class ManageUserPanel extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Please select a User Role to be viewed");
         }
+    }
+
+    public void clearFields() {
+
+        txtUserId.setText("");
+        txtFName.setText("");
+        txtLName.setText("");
+        txtUserName.setText("");
+        txtPassword.setText("");
+        txtAddress.setText("");
+        txtPhoneNumber.setText("");
+        txtAge.setText("");
+        txtEmailAddress.setText("");
+        txtFName.setText("");
+        cmbRoleUpdate.setSelectedIndex(0);
+
     }
 }

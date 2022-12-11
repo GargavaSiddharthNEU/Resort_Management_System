@@ -54,4 +54,29 @@ public class UserDirectory {
         }
         return selectedUsers;
     }
+    
+    public void updateUser (User user) {
+        User newUser = new User();
+        
+        int position = 0;
+        for (int iter = 0; iter < users.size(); iter++) {
+            if((users.get(iter).getUserId()).equals(user.getUserId())) {
+                position = iter;
+                break;
+            }
+        }
+        
+        newUser.setUserId(user.getUserId());
+        newUser.setFirstName(user.getFirstName());
+        newUser.setLastName(user.getLastName());
+        newUser.setUserName(user.getUserName());
+        newUser.setPassword(user.getPassword());
+        newUser.setRoleType(user.getRoleType());
+        newUser.setAddress(user.getAddress());
+        newUser.setPhoneNumber(user.getPhoneNumber());
+        newUser.setEmailId(user.getEmailId());
+        newUser.setAge(user.getAge());
+        
+        users.set(position, newUser);
+    }
 }

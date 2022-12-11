@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class CheckoutPanel extends javax.swing.JPanel {
 
@@ -21,6 +21,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
      */
     EcoSystem system;
     User user;
+    float totalAmount;
 
     public CheckoutPanel(EcoSystem system, User user) {
         initComponents();
@@ -28,7 +29,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
         this.user = user;
 
         totalAmountTxt.setEditable(false);
-
+        totalAmount = 0;
         populateTable();
     }
 
@@ -126,7 +127,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
         // TODO add your handling code here:
 
-        JOptionPane.showMessageDialog(this, "Your total bill is");
+        JOptionPane.showMessageDialog(this, "Your total bill is: " + totalAmount);
     }//GEN-LAST:event_checkoutBtnActionPerformed
 
 
@@ -144,7 +145,6 @@ public class CheckoutPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) checkoutTable.getModel();
         model.setRowCount(0);
         int index = 1;
-        float totalAmount = 0;
 
         for (CustomerTransaction transaction : system.getCustomerTransactionDirectory().getCustomerTransactionList()) {
 

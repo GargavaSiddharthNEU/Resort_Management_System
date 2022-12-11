@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class VehicleBookingPanel extends javax.swing.JPanel {
 
@@ -279,7 +279,7 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Choose a valid Vehicle for booking");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, "Choose a valid Vehicle for booking");
         }
     }//GEN-LAST:event_viewVehicleBtnActionPerformed
 
@@ -310,10 +310,10 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Vehicle booking request sent to Contractor");
                 populateRequestTable();
             } else {
-                JOptionPane.showMessageDialog(this, "Choose a valid Vehicle for booking");
+                JOptionPane.showMessageDialog(this, "Enter valid values for date and number of hours for booking a Vehicle");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Choose a valid Vehicle for booking");
+            JOptionPane.showMessageDialog(this, "Enter valid values for date and number of hours for booking a Vehicle");
         }
     }//GEN-LAST:event_bookVehicleBtnActionPerformed
 

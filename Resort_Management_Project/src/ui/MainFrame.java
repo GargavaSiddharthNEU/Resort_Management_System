@@ -7,6 +7,11 @@ package ui;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import javax.swing.JFrame;
+import java.io.File;
+import java.util.Collections;
+import java.util.Vector;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 
 /**
@@ -17,7 +22,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private EcoSystem system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
-    
+
     //private SysAdminJFrame sysadminJFrame;
     /**
      * Creates new form MainFrame
@@ -26,6 +31,14 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         system = dB4OUtil.retrieveSystem();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+
+        File fileRoot = new File("C:\\Users\\siddh\\OneDrive\\Documents\\Final AED Project\\Resort_Management_System\\Resort_Management_Project\\src");
+
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode(fileRoot);
+        
+        
+        addNodes(root,fileRoot);
     }
 
     /**
@@ -46,6 +59,8 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +121,10 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel4.setText("jLabel4");
 
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
+        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane1.setViewportView(jTree1);
+
         javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
         workArea.setLayout(workAreaLayout);
         workAreaLayout.setHorizontalGroup(
@@ -113,7 +132,9 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(workAreaLayout.createSequentialGroup()
                 .addGroup(workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, workAreaLayout.createSequentialGroup()
-                        .addGap(114, 114, 114)
+                        .addGap(91, 91, 91)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(115, 115, 115)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -130,13 +151,19 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(workAreaLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(133, 133, 133))
-                    .addGroup(workAreaLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(workAreaLayout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, workAreaLayout.createSequentialGroup()
+                                .addGap(0, 120, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(133, 133, 133))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, workAreaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))))
         );
 
         SplitPane.setRightComponent(workArea);
@@ -209,6 +236,61 @@ public class MainFrame extends javax.swing.JFrame {
         });
     }
 
+//    public void treeConfigure() {
+//
+//        File fileRoot = new File("C:\\Users\\Asus\\Resort_Management_System");
+//
+//        DefaultMutableTreeNode root = new DefaultMutableTreeNode(fileRoot);
+//        DefaultTreeModel model = new DefaultTreeModel(root);
+//
+//        File[] subItems = fileRoot.listFiles();
+//        for (File file : subItems) {
+//            if (!file.isDirectory()) {
+//                root.add(new DefaultMutableTreeNode(file));
+//            } else {
+//                
+//            }
+//        }
+//
+//        this.jTree1.setModel(model);
+//    }
+    
+    void addNodes(DefaultMutableTreeNode curTop, File dir) {
+        
+    String curPath = dir.getPath();
+    DefaultMutableTreeNode curDir = new DefaultMutableTreeNode(curPath);
+    if (curTop != null) { // should only be null at root
+      curTop.add(curDir);
+    }
+    Vector ol = new Vector();
+    String[] tmp = dir.list();
+    for (int i = 0; i < tmp.length; i++)
+      ol.addElement(tmp[i]);
+    Collections.sort(ol, String.CASE_INSENSITIVE_ORDER);
+    File f;
+    Vector files = new Vector();
+    // Make two passes, one for Dirs and one for Files. This is #1.
+    for (int i = 0; i < ol.size(); i++) {
+      String thisObject = (String) ol.elementAt(i);
+      String newPath;
+      if (curPath.equals("."))
+        newPath = thisObject;
+      else
+        newPath = curPath + File.separator + thisObject;
+      if ((f = new File(newPath)).isDirectory())
+        addNodes(curDir, f);
+      else
+        files.addElement(thisObject);
+    }
+    // Pass two: for files.
+    for (int fnum = 0; fnum < files.size(); fnum++)
+      curDir.add(new DefaultMutableTreeNode(files.elementAt(fnum)));
+    
+    DefaultTreeModel model = new DefaultTreeModel(curDir);
+    this.jTree1.setModel(model);
+  }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSplitPane SplitPane;
     private javax.swing.JButton btnLogin;
@@ -218,6 +300,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTree jTree1;
     private javax.swing.JPanel workArea;
     // End of variables declaration//GEN-END:variables
 }

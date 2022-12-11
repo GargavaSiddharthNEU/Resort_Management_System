@@ -13,6 +13,10 @@ import java.util.ArrayList;
 public class SouvenirDirectory {
     ArrayList<Souvenir> souvenirDirectory;
 
+    public SouvenirDirectory() {
+        this.souvenirDirectory = new ArrayList<Souvenir>();
+    }
+    
     public ArrayList<Souvenir> getSouvenirDirectory() {
         return souvenirDirectory;
     }

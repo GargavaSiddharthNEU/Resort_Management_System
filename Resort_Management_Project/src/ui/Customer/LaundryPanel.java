@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class LaundryPanel extends javax.swing.JPanel {
 
@@ -216,10 +216,10 @@ public class LaundryPanel extends javax.swing.JPanel {
                 populateRequestTable();
                 
             } else {
-                JOptionPane.showMessageDialog(this, "Choose a valid Laundry category for booking");
+                JOptionPane.showMessageDialog(this, "Enter valid number of clothes values for booking Laundry");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Choose a valid Laundry category for booking");
+            JOptionPane.showMessageDialog(this, "Enter valid number of clothes values for booking Laundry");
         }
     }//GEN-LAST:event_bookLaundryBtnActionPerformed
 
@@ -239,7 +239,7 @@ public class LaundryPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Choose a valid Laundry category for booking");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, "Choose a valid Laundry category for booking");
         }
     }//GEN-LAST:event_viewPriceBtnActionPerformed
 
