@@ -26,4 +26,8 @@ public class LaundryWorkRequestDirectory {
         this.laundryWorkRequestList = laundryWorkRequestList;
     }
     
+    public void updateLaundryWorkRequest(LaundryWorkRequest laundryWRequest, int index) {
+        this.laundryWorkRequestList.set(index, laundryWRequest);
+    }
+    
 }

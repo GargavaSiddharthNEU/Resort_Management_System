@@ -5,8 +5,11 @@
 package ui.VehicleBooking;
 
 import Business.EcoSystem;
+import Business.Email.EmailNotification;
+import Business.Email.EmailTest;
 import Business.FoodandBev.Menu.FBItem;
 import Business.TransactionHistory.CustomerTransaction;
+import Business.User.User;
 import Business.WorkRequest.FoodBevWorkRequest;
 import Business.WorkRequest.VehicleWorkRequest;
 import java.util.ArrayList;
@@ -17,14 +20,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author siddh
  */
-public class ManageRequestsPanel extends javax.swing.JPanel {
+public class ManageVehicleRequestsPanel extends javax.swing.JPanel {
 
     EcoSystem system;
 
     /**
      * Creates new form ManageRequests
      */
-    public ManageRequestsPanel(EcoSystem system) {
+    public ManageVehicleRequestsPanel(EcoSystem system) {
         initComponents();
 
         this.system = system;
@@ -53,7 +56,7 @@ public class ManageRequestsPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for (VehicleWorkRequest vehicleWRequest : pendingVehicleRequest) {
 
-            Object[] newRow = new Object[8];
+            Object[] newRow = new Object[9];
             newRow[0] = vehicleWRequest;
             newRow[1] = vehicleWRequest.getVehicleDetails().getVehicleNumber();
             newRow[2] = vehicleWRequest.getVehicleDetails().getVehicleName();
@@ -61,7 +64,8 @@ public class ManageRequestsPanel extends javax.swing.JPanel {
             newRow[4] = vehicleWRequest.getVehicleDetails().getSeater();
             newRow[5] = vehicleWRequest.getVehicleDetails().getPrice();
             newRow[6] = vehicleWRequest.getNumberOfHours();
-            newRow[7] = vehicleWRequest.getStatus();
+            newRow[7] = vehicleWRequest.getBookingDate();
+            newRow[8] = vehicleWRequest.getStatus();
 
             model.addRow(newRow);
         }
@@ -70,7 +74,7 @@ public class ManageRequestsPanel extends javax.swing.JPanel {
         modelNon_Pending.setRowCount(0);
         for (VehicleWorkRequest vehicleWRequest : non_pendingVehicleRequest) {
 
-            Object[] newRow = new Object[8];
+            Object[] newRow = new Object[9];
             newRow[0] = vehicleWRequest;
             newRow[1] = vehicleWRequest.getVehicleDetails().getVehicleNumber();
             newRow[2] = vehicleWRequest.getVehicleDetails().getVehicleName();
@@ -78,7 +82,8 @@ public class ManageRequestsPanel extends javax.swing.JPanel {
             newRow[4] = vehicleWRequest.getVehicleDetails().getSeater();
             newRow[5] = vehicleWRequest.getVehicleDetails().getPrice();
             newRow[6] = vehicleWRequest.getNumberOfHours();
-            newRow[7] = vehicleWRequest.getStatus();
+            newRow[7] = vehicleWRequest.getBookingDate();
+            newRow[8] = vehicleWRequest.getStatus();
 
             modelNon_Pending.addRow(newRow);
         }
@@ -143,17 +148,17 @@ public class ManageRequestsPanel extends javax.swing.JPanel {
 
         tblVehicleRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "User ID", "Vehicle Number", "Vehicle Name", "Category", "Seater", "Price per hour", "Number of hours", "Status"
+                "User ID", "Vehicle Number", "Vehicle Name", "Category", "Seater", "Price per hour", "No of hours", "Date", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -164,17 +169,17 @@ public class ManageRequestsPanel extends javax.swing.JPanel {
 
         tblVehicleConfirmed.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "User ID", "Vehicle Number", "Vehicle Name", "Category", "Seater", "Price per hour", "Number of hours", "Status"
+                "User ID", "Vehicle Number", "Vehicle Name", "Category", "Seater", "Price per hour", "No of hours", "Date", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -202,37 +207,36 @@ public class ManageRequestsPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(482, 482, 482))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(228, 228, 228)
-                .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(267, 267, 267))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)
+                        .addComponent(btnReject, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1018, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2)))
+                .addContainerGap(16, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(440, 440, 440))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnApprove)
                     .addComponent(btnReject))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -244,18 +248,26 @@ public class ManageRequestsPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Please select a row to approve.");
                 return;
             }
+            
             DefaultTableModel model = (DefaultTableModel) tblVehicleRequests.getModel();
             VehicleWorkRequest selectedVehicleWorkRequest = (VehicleWorkRequest) model.getValueAt(selectedRowIndex, 0);
             updateWorkRequestStatus(selectedVehicleWorkRequest, "Approved");
             CustomerTransaction ct = new CustomerTransaction();
-
+            //User definition for email notif
+            User getUser = system.getUserDirectory().getUserById(selectedVehicleWorkRequest.getUserId());
+            
             float vehiclebooking_finalprice = selectedVehicleWorkRequest.getNumberOfHours() * selectedVehicleWorkRequest.getVehicleDetails().getPrice();
             ct.setUserId(selectedVehicleWorkRequest.getUserId());
-            ct.setFacilityUsed("Vehicle Booking");
+            ct.setFacilityUsed("Vehicle Booked - " + selectedVehicleWorkRequest.getVehicleDetails().getVehicleName() + " for " + selectedVehicleWorkRequest.getNumberOfHours() + " hours");
             ct.setPrice(vehiclebooking_finalprice);
             system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
-            JOptionPane.showMessageDialog(this, "Request approved successfully");
+            //email notification
+            new EmailNotification().SendEmailOfNotification(getUser, "Vehicle");
+            
+            
+            JOptionPane.showMessageDialog(this, "Request approved successfully and email notification sent");
             populateVehicleRequestTable();
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }

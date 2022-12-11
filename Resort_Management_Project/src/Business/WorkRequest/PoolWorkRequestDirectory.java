@@ -26,4 +26,8 @@ public class PoolWorkRequestDirectory {
         this.poolWorkRequestList = poolWorkRequestList;
     }
     
+     public void updatePoolWorkRequest(PoolWorkRequest poolWRequest, int index) {
+        this.poolWorkRequestList.set(index, poolWRequest);
+    }
+    
 }

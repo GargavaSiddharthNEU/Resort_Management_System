@@ -37,4 +37,15 @@ public class FBItemDirectory {
         this.fbItemDirectoryList.set(index, fb);
     }
     
+    public FBItem getItemByName(String itemName) {
+
+        FBItem selectedItem = new FBItem();
+        for (FBItem item : fbItemDirectoryList) {
+            if (item.getFbName().equals(itemName)) {
+                selectedItem = item;
+                break;
+            }
+        }
+        return selectedItem;
+    }
 }

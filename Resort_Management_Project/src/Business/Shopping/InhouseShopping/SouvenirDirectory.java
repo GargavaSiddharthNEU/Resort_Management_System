@@ -13,6 +13,10 @@ import java.util.ArrayList;
 public class SouvenirDirectory {
     ArrayList<Souvenir> souvenirDirectory;
 
+    public SouvenirDirectory() {
+        this.souvenirDirectory = new ArrayList<Souvenir>();
+    }
+    
     public ArrayList<Souvenir> getSouvenirDirectory() {
         return souvenirDirectory;
     }
@@ -33,4 +37,15 @@ public class SouvenirDirectory {
         this.souvenirDirectory.set(index, sv);
     }
     
+    public Souvenir getSouvenirByName(String souvenirName) {
+
+        Souvenir selectedSouvenir = new Souvenir();
+        for (Souvenir souvenir : souvenirDirectory) {
+            if (souvenir.getSouvenirName().equals(souvenirName)) {
+                selectedSouvenir = souvenir;
+                break;
+            }
+        }
+        return selectedSouvenir;
+    }
 }
