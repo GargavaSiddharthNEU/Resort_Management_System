@@ -5,7 +5,9 @@
 package ui.LaundryBooking;
 
 import Business.EcoSystem;
+import Business.Email.EmailNotification;
 import Business.TransactionHistory.CustomerTransaction;
+import Business.User.User;
 import Business.WorkRequest.LaundryWorkRequest;
 import Business.WorkRequest.PoolWorkRequest;
 import java.util.ArrayList;
@@ -211,12 +213,19 @@ public class ManageLaundryRequestsPanel extends javax.swing.JPanel {
             LaundryWorkRequest selectedLaundryWorkRequest = (LaundryWorkRequest) model.getValueAt(selectedRowIndex, 0);
             updateWorkRequestStatus(selectedLaundryWorkRequest, "Approved");
             CustomerTransaction ct = new CustomerTransaction();
+            
+            //User definition for email notif
+            User getUser = system.getUserDirectory().getUserById(selectedLaundryWorkRequest.getUserId());
 
             float laundrybooking_finalprice = selectedLaundryWorkRequest.getNumberOfClothes() * selectedLaundryWorkRequest.getLaundryDetails().getPrice();
             ct.setUserId(selectedLaundryWorkRequest.getUserId());
             ct.setFacilityUsed("Laundry Booked for category - " + selectedLaundryWorkRequest.getLaundryDetails().getCategory() + " for " + selectedLaundryWorkRequest.getNumberOfClothes() + " clothes");
             ct.setPrice(laundrybooking_finalprice);
             system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
+            
+            //email notification
+            new EmailNotification().SendEmailOfNotification(getUser, "Laundry");
+            
             JOptionPane.showMessageDialog(this, "Request approved successfully");
             populateLaundryRequestTable();
         } catch (Exception e) {
