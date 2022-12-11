@@ -25,6 +25,7 @@ public class ShopPanel extends javax.swing.JPanel {
     public ShopPanel(EcoSystem system) {
         initComponents();
         this.system = system;
+        showSouvenirData();
     }
     
     private void resetShopData() {
@@ -115,8 +116,8 @@ public class ShopPanel extends javax.swing.JPanel {
 
                 Object[] newRow = new Object[3];
                 newRow[0] = sv;
-                newRow[2] = sv.getSouvenirName();
-                newRow[3] = sv.getPrice();
+                newRow[1] = sv.getSouvenirName();
+                newRow[2] = sv.getPrice();
 
                 model.addRow(newRow);
             }

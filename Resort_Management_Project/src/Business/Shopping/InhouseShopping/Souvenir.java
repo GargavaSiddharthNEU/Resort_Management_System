@@ -9,6 +9,7 @@ package Business.Shopping.InhouseShopping;
  * @author siddh
  */
 public class Souvenir {
+
     String souvenirId;
     String souvenirName;
     Double price;
@@ -36,6 +37,9 @@ public class Souvenir {
     public void setPrice(Double price) {
         this.price = price;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return souvenirId;
+    }
 }

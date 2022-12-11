@@ -26,6 +26,7 @@ public class MenuPanel extends javax.swing.JPanel {
     public MenuPanel(EcoSystem system) {
         initComponents();
         this.system = system;
+        showMenuData();
     }
     
     private void resetMenuData() {
