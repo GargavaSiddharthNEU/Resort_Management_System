@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class LaundryPanel extends javax.swing.JPanel {
 

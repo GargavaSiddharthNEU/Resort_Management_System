@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class ShopPanel extends javax.swing.JPanel {
 

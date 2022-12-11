@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Asus
+ * @author Subbu
  */
 public class PoolBookingPanel extends javax.swing.JPanel {
 
