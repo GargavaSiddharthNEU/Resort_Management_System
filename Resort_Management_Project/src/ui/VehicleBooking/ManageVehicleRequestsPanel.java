@@ -253,6 +253,7 @@ public class ManageVehicleRequestsPanel extends javax.swing.JPanel {
             VehicleWorkRequest selectedVehicleWorkRequest = (VehicleWorkRequest) model.getValueAt(selectedRowIndex, 0);
             updateWorkRequestStatus(selectedVehicleWorkRequest, "Approved");
             CustomerTransaction ct = new CustomerTransaction();
+            //User definition for email notif
             User getUser = system.getUserDirectory().getUserById(selectedVehicleWorkRequest.getUserId());
             
             float vehiclebooking_finalprice = selectedVehicleWorkRequest.getNumberOfHours() * selectedVehicleWorkRequest.getVehicleDetails().getPrice();
@@ -260,12 +261,10 @@ public class ManageVehicleRequestsPanel extends javax.swing.JPanel {
             ct.setFacilityUsed("Vehicle Booked - " + selectedVehicleWorkRequest.getVehicleDetails().getVehicleName() + " for " + selectedVehicleWorkRequest.getNumberOfHours() + " hours");
             ct.setPrice(vehiclebooking_finalprice);
             system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
+            //email notification
             new EmailNotification().SendEmailOfNotification(getUser, "Vehicle");
-
-//              EmailTest etest = new EmailTest();
-//              etest.setupServerProperties();
-//              etest.draftEmail(getUser,"Vehicle");
-//              etest.sendEmail();
+            
+            
             JOptionPane.showMessageDialog(this, "Request approved successfully and email notification sent");
             populateVehicleRequestTable();
 

@@ -249,20 +249,19 @@ public class ManagePoolPanel extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        try{
+        try {
             boolean validation1 = areDataFieldsEmpty();
             boolean validation2 = areDataTypesCorrect();
 
-            Float price = Float.parseFloat(txtPrice.getText());
-
             if (!validation1 && !validation2) {
                 String poolName = txtPoolName.getText();
+                Float price = Float.parseFloat(txtPrice.getText());
 
                 if (!poolDetailsExistence()) {
                     Pool pool = system.getPoolDirectory().addPoolDetails();
                     pool.setPoolName(poolName);
                     pool.setPrice(price);
-                    
+
                     JOptionPane.showMessageDialog(this, "Pool name- " + poolName + " added");
                     resetPoolData();
                     populateTable();
@@ -273,7 +272,7 @@ public class ManagePoolPanel extends javax.swing.JPanel {
             } else {
                 validationErrorMessagesDialog(validation1, validation2);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_btnAddActionPerformed

@@ -29,52 +29,6 @@ public class EmailNotification {
     //user - user details, string facility
     public void SendEmailOfNotification(User userDetails, String facility) {
         // Get system properties
-//        Properties properties = System.getProperties();
-//
-//        // Setup mail server
-//        properties.put("mail.smtp.auth", "true");
-//        properties.put("mail.smtp.starttls.enable", "true");
-////        properties.put("mail.smtp.starttls.required", "true");
-//        properties.put("mail.smtp.host", "smtp.gmail.com");
-////        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-////        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
-//        properties.put("mail.smtp.port", "587");
-//
-//        String senderEmailID = "team35aed@gmail.com";
-//        String password = "aqggzumssumykhgw";
-//        // Get the default Session object.
-//        Session session = Session.getDefaultInstance(properties, new Authenticator() {
-//            @Override
-//            protected PasswordAuthentication getPasswordAuthentication() {
-//                return new PasswordAuthentication(senderEmailID, password);
-//            }
-//        });
-//
-//        try {
-//            // Create a default MimeMessage object.
-//            MimeMessage message = new MimeMessage(session);
-//
-//            // Set From: header field of the header.
-//            message.setFrom(new InternetAddress(senderEmailID));
-//
-//            // Set To: header field of the header.
-//            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-////            System.out.println(new InternetAddress(userDetails.getEmailId()));
-//
-//            // Set Subject: header field
-//            message.setSubject("Facility Confirmed for : " );
-//
-//            message.setText("Hi, \nThis is a message on behalf of our resort. Your appointment has been confirmed for "
-//                    + facility + " facility."
-//                    + "\n\n We appreciate your cooperation! Looking forwarding to seeing you!"
-//                    + "\n\n Thanks");
-//
-//            // Send message
-//            Transport.send(message);
-//
-//        } catch (MessagingException mex) {
-//            mex.printStackTrace();
-//        }
 
         final String username = "team35aed@gmail.com";
 
@@ -99,9 +53,7 @@ public class EmailNotification {
         // TLS Port
         props.put("mail.smtp.port", "587");
 
-        // creating Session instance referenced to
-        // Authenticator object to pass in
-        // Session.getInstance argument
+
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
 
