@@ -8,6 +8,10 @@ import Business.EcoSystem;
 import Business.TransactionHistory.CustomerTransaction;
 import Business.User.User;
 import Business.WorkRequest.FoodBevWorkRequest;
+import Business.WorkRequest.GameWorkRequest;
+import Business.WorkRequest.LaundryWorkRequest;
+import Business.WorkRequest.PoolWorkRequest;
+import Business.WorkRequest.VehicleWorkRequest;
 
 /**
  *
@@ -18,13 +22,28 @@ public class AdminAnalyticsPanel extends javax.swing.JPanel {
     /**
      * Creates new form AdminAnalyticsPanel
      */
-    
     EcoSystem system;
-    
+
     public AdminAnalyticsPanel(EcoSystem system) {
         initComponents();
         this.system = system;
         
+        customerTxt.setEditable(false);
+        foodManagerTxt.setEditable(false);
+        foodManagerTxt1.setEditable(false);
+        gameInchargeTxt.setEditable(false);
+        gameInchargeTxt1.setEditable(false);
+        janitorTxt.setEditable(false);
+        laundryManagerTxt.setEditable(false);
+        laundryManagerTxt1.setEditable(false);
+        poolInchargeTxt.setEditable(false);
+        poolInchargeTxt1.setEditable(false);
+        shopManagerTxt.setEditable(false);
+        totalRequestTxt.setEditable(false);
+        totalRevenueTxt.setEditable(false);
+        vehicleContractorTxt.setEditable(false);
+        vehicleContractorTxt1.setEditable(false);
+
         populateFields();
     }
 
@@ -98,11 +117,11 @@ public class AdminAnalyticsPanel extends javax.swing.JPanel {
 
         jLabel15.setText("Total requests:");
 
-        jLabel16.setText("Vehicle Contractors:");
+        jLabel16.setText("Vehicle:");
 
-        jLabel17.setText("Food Managers:");
+        jLabel17.setText("Food and Beverages:");
 
-        jLabel18.setText("Gaming Incharges:");
+        jLabel18.setText("Gaming:");
 
         jLabel19.setText("Laundry Managers:");
 
@@ -133,23 +152,31 @@ public class AdminAnalyticsPanel extends javax.swing.JPanel {
                         .addGap(118, 118, 118)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel16)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                                        .addComponent(vehicleContractorTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel17)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(foodManagerTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(jLabel16)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(vehicleContractorTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(jLabel17)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(foodManagerTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel18)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(gameInchargeTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(gameInchargeTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel20)
-                                    .addComponent(jLabel19))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel20)
+                                            .addComponent(jLabel19)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel4)
+                                        .addGap(51, 51, 51)
+                                        .addComponent(totalRevenueTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(24, 24, 24)))
                                 .addGap(45, 45, 45)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(laundryManagerTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,12 +210,7 @@ public class AdminAnalyticsPanel extends javax.swing.JPanel {
                                     .addComponent(janitorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(laundryManagerTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(poolInchargeTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(shopManagerTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(344, 344, 344)
-                        .addComponent(jLabel4)
-                        .addGap(51, 51, 51)
-                        .addComponent(totalRevenueTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(shopManagerTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(1060, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -262,11 +284,11 @@ public class AdminAnalyticsPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(gameInchargeTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(totalRevenueTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(228, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -308,9 +330,9 @@ public class AdminAnalyticsPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateFields() {
-        
+
         try {
-            
+
             int customerCount = 0;
             int vehicleContractorCount = 0;
             int foodManagerCount = 0;
@@ -320,43 +342,80 @@ public class AdminAnalyticsPanel extends javax.swing.JPanel {
             int laundryManagerCount = 0;
             int janitorCount = 0;
             int totalRequestCount = 0;
-            int pendingRequestCount = 0;
+            int vehiclePendingRequestCount = 0;
+            int foodBevPendingRequestCount = 0;
+            int poolPendingRequestCount = 0;
+            int gamePendingRequestCount = 0;
+            int laundryPendingRequestCount = 0;
             float totalRevenue = 0;
-            String indemandFacility = "";
-            String mostProfitableFacility = "";
-            
-            for(User user : system.getUserDirectory().getUsers()) {
-                
-                if(user.getRoleType().equals("Customer")) {
+
+            for (User user : system.getUserDirectory().getUsers()) {
+
+                if (user.getRoleType().equals("Customer")) {
                     customerCount += 1;
-                } else if(user.getRoleType().equals("Vehicle Contractor")) {
+                } else if (user.getRoleType().equals("Vehicle Contractor")) {
                     vehicleContractorCount += 1;
-                } else if(user.getRoleType().equals("Pool Incharge")) {
+                } else if (user.getRoleType().equals("Pool Incharge")) {
                     poolInchargeCount += 1;
-                } else if(user.getRoleType().equals("Gaming Incharge")) {
+                } else if (user.getRoleType().equals("Gaming Incharge")) {
                     gameInchargeCount += 1;
-                } else if(user.getRoleType().equals("Laundry Manager")) {
+                } else if (user.getRoleType().equals("Laundry Manager")) {
                     laundryManagerCount += 1;
-                } else if(user.getRoleType().equals("Janitor")) {
+                } else if (user.getRoleType().equals("Janitor")) {
                     janitorCount += 1;
-                } else if(user.getRoleType().equals("Food Manager")) {
+                } else if (user.getRoleType().equals("Food Manager")) {
                     foodManagerCount += 1;
-                } else if(user.getRoleType().equals("Shop Manager")) {
+                } else if (user.getRoleType().equals("Shop Manager")) {
                     shopManagerCount += 1;
                 }
             }
-            
-            for(CustomerTransaction transaction : system.getCustomerTransactionDirectory().getCustomerTransactionList()) {
-            
-                totalRevenue += transaction.getPrice();   
+
+            for (CustomerTransaction transaction : system.getCustomerTransactionDirectory().getCustomerTransactionList()) {
+
+                totalRevenue += transaction.getPrice();
             }
-            
-            totalRequestCount = system.getFoodBevWorkRequestDirectory().getFoodBevWorkRequestList().size() +
-                    system.getGameWorkRequestDirectory().getGameWorkRequestList().size() +
-                    system.getLaundryWorkRequestDirectory().getLaundryWorkRequestList().size() +
-                    system.getPoolWorkRequestDirectory().getPoolWorkRequestList().size() +
-                    system.getVehicleWorkRequestDirectory().getVehicleWorkRequestList().size();
-            
+
+            totalRequestCount = system.getFoodBevWorkRequestDirectory().getFoodBevWorkRequestList().size()
+                    + system.getGameWorkRequestDirectory().getGameWorkRequestList().size()
+                    + system.getLaundryWorkRequestDirectory().getLaundryWorkRequestList().size()
+                    + system.getPoolWorkRequestDirectory().getPoolWorkRequestList().size()
+                    + system.getVehicleWorkRequestDirectory().getVehicleWorkRequestList().size();
+
+            for (VehicleWorkRequest vehicleWorkRequest : system.getVehicleWorkRequestDirectory().getVehicleWorkRequestList()) {
+
+                if (vehicleWorkRequest.getStatus().equals("Pending")) {
+                    vehiclePendingRequestCount += 1;
+                }
+            }
+
+            for (FoodBevWorkRequest foodBevWorkRequest : system.getFoodBevWorkRequestDirectory().getFoodBevWorkRequestList()) {
+
+                if (foodBevWorkRequest.getStatus().equals("Pending")) {
+                    foodBevPendingRequestCount += 1;
+                }
+            }
+
+            for (PoolWorkRequest poolWorkRequest : system.getPoolWorkRequestDirectory().getPoolWorkRequestList()) {
+
+                if (poolWorkRequest.getStatus().equals("Pending")) {
+                    poolPendingRequestCount += 1;
+                }
+            }
+
+            for (GameWorkRequest gameWorkRequest : system.getGameWorkRequestDirectory().getGameWorkRequestList()) {
+
+                if (gameWorkRequest.getStatus().equals("Pending")) {
+                    gamePendingRequestCount += 1;
+                }
+            }
+
+            for (LaundryWorkRequest laundryWorkRequest : system.getLaundryWorkRequestDirectory().getLaundryWorkRequestList()) {
+
+                if (laundryWorkRequest.getStatus().equals("Pending")) {
+                    laundryPendingRequestCount += 1;
+                }
+            }
+
             customerTxt.setText(String.valueOf(customerCount));
             vehicleContractorTxt.setText(String.valueOf(vehicleContractorCount));
             poolInchargeTxt.setText(String.valueOf(poolInchargeCount));
@@ -367,9 +426,14 @@ public class AdminAnalyticsPanel extends javax.swing.JPanel {
             shopManagerTxt.setText(String.valueOf(shopManagerCount));
             totalRevenueTxt.setText(String.valueOf(totalRevenue));
             totalRequestTxt.setText(String.valueOf(totalRequestCount));
-            
-        } catch(Exception e) {
-            
+            vehicleContractorTxt1.setText(String.valueOf(vehiclePendingRequestCount));
+            poolInchargeTxt1.setText(String.valueOf(poolPendingRequestCount));
+            gameInchargeTxt1.setText(String.valueOf(gamePendingRequestCount));
+            laundryManagerTxt1.setText(String.valueOf(laundryPendingRequestCount));
+            foodManagerTxt1.setText(String.valueOf(foodBevPendingRequestCount));
+
+        } catch (Exception e) {
+
         }
     }
 }

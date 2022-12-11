@@ -5,8 +5,10 @@
 package ui.FoodandBev;
 
 import Business.EcoSystem;
+import Business.Email.EmailNotification;
 import Business.FoodandBev.Menu.FBItem;
 import Business.TransactionHistory.CustomerTransaction;
+import Business.User.User;
 import Business.WorkRequest.FoodBevWorkRequest;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -18,49 +20,75 @@ import javax.swing.table.DefaultTableModel;
  */
 public class WorkRequest extends javax.swing.JPanel {
 
-        private EcoSystem system;
+    private EcoSystem system;
+
     /**
      * Creates new form WorkRequest
      */
     public WorkRequest(EcoSystem system) {
         initComponents();
         this.system = system;
-        populateWorkRequestTable("Pending");
-        populateWorkRequestTable("ApprovedOrReject");
+        populateWorkRequestTable();
     }
-    
-    void populateWorkRequestTable(String status) {
-        DefaultTableModel model = new DefaultTableModel();
-        if(status.equals("Pending")) {
-            model = (DefaultTableModel) jTable1.getModel();
-        }
-        else {
-            model = (DefaultTableModel) jTable2.getModel();
-        }
-        model.setRowCount(0);
-            for (FoodBevWorkRequest fbr : system.getFoodBevWorkRequestDirectory().getFoodBevWorkRequestList()) {
-                if(fbr.getStatus().equals(status)) {
-                    ArrayList<String> foodItemNames = new ArrayList<String>();
-                    long foodItemsTotalPrice = 0;
-                    for(FBItem fb: fbr.getFbItemDetails()) {
-                        foodItemNames.add(fb.getFbName());
-                        foodItemsTotalPrice+=fb.getPrice();
-                    }
-                    Object[] newRow = new Object[3];
-                    newRow[0] = fbr;
-                    newRow[1] = foodItemNames;
-                    newRow[2] = foodItemsTotalPrice;
-                    newRow[3] = fbr.getStatus();
-                    model.addRow(newRow);
-                }
+
+    public void populateWorkRequestTable() {
+        ArrayList<FoodBevWorkRequest> pendingFoodBevRequest = new ArrayList<FoodBevWorkRequest>();
+        ArrayList<FoodBevWorkRequest> non_pendingFoodBevRequest = new ArrayList<FoodBevWorkRequest>();
+
+        for (FoodBevWorkRequest foodBevWorkRequest : system.getFoodBevWorkRequestDirectory().getFoodBevWorkRequestList()) {
+            if (foodBevWorkRequest.getStatus().equals("Pending")) {
+                pendingFoodBevRequest.add(foodBevWorkRequest);
+            } else {
+                non_pendingFoodBevRequest.add(foodBevWorkRequest);
             }
+        }
+
+        populate_based_on_status(pendingFoodBevRequest, non_pendingFoodBevRequest);
     }
-    
+
+    public void populate_based_on_status(ArrayList<FoodBevWorkRequest> pendingFoodBevRequest, ArrayList<FoodBevWorkRequest> non_pendingFoodBevRequest) {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+
+        for (FoodBevWorkRequest pfbr : pendingFoodBevRequest) {
+            ArrayList<String> foodItemNames = new ArrayList<String>();
+            long foodItemsTotalPrice = 0;
+            for (FBItem fb : pfbr.getFbItemDetails()) {
+                foodItemNames.add(fb.getFbName());
+                foodItemsTotalPrice += fb.getPrice();
+            }
+            Object[] newRow = new Object[4];
+            newRow[0] = pfbr;
+            newRow[1] = foodItemNames.toString().replace("[", "").replace("]", "");
+            newRow[2] = foodItemsTotalPrice;
+            newRow[3] = pfbr.getStatus();
+            model.addRow(newRow);
+        }
+        
+        DefaultTableModel modelNon_Pending = (DefaultTableModel) jTable2.getModel();
+        modelNon_Pending.setRowCount(0);
+
+        for (FoodBevWorkRequest pfbr : non_pendingFoodBevRequest) {
+            ArrayList<String> foodItemNames = new ArrayList<String>();
+            long foodItemsTotalPrice = 0;
+            for (FBItem fb : pfbr.getFbItemDetails()) {
+                foodItemNames.add(fb.getFbName());
+                foodItemsTotalPrice += fb.getPrice();
+            }
+            Object[] newRow = new Object[4];
+            newRow[0] = pfbr;
+            newRow[1] = foodItemNames.toString().replace("[", "").replace("]", "");
+            newRow[2] = foodItemsTotalPrice;
+            newRow[3] = pfbr.getStatus();
+            modelNon_Pending.addRow(newRow);
+        }
+    }
+
     void updateWorkRequestStatus(FoodBevWorkRequest selectedFoodBevWorkRequest, String status) {
         selectedFoodBevWorkRequest.setStatus(status);
         int index = 0;
-        for(FoodBevWorkRequest fbr : system.getFoodBevWorkRequestDirectory().getFoodBevWorkRequestList()) {
-            if(fbr.getUserId().equals(selectedFoodBevWorkRequest.getUserId())) {
+        for (FoodBevWorkRequest fbr : system.getFoodBevWorkRequestDirectory().getFoodBevWorkRequestList()) {
+            if (fbr.getUserId().equals(selectedFoodBevWorkRequest.getUserId())) {
                 system.getFoodBevWorkRequestDirectory().updateFoodBevWorkRequest(fbr, index);
                 break;
             }
@@ -134,13 +162,13 @@ public class WorkRequest extends javax.swing.JPanel {
                         .addGap(238, 238, 238)
                         .addComponent(btnApprove)
                         .addGap(18, 18, 18)
-                        .addComponent(btnReject))
+                        .addComponent(btnReject)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(130, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,23 +201,24 @@ public class WorkRequest extends javax.swing.JPanel {
         ct.setPrice(selectedFoodBevWorkRequest.getToatlPrice());
         system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
         JOptionPane.showMessageDialog(this, "Order approved successfully");
-        populateWorkRequestTable("Pending");
-        populateWorkRequestTable("ApprovedOrReject");
+        populateWorkRequestTable();
+        
+        User getUser = system.getUserDirectory().getUserById(selectedFoodBevWorkRequest.getUserId());
+        new EmailNotification().SendEmailOfNotification(getUser, "Food and Beverage");
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = jTable1.getSelectedRow();
         if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row to approve.");
+            JOptionPane.showMessageDialog(this, "Please select a row to reject.");
             return;
         }
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         FoodBevWorkRequest selectedFoodBevWorkRequest = (FoodBevWorkRequest) model.getValueAt(selectedRowIndex, 0);
         updateWorkRequestStatus(selectedFoodBevWorkRequest, "Rejected");
         JOptionPane.showMessageDialog(this, "Order rejected successfully");
-        populateWorkRequestTable("Pending");
-        populateWorkRequestTable("ApprovedOrReject");
+        populateWorkRequestTable();
     }//GEN-LAST:event_btnRejectActionPerformed
 
 

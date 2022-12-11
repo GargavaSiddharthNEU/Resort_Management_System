@@ -1,6 +1,7 @@
 package ui.FoodandBev;
 
 import Business.EcoSystem;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -52,7 +53,12 @@ public class FoodandBevPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setText("Logout");
+        jButton3.setText("Home");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,6 +131,16 @@ public class FoodandBevPanel extends javax.swing.JPanel {
         WorkRequest workRequest = new WorkRequest(system);
         jSplitPane1.setRightComponent(workRequest);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        try {
+            HomeFoodandBevPanel homeVehiclePanel = new HomeFoodandBevPanel();
+            jSplitPane1.setRightComponent(homeVehiclePanel);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

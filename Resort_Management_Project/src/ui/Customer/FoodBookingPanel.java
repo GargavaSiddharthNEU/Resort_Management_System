@@ -8,10 +8,14 @@ import Business.EcoSystem;
 import Business.FoodandBev.Menu.FBItem;
 import Business.User.User;
 import Business.WorkRequest.FoodBevWorkRequest;
+import java.awt.Color;
+import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.MutableComboBoxModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -47,6 +51,7 @@ public class FoodBookingPanel extends javax.swing.JPanel {
         itemPriceTxt.setEditable(false);
 
         populateRequestTable();
+        formatRows();
 
     }
 
@@ -346,6 +351,7 @@ public class FoodBookingPanel extends javax.swing.JPanel {
 
                 model.setRowCount(0);
                 clearFields();
+                formatRows();
                 
             } else {
                 JOptionPane.showMessageDialog(this, "Choose valid Food and Beverage items for booking");
@@ -413,5 +419,21 @@ public class FoodBookingPanel extends javax.swing.JPanel {
         itemPriceTxt.setText("");
         itemCategoryTxt.setText("");
         
+    }
+    
+    private void formatRows() {
+
+        DefaultTableModel model = (DefaultTableModel) orderStatusTable.getModel();
+
+        orderStatusTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                String status = String.valueOf(model.getValueAt(row, 2));
+                c.setBackground(status.equals("Pending") ? Color.WHITE : status.equals("Approved") ? Color.GREEN : Color.RED);
+                return c;
+            }
+        });
+
     }
 }

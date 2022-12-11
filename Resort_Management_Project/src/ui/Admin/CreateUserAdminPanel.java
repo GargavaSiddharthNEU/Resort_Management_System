@@ -230,6 +230,7 @@ public class CreateUserAdminPanel extends javax.swing.JPanel {
             user.setRoleType(roleType);
             user.setAge(a);
             user.setPhoneNumber(pn);
+            user.setAddress(address);
             user.setEmailId(emailAddress);
             user.setUserId(userId);
 

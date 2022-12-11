@@ -162,28 +162,32 @@ public class ManageJanitorSchedule extends javax.swing.JPanel {
 
         try {
 
-            Schedule newSchedule = new Schedule();
+            if (roomNumberTxt.getText() != null && timeTxt.getText() != null) {
+                Schedule newSchedule = new Schedule();
 
-            UUID uuid = UUID.randomUUID();
-            String randomUUIDString = uuid.toString();
+                UUID uuid = UUID.randomUUID();
+                String randomUUIDString = uuid.toString();
 
-            String roomNumber = roomNumberTxt.getText();
-            String cleaningTime = timeTxt.getText();
+                String roomNumber = roomNumberTxt.getText();
+                String cleaningTime = timeTxt.getText();
 
-            Date selectedDate = dateTxt.getDate();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-            String strDate = dateFormat.format(selectedDate);
-            Date cleaningDate = dateFormat.parse(strDate);
+                Date selectedDate = dateTxt.getDate();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                String strDate = dateFormat.format(selectedDate);
+                Date cleaningDate = dateFormat.parse(strDate);
 
-            newSchedule.setScheduleId(randomUUIDString);
-            newSchedule.setRoomNumber(roomNumber);
-            newSchedule.setDate(cleaningDate);
-            newSchedule.setTime(cleaningTime);
-            newSchedule.setStatus("Pending");
+                newSchedule.setScheduleId(randomUUIDString);
+                newSchedule.setRoomNumber(roomNumber);
+                newSchedule.setDate(cleaningDate);
+                newSchedule.setTime(cleaningTime);
+                newSchedule.setStatus("Pending");
 
-            system.getJanitorScheduleDirectory().getScheduleDirectory().add(newSchedule);
-            JOptionPane.showMessageDialog(this, "Schedule added successfully");
-            populateTable();
+                system.getJanitorScheduleDirectory().getScheduleDirectory().add(newSchedule);
+                JOptionPane.showMessageDialog(this, "Schedule added successfully");
+                populateTable();
+            } else {
+                JOptionPane.showMessageDialog(this, "Give valid inputs for adding a schedule");
+            }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Give valid inputs for adding a schedule");
@@ -208,22 +212,22 @@ public class ManageJanitorSchedule extends javax.swing.JPanel {
     private void populateTable() {
 
         try {
-        DefaultTableModel model = (DefaultTableModel) scheduleTable.getModel();
-        model.setRowCount(0);
+            DefaultTableModel model = (DefaultTableModel) scheduleTable.getModel();
+            model.setRowCount(0);
 
-        for (Schedule schedule : system.getJanitorScheduleDirectory().getScheduleDirectory()) {
+            for (Schedule schedule : system.getJanitorScheduleDirectory().getScheduleDirectory()) {
 
-            Object[] newRow = new Object[6];
-            newRow[0] = schedule.getScheduleId();
-            newRow[1] = schedule.getRoomNumber();
-            newRow[2] = schedule.getDate();
-            newRow[3] = schedule.getStatus();
-            if (schedule.getUser() != null) {
-                newRow[4] = (schedule.getUser().getFirstName() + " " + schedule.getUser().getLastName());
-                newRow[5] = schedule.getUser().getUserId();
+                Object[] newRow = new Object[6];
+                newRow[0] = schedule.getScheduleId();
+                newRow[1] = schedule.getRoomNumber();
+                newRow[2] = schedule.getDate();
+                newRow[3] = schedule.getStatus();
+                if (schedule.getUser() != null) {
+                    newRow[4] = (schedule.getUser().getFirstName() + " " + schedule.getUser().getLastName());
+                    newRow[5] = schedule.getUser().getUserId();
+                }
+                model.addRow(newRow);
             }
-            model.addRow(newRow);
-        }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }

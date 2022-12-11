@@ -10,8 +10,12 @@ import Business.TransactionHistory.CustomerTransaction;
 import Business.User.User;
 import Business.WorkRequest.GameWorkRequest;
 import Business.WorkRequest.VehicleWorkRequest;
+import java.awt.Color;
+import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,6 +33,8 @@ public class ManageGameRequestsPanel extends javax.swing.JPanel {
         
         this.system = system;
         populateGameRequestTable();
+        formatRows();
+        
     }
     
     public void populateGameRequestTable() {
@@ -234,6 +240,8 @@ public class ManageGameRequestsPanel extends javax.swing.JPanel {
             
             JOptionPane.showMessageDialog(this, "Request approved successfully and email notification sent");
             populateGameRequestTable();
+            formatRows();
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -252,6 +260,8 @@ public class ManageGameRequestsPanel extends javax.swing.JPanel {
             updateWorkRequestStatus(selectedGameWorkRequest, "Rejected");
             JOptionPane.showMessageDialog(this, "Request rejected successfully");
             populateGameRequestTable();
+            formatRows();
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -267,4 +277,20 @@ public class ManageGameRequestsPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblGameConfirmed;
     private javax.swing.JTable tblGameRequests;
     // End of variables declaration//GEN-END:variables
+
+    private void formatRows() {
+
+        DefaultTableModel model = (DefaultTableModel) tblGameConfirmed.getModel();
+
+        tblGameConfirmed.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                String status = String.valueOf(model.getValueAt(row, 6));
+                c.setBackground(status.equals("Pending") ? Color.WHITE : status.equals("Approved") ? Color.GREEN : Color.RED);
+                return c;
+            }
+        });
+
+    }
 }

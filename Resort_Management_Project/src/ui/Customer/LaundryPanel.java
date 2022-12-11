@@ -8,9 +8,13 @@ import Business.EcoSystem;
 import Business.HouseKeeping.LaundryFacility.Laundry;
 import Business.User.User;
 import Business.WorkRequest.LaundryWorkRequest;
+import java.awt.Color;
+import java.awt.Component;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.MutableComboBoxModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -43,6 +47,7 @@ public class LaundryPanel extends javax.swing.JPanel {
         priceTxt.setEditable(false);
 
         populateRequestTable();
+        formatRows();
     }
 
     /**
@@ -214,6 +219,7 @@ public class LaundryPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Laundry booking request sent to Manager");
                 populateRequestTable();
                 clearFields();
+                formatRows();
 
             } else {
                 JOptionPane.showMessageDialog(this, "Enter valid number of clothes values for booking Laundry");
@@ -290,6 +296,22 @@ public class LaundryPanel extends javax.swing.JPanel {
         categoryNameTxt.setText("");
         priceTxt.setText("");
         numberOfClothesTxt.setText("");
+
+    }
+    
+    private void formatRows() {
+
+        DefaultTableModel model = (DefaultTableModel) laundryWorkQueueTable.getModel();
+
+        laundryWorkQueueTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                String status = String.valueOf(model.getValueAt(row, 4));
+                c.setBackground(status.equals("Pending") ? Color.WHITE : status.equals("Approved") ? Color.GREEN : Color.RED);
+                return c;
+            }
+        });
 
     }
 }

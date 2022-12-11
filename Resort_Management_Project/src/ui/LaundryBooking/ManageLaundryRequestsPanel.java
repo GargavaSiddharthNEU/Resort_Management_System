@@ -10,8 +10,12 @@ import Business.TransactionHistory.CustomerTransaction;
 import Business.User.User;
 import Business.WorkRequest.LaundryWorkRequest;
 import Business.WorkRequest.PoolWorkRequest;
+import java.awt.Color;
+import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,6 +33,8 @@ public class ManageLaundryRequestsPanel extends javax.swing.JPanel {
         
         this.system = system;
         populateLaundryRequestTable();
+        formatRows();
+        
     }
     
     public void populateLaundryRequestTable() {
@@ -228,6 +234,8 @@ public class ManageLaundryRequestsPanel extends javax.swing.JPanel {
             
             JOptionPane.showMessageDialog(this, "Request approved successfully and email notification sent");
             populateLaundryRequestTable();
+            formatRows();
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -246,6 +254,8 @@ public class ManageLaundryRequestsPanel extends javax.swing.JPanel {
             updateWorkRequestStatus(selectedLaundryWorkRequest, "Rejected");
             JOptionPane.showMessageDialog(this, "Request rejected successfully");
             populateLaundryRequestTable();
+            formatRows();
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -261,4 +271,21 @@ public class ManageLaundryRequestsPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblLaundryConfirmed;
     private javax.swing.JTable tblLaundryRequests;
     // End of variables declaration//GEN-END:variables
+
+
+    private void formatRows() {
+
+        DefaultTableModel model = (DefaultTableModel) tblLaundryConfirmed.getModel();
+
+        tblLaundryConfirmed.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                String status = String.valueOf(model.getValueAt(row, 4));
+                c.setBackground(status.equals("Pending") ? Color.WHITE : status.equals("Approved") ? Color.GREEN : Color.RED);
+                return c;
+            }
+        });
+
+    }
 }
