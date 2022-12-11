@@ -6,11 +6,13 @@ package ui;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
+import javax.swing.JFrame;
 import java.io.File;
 import java.util.Collections;
 import java.util.Vector;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+
 
 /**
  *
@@ -28,8 +30,10 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-        File fileRoot = new File("C:\\Users\\Asus\\Resort_Management_System\\Resort_Management_Project\\src");
+
+        File fileRoot = new File("C:\\Users\\siddh\\OneDrive\\Documents\\Final AED Project\\Resort_Management_System\\Resort_Management_Project\\src");
 
         DefaultMutableTreeNode root = new DefaultMutableTreeNode(fileRoot);
         
