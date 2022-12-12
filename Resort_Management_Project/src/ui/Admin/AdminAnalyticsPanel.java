@@ -90,6 +90,8 @@ public class AdminAnalyticsPanel extends javax.swing.JPanel {
         poolInchargeTxt1 = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(153, 255, 204));
+
         jLabel1.setText("Total number of Users");
 
         jLabel3.setText("Pending requests");

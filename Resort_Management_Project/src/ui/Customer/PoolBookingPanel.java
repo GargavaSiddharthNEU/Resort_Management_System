@@ -77,6 +77,10 @@ public class PoolBookingPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         poolNameTxt = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(204, 255, 255));
+        setLayout(null);
 
         viewPoolBtn.setText("View Details");
         viewPoolBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -84,14 +88,28 @@ public class PoolBookingPanel extends javax.swing.JPanel {
                 viewPoolBtnActionPerformed(evt);
             }
         });
+        add(viewPoolBtn);
+        viewPoolBtn.setBounds(668, 122, 120, 29);
 
         jLabel6.setText("Price per hour:");
+        add(jLabel6);
+        jLabel6.setBounds(537, 207, 95, 21);
+        add(priceTxt);
+        priceTxt.setBounds(650, 203, 160, 29);
 
         jLabel7.setText("Select Pool Booking Date:");
+        add(jLabel7);
+        jLabel7.setBounds(22, 301, 172, 21);
 
         jLabel8.setText("Enter Number of Hours:");
+        add(jLabel8);
+        jLabel8.setBounds(423, 297, 156, 21);
+        add(numberOfHoursTxt);
+        numberOfHoursTxt.setBounds(597, 293, 160, 29);
 
         poolBookingDateTxt.setDateFormatString("MM/dd/yyyy");
+        add(poolBookingDateTxt);
+        poolBookingDateTxt.setBounds(212, 293, 160, 29);
 
         bookPoolBtn.setText("Book Pool");
         bookPoolBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +117,8 @@ public class PoolBookingPanel extends javax.swing.JPanel {
                 bookPoolBtnActionPerformed(evt);
             }
         });
+        add(bookPoolBtn);
+        bookPoolBtn.setBounds(818, 273, 137, 50);
 
         poolWorkQueueTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,99 +145,34 @@ public class PoolBookingPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(poolWorkQueueTable);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        add(jScrollPane1);
+        jScrollPane1.setBounds(22, 410, 933, 257);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Book A Swimming Pool");
+        add(jLabel1);
+        jLabel1.setBounds(380, 50, 290, 32);
+
+        add(choosePoolDropdown);
+        choosePoolDropdown.setBounds(473, 122, 148, 29);
 
         jLabel2.setText("Choose a pool of your choice:");
+        add(jLabel2);
+        jLabel2.setBounds(236, 130, 197, 21);
 
         jLabel9.setText("Pool Booking Status");
+        add(jLabel9);
+        jLabel9.setBounds(412, 371, 133, 21);
 
         jLabel3.setText("Pool Name:");
+        add(jLabel3);
+        jLabel3.setBounds(179, 207, 77, 21);
+        add(poolNameTxt);
+        poolNameTxt.setBounds(274, 203, 160, 29);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(383, 383, 383)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(214, 214, 214)
-                                .addComponent(jLabel2)
-                                .addGap(40, 40, 40)
-                                .addComponent(choosePoolDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47)
-                                .addComponent(viewPoolBtn))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(poolBookingDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(51, 51, 51)
-                                    .addComponent(jLabel8)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(numberOfHoursTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bookPoolBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 933, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(poolNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(103, 103, 103)
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(priceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(412, 412, 412)
-                        .addComponent(jLabel9)))
-                .addContainerGap(176, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(choosePoolDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(viewPoolBtn))))
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(poolNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(priceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addComponent(poolBookingDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel8)
-                                .addComponent(numberOfHoursTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel9)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(bookPoolBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(133, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pool.png"))); // NOI18N
+        add(jLabel4);
+        jLabel4.setBounds(250, 20, 520, 370);
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewPoolBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPoolBtnActionPerformed
@@ -284,6 +239,7 @@ public class PoolBookingPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

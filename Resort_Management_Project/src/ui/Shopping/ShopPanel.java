@@ -14,11 +14,13 @@ import javax.swing.table.DefaultTableModel;
  * @author manikantareddythikkavarapu
  */
 public class ShopPanel extends javax.swing.JPanel {
+
     private EcoSystem system;
 
     String mainValidationString = "";
     String validationString1 = "";
     String validationString2 = "";
+
     /**
      * Creates new form ShopPanel
      */
@@ -27,7 +29,7 @@ public class ShopPanel extends javax.swing.JPanel {
         this.system = system;
         showSouvenirData();
     }
-    
+
     private void resetShopData() {
         txtId.setText("");
         txtName.setText("");
@@ -82,18 +84,18 @@ public class ShopPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please enter only numbers for these fields: " + mainValidationString);
         }
     }
-    
+
     private boolean souvenirDetailsExistence() {
         boolean exist = false;
-            for (Souvenir sv : system.getSouvenirDirectory().getSouvenirDirectory()) {
-                if (txtId.getText().equals(sv.getSouvenirId())) {
-                    exist = true;
-                    break;
-                }
+        for (Souvenir sv : system.getSouvenirDirectory().getSouvenirDirectory()) {
+            if (txtId.getText().equals(sv.getSouvenirId())) {
+                exist = true;
+                break;
             }
+        }
         return exist;
     }
-    
+
     private Souvenir setSouvenirData() {
         String souvenirId = txtId.getText();
         String name = txtName.getText();
@@ -106,21 +108,21 @@ public class ShopPanel extends javax.swing.JPanel {
 
         return sv;
     }
-    
+
     private void showSouvenirData() {
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
 
-            for (Souvenir sv : system.getSouvenirDirectory().getSouvenirDirectory()) {
+        for (Souvenir sv : system.getSouvenirDirectory().getSouvenirDirectory()) {
 
-                Object[] newRow = new Object[3];
-                newRow[0] = sv;
-                newRow[1] = sv.getSouvenirName();
-                newRow[2] = sv.getPrice();
+            Object[] newRow = new Object[3];
+            newRow[0] = sv;
+            newRow[1] = sv.getSouvenirName();
+            newRow[2] = sv.getPrice();
 
-                model.addRow(newRow);
-            }
+            model.addRow(newRow);
+        }
     }
 
     /**
@@ -146,6 +148,9 @@ public class ShopPanel extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 204));
+        setLayout(null);
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -159,7 +164,12 @@ public class ShopPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        add(jScrollPane1);
+        jScrollPane1.setBounds(166, 57, 452, 150);
+
         jLabel1.setText("Shop");
+        add(jLabel1);
+        jLabel1.setBounds(368, 22, 30, 17);
 
         jButton1.setText("View");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -167,6 +177,8 @@ public class ShopPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1);
+        jButton1.setBounds(313, 237, 72, 23);
 
         jButton2.setText("Delete");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -174,18 +186,32 @@ public class ShopPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2);
+        jButton2.setBounds(403, 237, 72, 23);
+        add(txtId);
+        txtId.setBounds(395, 314, 107, 23);
 
         jLabel2.setText("Id");
+        add(jLabel2);
+        jLabel2.setBounds(313, 317, 11, 17);
 
         jLabel3.setText("Name");
+        add(jLabel3);
+        jLabel3.setBounds(313, 358, 34, 17);
 
         jLabel4.setText("Price");
+        add(jLabel4);
+        jLabel4.setBounds(313, 399, 29, 17);
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
             }
         });
+        add(txtName);
+        txtName.setBounds(395, 355, 107, 23);
+        add(txtPrice);
+        txtPrice.setBounds(395, 396, 107, 23);
 
         jButton3.setText("Create");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -193,6 +219,8 @@ public class ShopPanel extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
+        add(jButton3);
+        jButton3.setBounds(313, 449, 72, 23);
 
         jButton4.setText("Update");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -200,71 +228,8 @@ public class ShopPanel extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(368, 368, 368)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(313, 313, 313)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(48, 48, 48)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(182, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addContainerGap(328, Short.MAX_VALUE))
-        );
+        add(jButton4);
+        jButton4.setBounds(403, 449, 73, 23);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -273,62 +238,75 @@ public class ShopPanel extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        boolean validation1 = areDataFieldsEmpty();
-        boolean validation2 = areDataTypesCorrect();
+        try {
+            boolean validation1 = areDataFieldsEmpty();
+            boolean validation2 = areDataTypesCorrect();
 
-        if (!validation1 && !validation2) {
-            String souvenirId = txtId.getText();
-            if (!souvenirDetailsExistence()) {
-                system.getSouvenirDirectory().addNewSouvenirData(setSouvenirData());
-                JOptionPane.showMessageDialog(this, "New souvenir data with souvenirId id : " + souvenirId + " created");
-                resetShopData();
-                showSouvenirData();
+            if (!validation1 && !validation2) {
+                String souvenirId = txtId.getText();
+                if (!souvenirDetailsExistence()) {
+                    system.getSouvenirDirectory().addNewSouvenirData(setSouvenirData());
+                    JOptionPane.showMessageDialog(this, "New souvenir data with souvenirId id : " + souvenirId + " created");
+                    resetShopData();
+                    showSouvenirData();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Souvenir details already exists with the souvenirId : " + souvenirId);
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Souvenir details already exists with the souvenirId : " + souvenirId);
+                validationErrorMessagesDialog(validation1, validation2);
             }
-        } else {
-            validationErrorMessagesDialog(validation1, validation2);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = jTable1.getSelectedRow();
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
-            return;
+        try {
+            int selectedRowIndex = jTable1.getSelectedRow();
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+                return;
+            }
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            Souvenir selectedSouvenir = (Souvenir) model.getValueAt(selectedRowIndex, 0);
+            system.getSouvenirDirectory().deleteSouvenirData(selectedSouvenir);
+            JOptionPane.showMessageDialog(this, "Selected souvenir data deleted");
+            resetShopData();
+            showSouvenirData();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        Souvenir selectedSouvenir = (Souvenir) model.getValueAt(selectedRowIndex, 0);
-        system.getSouvenirDirectory().deleteSouvenirData(selectedSouvenir);
-        JOptionPane.showMessageDialog(this, "Selected souvenir data deleted");
-        resetShopData();
-        showSouvenirData();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int index = jTable1.getSelectedRow();
+        try {
+            int index = jTable1.getSelectedRow();
 
-        if (index < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
-            return;
+            if (index < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
+                return;
+            }
+
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            Souvenir selectedSouvenirItem = (Souvenir) model.getValueAt(index, 0);
+
+            txtId.setText(selectedSouvenirItem.getSouvenirId());
+            txtName.setText(selectedSouvenirItem.getSouvenirName());
+            txtPrice.setText(String.valueOf(selectedSouvenirItem.getPrice()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        Souvenir selectedSouvenirItem = (Souvenir) model.getValueAt(index, 0);
-
-        txtId.setText(selectedSouvenirItem.getSouvenirId());
-        txtName.setText(selectedSouvenirItem.getSouvenirName());
-        txtPrice.setText(String.valueOf(selectedSouvenirItem.getPrice()));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        String souvenirId = txtId.getText();
-        boolean validation1 = areDataFieldsEmpty();
+        try {
+            String souvenirId = txtId.getText();
+            boolean validation1 = areDataFieldsEmpty();
 
-        if (!validation1) {
+            if (!validation1) {
                 if (souvenirDetailsExistence()) {
                     Souvenir updatedSouvenirData = setSouvenirData();
                     int index = 0;
@@ -337,16 +315,19 @@ public class ShopPanel extends javax.swing.JPanel {
                             system.getSouvenirDirectory().updateExistingSouvenirData(updatedSouvenirData, index);
                             break;
                         }
-                    index++;
-                }
-        JOptionPane.showMessageDialog(this, "Existing souvenir details with souvenir id : " + souvenirId + " updated");
-        resetShopData();
-        showSouvenirData();
+                        index++;
+                    }
+                    JOptionPane.showMessageDialog(this, "Existing souvenir details with souvenir id : " + souvenirId + " updated");
+                    resetShopData();
+                    showSouvenirData();
                 } else {
                     JOptionPane.showMessageDialog(this, "You can't update the souvenir details since menu with souvenir id : " + souvenirId + " doesn't exist");
                 }
-        } else {
-            validationErrorMessagesDialog(validation1, false);
+            } else {
+                validationErrorMessagesDialog(validation1, false);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 

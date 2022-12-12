@@ -14,12 +14,13 @@ import javax.swing.table.DefaultTableModel;
  * @author manikantareddythikkavarapu
  */
 public class MenuPanel extends javax.swing.JPanel {
+
     private EcoSystem system;
 
     String mainValidationString = "";
     String validationString1 = "";
     String validationString2 = "";
-    
+
     /**
      * Creates new form MenuPanel
      */
@@ -28,41 +29,45 @@ public class MenuPanel extends javax.swing.JPanel {
         this.system = system;
         showMenuData();
     }
-    
+
     private void resetMenuData() {
-        jTextField1.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
+        try {
+            jTextField1.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     public boolean areDataFieldsEmpty() {
-        validationString1 = "";
-        if (jTextField1.getText().isEmpty()) {
-            validationString1 += "Id, ";
-        }
-        if (jTextField3.getText().isEmpty()) {
-            validationString1 += "Name, ";
-        }
-        if (jTextField4.getText() == null) {
-            validationString1 += "Price, ";
-        }
-        return isNotValid(validationString1);
+            validationString1 = "";
+            if (jTextField1.getText().isEmpty()) {
+                validationString1 += "Id, ";
+            }
+            if (jTextField3.getText().isEmpty()) {
+                validationString1 += "Name, ";
+            }
+            if (jTextField4.getText() == null) {
+                validationString1 += "Price, ";
+            }
+            return isNotValid(validationString1);
     }
 
     public boolean areDataTypesCorrect() {
-        validationString2 = "";
-        if (!validateDoubleDataType(jTextField4.getText())) {
-            validationString2 += "Price, ";
-        }
-        return isNotValid(validationString2);
+            validationString2 = "";
+            if (!validateDoubleDataType(jTextField4.getText())) {
+                validationString2 += "Price, ";
+            }
+            return isNotValid(validationString2);
     }
 
     public boolean isNotValid(String str) {
-        if (str.equals("")) {
-            return false;
-        } else {
-            return true;
-        }
+            if (str.equals("")) {
+                return false;
+            } else {
+                return true;
+            }
     }
 
     public boolean validateDoubleDataType(String str) {
@@ -75,46 +80,46 @@ public class MenuPanel extends javax.swing.JPanel {
     }
 
     public void validationErrorMessagesDialog(boolean validation1, boolean validation2) {
-        if (validation1) {
-            mainValidationString = validationString1;
-            JOptionPane.showMessageDialog(this, "Please update the data for these fields: " + mainValidationString);
-        } else if (validation2) {
-            mainValidationString = validationString2;
-            JOptionPane.showMessageDialog(this, "Please enter only numbers for these fields: " + mainValidationString);
-        }
+            if (validation1) {
+                mainValidationString = validationString1;
+                JOptionPane.showMessageDialog(this, "Please update the data for these fields: " + mainValidationString);
+            } else if (validation2) {
+                mainValidationString = validationString2;
+                JOptionPane.showMessageDialog(this, "Please enter only numbers for these fields: " + mainValidationString);
+            }
     }
-    
+
     private boolean menuDetailsExistence() {
-        String menuId = jTextField1.getText();
-        boolean exist = false;
+            String menuId = jTextField1.getText();
+            boolean exist = false;
             for (FBItem fb : system.getFBItemDirectory().getFbItemDirectoryList()) {
                 if (menuId.equals(fb.getFbItemId())) {
                     exist = true;
                     break;
                 }
             }
-        return exist;
+            return exist;
     }
-    
+
     private FBItem setMenuData() {
-        String menuId = jTextField1.getText();
-        String category = String.valueOf(jComboBox1.getSelectedItem());
-        String name = jTextField3.getText();
-        double price = Double.parseDouble(jTextField4.getText());
+            String menuId = jTextField1.getText();
+            String category = String.valueOf(jComboBox1.getSelectedItem());
+            String name = jTextField3.getText();
+            double price = Double.parseDouble(jTextField4.getText());
 
-        FBItem fb = new FBItem();
-        fb.setFbItemId(menuId);
-        fb.setCategory(category);
-        fb.setFbName(name);
-        fb.setPrice(price);
+            FBItem fb = new FBItem();
+            fb.setFbItemId(menuId);
+            fb.setCategory(category);
+            fb.setFbName(name);
+            fb.setPrice(price);
 
-        return fb;
+            return fb;
     }
-    
+
     private void showMenuData() {
 
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
 
             for (FBItem fb : system.getFBItemDirectory().getFbItemDirectoryList()) {
 
@@ -153,6 +158,9 @@ public class MenuPanel extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 204));
+        setLayout(null);
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -166,24 +174,45 @@ public class MenuPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        add(jScrollPane1);
+        jScrollPane1.setBounds(20, 61, 657, 267);
+
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("5 Star Hotel");
+        add(jLabel1);
+        jLabel1.setBounds(0, 14, 1088, 17);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
+        add(jTextField1);
+        jTextField1.setBounds(270, 410, 117, 23);
+        add(jTextField3);
+        jTextField3.setBounds(270, 490, 117, 23);
+        add(jTextField4);
+        jTextField4.setBounds(270, 530, 117, 23);
 
         jLabel2.setText("Id");
+        add(jLabel2);
+        jLabel2.setBounds(170, 410, 52, 17);
 
         jLabel3.setText("Category");
+        add(jLabel3);
+        jLabel3.setBounds(170, 450, 52, 17);
 
         jLabel4.setText("Name");
+        add(jLabel4);
+        jLabel4.setBounds(170, 490, 34, 17);
 
         jLabel5.setText("Price");
+        add(jLabel5);
+        jLabel5.setBounds(170, 530, 29, 17);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Appetizer", "Main Course", "Dessert", "Beverage" }));
+        add(jComboBox1);
+        jComboBox1.setBounds(270, 450, 117, 23);
 
         jButton1.setText("Create");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -191,6 +220,8 @@ public class MenuPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1);
+        jButton1.setBounds(190, 590, 72, 23);
 
         jButton2.setText("Update");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -198,6 +229,8 @@ public class MenuPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2);
+        jButton2.setBounds(270, 590, 73, 23);
 
         jButton3.setText("View");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -205,6 +238,8 @@ public class MenuPanel extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
+        add(jButton3);
+        jButton3.setBounds(189, 340, 72, 23);
 
         jButton4.setText("Delete");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -212,78 +247,8 @@ public class MenuPanel extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4)
-                            .addComponent(jComboBox1, 0, 117, Short.MAX_VALUE))))
-                .addGap(226, 226, 226))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4)))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(197, Short.MAX_VALUE))
-        );
+        add(jButton4);
+        jButton4.setBounds(279, 340, 72, 23);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -292,63 +257,76 @@ public class MenuPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        boolean validation1 = areDataFieldsEmpty();
-        boolean validation2 = areDataTypesCorrect();
+        try {
+            boolean validation1 = areDataFieldsEmpty();
+            boolean validation2 = areDataTypesCorrect();
 
-        if (!validation1 && !validation2) {
-            String menuId = jTextField1.getText();
-            if (!menuDetailsExistence()) {
-                system.getFBItemDirectory().addNewMenuData(setMenuData());
-                JOptionPane.showMessageDialog(this, "New menu data with menuId id : " + menuId + " created");
-                resetMenuData();
-                showMenuData();
+            if (!validation1 && !validation2) {
+                String menuId = jTextField1.getText();
+                if (!menuDetailsExistence()) {
+                    system.getFBItemDirectory().addNewMenuData(setMenuData());
+                    JOptionPane.showMessageDialog(this, "New menu data with menuId id : " + menuId + " created");
+                    resetMenuData();
+                    showMenuData();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Menu details already exists with the menuId : " + menuId);
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Menu details already exists with the menuId : " + menuId);
+                validationErrorMessagesDialog(validation1, validation2);
             }
-        } else {
-            validationErrorMessagesDialog(validation1, validation2);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        int index = jTable1.getSelectedRow();
+        try {
+            int index = jTable1.getSelectedRow();
 
-        if (index < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
-            return;
+            if (index < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
+                return;
+            }
+
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            FBItem selectedMenuItem = (FBItem) model.getValueAt(index, 0);
+
+            jTextField1.setText(selectedMenuItem.getFbItemId());
+            jComboBox1.setSelectedItem(selectedMenuItem.getCategory());
+            jTextField3.setText(selectedMenuItem.getFbName());
+            jTextField4.setText(String.valueOf(selectedMenuItem.getPrice()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        FBItem selectedMenuItem = (FBItem) model.getValueAt(index, 0);
-
-        jTextField1.setText(selectedMenuItem.getFbItemId());
-        jComboBox1.setSelectedItem(selectedMenuItem.getCategory());
-        jTextField3.setText(selectedMenuItem.getFbName());
-        jTextField4.setText(String.valueOf(selectedMenuItem.getPrice()));
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = jTable1.getSelectedRow();
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
-            return;
+        try {
+            int selectedRowIndex = jTable1.getSelectedRow();
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+                return;
+            }
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            FBItem selectedMenuItem = (FBItem) model.getValueAt(selectedRowIndex, 0);
+            system.getFBItemDirectory().deleteMenuData(selectedMenuItem);
+            JOptionPane.showMessageDialog(this, "Selected menu data deleted");
+            resetMenuData();
+            showMenuData();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        FBItem selectedMenuItem = (FBItem) model.getValueAt(selectedRowIndex, 0);
-        system.getFBItemDirectory().deleteMenuData(selectedMenuItem);
-        JOptionPane.showMessageDialog(this, "Selected menu data deleted");
-        resetMenuData();
-        showMenuData();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String menuId = jTextField1.getText();
-        boolean validation1 = areDataFieldsEmpty();
+        try {
+            String menuId = jTextField1.getText();
+            boolean validation1 = areDataFieldsEmpty();
 
-        if (!validation1) {
+            if (!validation1) {
                 if (menuDetailsExistence()) {
                     FBItem updatedMenuData = setMenuData();
                     int index = 0;
@@ -357,16 +335,19 @@ public class MenuPanel extends javax.swing.JPanel {
                             system.getFBItemDirectory().updateExistingMenuData(updatedMenuData, index);
                             break;
                         }
-                    index++;
-                }
-                JOptionPane.showMessageDialog(this, "Existing menu details with menu id : " + menuId + " updated");
-                resetMenuData();
-                showMenuData();
+                        index++;
+                    }
+                    JOptionPane.showMessageDialog(this, "Existing menu details with menu id : " + menuId + " updated");
+                    resetMenuData();
+                    showMenuData();
                 } else {
                     JOptionPane.showMessageDialog(this, "You can't update the menu details since menu with menu id : " + menuId + " doesn't exist");
                 }
-        } else {
-            validationErrorMessagesDialog(validation1, false);
+            } else {
+                validationErrorMessagesDialog(validation1, false);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
