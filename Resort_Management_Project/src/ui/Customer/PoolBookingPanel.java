@@ -170,7 +170,7 @@ public class PoolBookingPanel extends javax.swing.JPanel {
         add(poolNameTxt);
         poolNameTxt.setBounds(274, 203, 160, 29);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Pictures\\pool.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pool.png"))); // NOI18N
         add(jLabel4);
         jLabel4.setBounds(250, 20, 520, 370);
     }// </editor-fold>//GEN-END:initComponents

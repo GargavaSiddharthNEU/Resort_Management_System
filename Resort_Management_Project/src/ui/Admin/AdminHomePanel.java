@@ -92,7 +92,7 @@ public class AdminHomePanel extends javax.swing.JPanel {
                     .addComponent(manageUserBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(homeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,7 +124,7 @@ public class AdminHomePanel extends javax.swing.JPanel {
         jPanel2.add(jLabel3);
         jLabel3.setBounds(423, 112, 190, 21);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Pictures\\admin.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/admin.png"))); // NOI18N
         jPanel2.add(jLabel1);
         jLabel1.setBounds(60, -20, 1010, 1080);
 

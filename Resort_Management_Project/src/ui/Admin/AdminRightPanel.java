@@ -42,7 +42,7 @@ public class AdminRightPanel extends javax.swing.JPanel {
         add(jLabel3);
         jLabel3.setBounds(423, 112, 190, 21);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Pictures\\admin.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/admin.png"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(60, -20, 1010, 1080);
     }// </editor-fold>//GEN-END:initComponents

@@ -163,7 +163,7 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         userRightPanel.add(jLabel4);
         jLabel4.setBounds(194, 244, 270, 21);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Pictures\\customer-home.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/customer-home.png"))); // NOI18N
         userRightPanel.add(jLabel6);
         jLabel6.setBounds(0, 0, 1250, 920);
 

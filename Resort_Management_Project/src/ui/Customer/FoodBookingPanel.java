@@ -213,7 +213,7 @@ public class FoodBookingPanel extends javax.swing.JPanel {
         add(removeItemBtn);
         removeItemBtn.setBounds(728, 463, 126, 39);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Pictures\\food.png")); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/food.png"))); // NOI18N
         add(jLabel8);
         jLabel8.setBounds(0, -70, 1470, 1060);
     }// </editor-fold>//GEN-END:initComponents

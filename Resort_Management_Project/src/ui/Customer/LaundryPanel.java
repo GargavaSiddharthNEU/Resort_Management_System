@@ -158,7 +158,7 @@ public class LaundryPanel extends javax.swing.JPanel {
         add(jLabel2);
         jLabel2.setBounds(224, 124, 224, 21);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Pictures\\laundry.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/laundry.png"))); // NOI18N
         add(jLabel4);
         jLabel4.setBounds(140, 0, 1150, 800);
     }// </editor-fold>//GEN-END:initComponents

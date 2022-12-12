@@ -170,7 +170,7 @@ public class ShopPanel extends javax.swing.JPanel {
         add(subTotalTxt);
         subTotalTxt.setBounds(839, 476, 161, 29);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Pictures\\shop.png")); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shop.png"))); // NOI18N
         add(jLabel7);
         jLabel7.setBounds(0, -30, 1410, 1140);
     }// </editor-fold>//GEN-END:initComponents

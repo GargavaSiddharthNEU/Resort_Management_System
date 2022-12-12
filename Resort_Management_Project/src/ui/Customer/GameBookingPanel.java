@@ -180,7 +180,7 @@ public class GameBookingPanel extends javax.swing.JPanel {
         add(jLabel9);
         jLabel9.setBounds(411, 385, 142, 21);
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Pictures\\game.png")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/game.png"))); // NOI18N
         add(jLabel10);
         jLabel10.setBounds(0, 0, 1010, 860);
     }// </editor-fold>//GEN-END:initComponents

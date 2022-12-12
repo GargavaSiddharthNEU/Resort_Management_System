@@ -101,7 +101,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
         add(checkoutBtn);
         checkoutBtn.setBounds(855, 657, 99, 29);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Pictures\\checkout.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/checkout.png"))); // NOI18N
         add(jLabel3);
         jLabel3.setBounds(0, -50, 1140, 850);
     }// </editor-fold>//GEN-END:initComponents
