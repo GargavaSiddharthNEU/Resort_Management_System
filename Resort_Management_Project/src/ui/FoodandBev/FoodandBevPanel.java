@@ -40,6 +40,8 @@ public class FoodandBevPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
+        jPanel1.setBackground(new java.awt.Color(153, 255, 204));
+
         jButton1.setText("Menu");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +68,7 @@ public class FoodandBevPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,6 +90,7 @@ public class FoodandBevPanel extends javax.swing.JPanel {
 
         jSplitPane1.setLeftComponent(jPanel1);
 
+        jPanel2.setBackground(new java.awt.Color(153, 255, 204));
         jPanel2.setLayout(null);
 
         jLabel1.setText("Welcome to 5 Star Hotel");
@@ -97,7 +100,7 @@ public class FoodandBevPanel extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon("/Users/manikantareddythikkavarapu/NetBeansProjects/Resort_Management_System/Resort_Management_Project/src/images/undraw_Chef_cu0r.png")); // NOI18N
         jLabel2.setText("jLabel2");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(40, 0, 650, 800);
+        jLabel2.setBounds(70, 90, 670, 630);
 
         jSplitPane1.setRightComponent(jPanel2);
 
@@ -105,7 +108,7 @@ public class FoodandBevPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 917, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

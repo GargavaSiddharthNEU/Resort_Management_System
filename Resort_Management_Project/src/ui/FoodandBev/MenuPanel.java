@@ -14,12 +14,13 @@ import javax.swing.table.DefaultTableModel;
  * @author manikantareddythikkavarapu
  */
 public class MenuPanel extends javax.swing.JPanel {
+
     private EcoSystem system;
 
     String mainValidationString = "";
     String validationString1 = "";
     String validationString2 = "";
-    
+
     /**
      * Creates new form MenuPanel
      */
@@ -28,41 +29,45 @@ public class MenuPanel extends javax.swing.JPanel {
         this.system = system;
         showMenuData();
     }
-    
+
     private void resetMenuData() {
-        jTextField1.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
+        try {
+            jTextField1.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     public boolean areDataFieldsEmpty() {
-        validationString1 = "";
-        if (jTextField1.getText().isEmpty()) {
-            validationString1 += "Id, ";
-        }
-        if (jTextField3.getText().isEmpty()) {
-            validationString1 += "Name, ";
-        }
-        if (jTextField4.getText() == null) {
-            validationString1 += "Price, ";
-        }
-        return isNotValid(validationString1);
+            validationString1 = "";
+            if (jTextField1.getText().isEmpty()) {
+                validationString1 += "Id, ";
+            }
+            if (jTextField3.getText().isEmpty()) {
+                validationString1 += "Name, ";
+            }
+            if (jTextField4.getText() == null) {
+                validationString1 += "Price, ";
+            }
+            return isNotValid(validationString1);
     }
 
     public boolean areDataTypesCorrect() {
-        validationString2 = "";
-        if (!validateDoubleDataType(jTextField4.getText())) {
-            validationString2 += "Price, ";
-        }
-        return isNotValid(validationString2);
+            validationString2 = "";
+            if (!validateDoubleDataType(jTextField4.getText())) {
+                validationString2 += "Price, ";
+            }
+            return isNotValid(validationString2);
     }
 
     public boolean isNotValid(String str) {
-        if (str.equals("")) {
-            return false;
-        } else {
-            return true;
-        }
+            if (str.equals("")) {
+                return false;
+            } else {
+                return true;
+            }
     }
 
     public boolean validateDoubleDataType(String str) {
@@ -75,46 +80,46 @@ public class MenuPanel extends javax.swing.JPanel {
     }
 
     public void validationErrorMessagesDialog(boolean validation1, boolean validation2) {
-        if (validation1) {
-            mainValidationString = validationString1;
-            JOptionPane.showMessageDialog(this, "Please update the data for these fields: " + mainValidationString);
-        } else if (validation2) {
-            mainValidationString = validationString2;
-            JOptionPane.showMessageDialog(this, "Please enter only numbers for these fields: " + mainValidationString);
-        }
+            if (validation1) {
+                mainValidationString = validationString1;
+                JOptionPane.showMessageDialog(this, "Please update the data for these fields: " + mainValidationString);
+            } else if (validation2) {
+                mainValidationString = validationString2;
+                JOptionPane.showMessageDialog(this, "Please enter only numbers for these fields: " + mainValidationString);
+            }
     }
-    
+
     private boolean menuDetailsExistence() {
-        String menuId = jTextField1.getText();
-        boolean exist = false;
+            String menuId = jTextField1.getText();
+            boolean exist = false;
             for (FBItem fb : system.getFBItemDirectory().getFbItemDirectoryList()) {
                 if (menuId.equals(fb.getFbItemId())) {
                     exist = true;
                     break;
                 }
             }
-        return exist;
+            return exist;
     }
-    
+
     private FBItem setMenuData() {
-        String menuId = jTextField1.getText();
-        String category = String.valueOf(jComboBox1.getSelectedItem());
-        String name = jTextField3.getText();
-        double price = Double.parseDouble(jTextField4.getText());
+            String menuId = jTextField1.getText();
+            String category = String.valueOf(jComboBox1.getSelectedItem());
+            String name = jTextField3.getText();
+            double price = Double.parseDouble(jTextField4.getText());
 
-        FBItem fb = new FBItem();
-        fb.setFbItemId(menuId);
-        fb.setCategory(category);
-        fb.setFbName(name);
-        fb.setPrice(price);
+            FBItem fb = new FBItem();
+            fb.setFbItemId(menuId);
+            fb.setCategory(category);
+            fb.setFbName(name);
+            fb.setPrice(price);
 
-        return fb;
+            return fb;
     }
-    
+
     private void showMenuData() {
 
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.setRowCount(0);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
 
             for (FBItem fb : system.getFBItemDirectory().getFbItemDirectoryList()) {
 
@@ -153,6 +158,7 @@ public class MenuPanel extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 204));
         setLayout(null);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -251,63 +257,76 @@ public class MenuPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        boolean validation1 = areDataFieldsEmpty();
-        boolean validation2 = areDataTypesCorrect();
+        try {
+            boolean validation1 = areDataFieldsEmpty();
+            boolean validation2 = areDataTypesCorrect();
 
-        if (!validation1 && !validation2) {
-            String menuId = jTextField1.getText();
-            if (!menuDetailsExistence()) {
-                system.getFBItemDirectory().addNewMenuData(setMenuData());
-                JOptionPane.showMessageDialog(this, "New menu data with menuId id : " + menuId + " created");
-                resetMenuData();
-                showMenuData();
+            if (!validation1 && !validation2) {
+                String menuId = jTextField1.getText();
+                if (!menuDetailsExistence()) {
+                    system.getFBItemDirectory().addNewMenuData(setMenuData());
+                    JOptionPane.showMessageDialog(this, "New menu data with menuId id : " + menuId + " created");
+                    resetMenuData();
+                    showMenuData();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Menu details already exists with the menuId : " + menuId);
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Menu details already exists with the menuId : " + menuId);
+                validationErrorMessagesDialog(validation1, validation2);
             }
-        } else {
-            validationErrorMessagesDialog(validation1, validation2);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        int index = jTable1.getSelectedRow();
+        try {
+            int index = jTable1.getSelectedRow();
 
-        if (index < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
-            return;
+            if (index < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row to be viewed");
+                return;
+            }
+
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            FBItem selectedMenuItem = (FBItem) model.getValueAt(index, 0);
+
+            jTextField1.setText(selectedMenuItem.getFbItemId());
+            jComboBox1.setSelectedItem(selectedMenuItem.getCategory());
+            jTextField3.setText(selectedMenuItem.getFbName());
+            jTextField4.setText(String.valueOf(selectedMenuItem.getPrice()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        FBItem selectedMenuItem = (FBItem) model.getValueAt(index, 0);
-
-        jTextField1.setText(selectedMenuItem.getFbItemId());
-        jComboBox1.setSelectedItem(selectedMenuItem.getCategory());
-        jTextField3.setText(selectedMenuItem.getFbName());
-        jTextField4.setText(String.valueOf(selectedMenuItem.getPrice()));
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = jTable1.getSelectedRow();
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
-            return;
+        try {
+            int selectedRowIndex = jTable1.getSelectedRow();
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+                return;
+            }
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            FBItem selectedMenuItem = (FBItem) model.getValueAt(selectedRowIndex, 0);
+            system.getFBItemDirectory().deleteMenuData(selectedMenuItem);
+            JOptionPane.showMessageDialog(this, "Selected menu data deleted");
+            resetMenuData();
+            showMenuData();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        FBItem selectedMenuItem = (FBItem) model.getValueAt(selectedRowIndex, 0);
-        system.getFBItemDirectory().deleteMenuData(selectedMenuItem);
-        JOptionPane.showMessageDialog(this, "Selected menu data deleted");
-        resetMenuData();
-        showMenuData();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String menuId = jTextField1.getText();
-        boolean validation1 = areDataFieldsEmpty();
+        try {
+            String menuId = jTextField1.getText();
+            boolean validation1 = areDataFieldsEmpty();
 
-        if (!validation1) {
+            if (!validation1) {
                 if (menuDetailsExistence()) {
                     FBItem updatedMenuData = setMenuData();
                     int index = 0;
@@ -316,16 +335,19 @@ public class MenuPanel extends javax.swing.JPanel {
                             system.getFBItemDirectory().updateExistingMenuData(updatedMenuData, index);
                             break;
                         }
-                    index++;
-                }
-                JOptionPane.showMessageDialog(this, "Existing menu details with menu id : " + menuId + " updated");
-                resetMenuData();
-                showMenuData();
+                        index++;
+                    }
+                    JOptionPane.showMessageDialog(this, "Existing menu details with menu id : " + menuId + " updated");
+                    resetMenuData();
+                    showMenuData();
                 } else {
                     JOptionPane.showMessageDialog(this, "You can't update the menu details since menu with menu id : " + menuId + " doesn't exist");
                 }
-        } else {
-            validationErrorMessagesDialog(validation1, false);
+            } else {
+                validationErrorMessagesDialog(validation1, false);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

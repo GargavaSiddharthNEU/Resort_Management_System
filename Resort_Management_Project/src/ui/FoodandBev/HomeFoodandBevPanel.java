@@ -29,6 +29,7 @@ public class HomeFoodandBevPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(153, 255, 204));
         setLayout(null);
 
         jLabel1.setText("Welcome to 5 star hotel");
@@ -38,7 +39,7 @@ public class HomeFoodandBevPanel extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon("/Users/manikantareddythikkavarapu/NetBeansProjects/Resort_Management_System/Resort_Management_Project/src/images/undraw_Chef_cu0r.png")); // NOI18N
         jLabel2.setText("jLabel2");
         add(jLabel2);
-        jLabel2.setBounds(2, -3, 800, 800);
+        jLabel2.setBounds(60, 50, 730, 610);
     }// </editor-fold>//GEN-END:initComponents
 
 
