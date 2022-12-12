@@ -10,8 +10,12 @@ import Business.FoodandBev.Menu.FBItem;
 import Business.TransactionHistory.CustomerTransaction;
 import Business.User.User;
 import Business.WorkRequest.FoodBevWorkRequest;
+import java.awt.Color;
+import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,6 +33,7 @@ public class WorkRequest extends javax.swing.JPanel {
         initComponents();
         this.system = system;
         populateWorkRequestTable();
+        formatRows();
     }
 
     public void populateWorkRequestTable() {
@@ -64,7 +69,7 @@ public class WorkRequest extends javax.swing.JPanel {
             newRow[3] = pfbr.getStatus();
             model.addRow(newRow);
         }
-        
+
         DefaultTableModel modelNon_Pending = (DefaultTableModel) jTable2.getModel();
         modelNon_Pending.setRowCount(0);
 
@@ -96,6 +101,22 @@ public class WorkRequest extends javax.swing.JPanel {
         }
     }
 
+    private void formatRows() {
+
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+
+        jTable2.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                String status = String.valueOf(model.getValueAt(row, 3));
+                c.setBackground(status.equals("Pending") ? Color.WHITE : status.equals("Approved") ? Color.GREEN : Color.RED);
+                return c;
+            }
+        });
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -112,7 +133,7 @@ public class WorkRequest extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(144, 238, 144));
+        setBackground(new java.awt.Color(153, 255, 204));
         setLayout(null);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -168,6 +189,7 @@ public class WorkRequest extends javax.swing.JPanel {
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         // TODO add your handling code here:
+        try {
         int selectedRowIndex = jTable1.getSelectedRow();
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a row to approve.");
@@ -183,13 +205,18 @@ public class WorkRequest extends javax.swing.JPanel {
         system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
         JOptionPane.showMessageDialog(this, "Order approved successfully");
         populateWorkRequestTable();
-        
+        formatRows();
+
         User getUser = system.getUserDirectory().getUserById(selectedFoodBevWorkRequest.getUserId());
         new EmailNotification().SendEmailOfNotification(getUser, "Food and Beverage");
+                } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         // TODO add your handling code here:
+        try {
         int selectedRowIndex = jTable1.getSelectedRow();
         if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please select a row to reject.");
@@ -200,6 +227,10 @@ public class WorkRequest extends javax.swing.JPanel {
         updateWorkRequestStatus(selectedFoodBevWorkRequest, "Rejected");
         JOptionPane.showMessageDialog(this, "Order rejected successfully");
         populateWorkRequestTable();
+        formatRows();
+                } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_btnRejectActionPerformed
 
 
