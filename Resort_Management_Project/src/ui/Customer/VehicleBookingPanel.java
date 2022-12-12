@@ -37,8 +37,8 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
         initComponents();
         this.system = system;
         this.user = user;
-        this.latTxt1 = latTxt;
-        this.longTxt1 = longTxt;
+        this.latTxt1 = lat;
+        this.longTxt1 = longT;
 
         MutableComboBoxModel<String> model = new DefaultComboBoxModel<String>();
 
@@ -97,9 +97,8 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        latTxt = new javax.swing.JLabel();
-        longTxt = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lat = new javax.swing.JTextField();
+        longT = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(204, 255, 255));
         setLayout(null);
@@ -225,19 +224,11 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
 
         jLabel13.setText("Longitude :");
         add(jLabel13);
-        jLabel13.setBounds(518, 402, 74, 21);
-
-        latTxt.setText("NA");
-        add(latTxt);
-        latTxt.setBounds(415, 402, 21, 21);
-
-        longTxt.setText("NA");
-        add(longTxt);
-        longTxt.setBounds(596, 402, 21, 21);
-
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/car.png"))); // NOI18N
-        add(jLabel12);
-        jLabel12.setBounds(0, 10, 1030, 900);
+        jLabel13.setBounds(570, 400, 74, 21);
+        add(lat);
+        lat.setBounds(420, 400, 130, 29);
+        add(longT);
+        longT.setBounds(650, 400, 140, 29);
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewVehicleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewVehicleBtnActionPerformed
@@ -308,8 +299,8 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
         new GMapsFrame(gMapsFrame);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private static javax.swing.JLabel latTxt1;
-    private static javax.swing.JLabel longTxt1;
+    private static javax.swing.JTextField latTxt1;
+    private static javax.swing.JTextField longTxt1;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bookVehicleBtn;
     private javax.swing.JComboBox<String> chooseVehicleDropdown;
@@ -317,7 +308,6 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -328,8 +318,8 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel latTxt;
-    private javax.swing.JLabel longTxt;
+    private javax.swing.JTextField lat;
+    private javax.swing.JTextField longT;
     private javax.swing.JTextField numberOfHoursTxt;
     private javax.swing.JTextField priceTxt;
     private com.toedter.calendar.JDateChooser vehicleBookingDateTxt;
@@ -376,8 +366,8 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
         vehicleNumberTxt.setText("");
         numberOfHoursTxt.setText("");
         vehicleBookingDateTxt.setCalendar(null);
-        latTxt.setText("NA");
-        longTxt.setText("NA");
+        latTxt1.setText("");
+        longTxt1.setText("");
     }
 
     private void formatRows() {
