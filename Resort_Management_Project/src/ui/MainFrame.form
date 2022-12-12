@@ -180,7 +180,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="WELCOME TO HOTEL MANAGEMENT"/>
+                <Property name="text" type="java.lang.String" value="WELCOME TO RESORT MANAGEMENT"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">

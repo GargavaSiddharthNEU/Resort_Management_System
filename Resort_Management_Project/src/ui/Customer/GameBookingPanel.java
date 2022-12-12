@@ -81,6 +81,10 @@ public class GameBookingPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         gameCategoryTxt = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(204, 255, 255));
+        setLayout(null);
 
         viewGameBtn.setText("View Details");
         viewGameBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -88,14 +92,28 @@ public class GameBookingPanel extends javax.swing.JPanel {
                 viewGameBtnActionPerformed(evt);
             }
         });
+        add(viewGameBtn);
+        viewGameBtn.setBounds(643, 122, 120, 29);
 
         jLabel6.setText("Price per hour:");
+        add(jLabel6);
+        jLabel6.setBounds(695, 207, 95, 21);
+        add(priceTxt);
+        priceTxt.setBounds(808, 203, 160, 29);
 
         jLabel7.setText("Select Game Booking Date:");
+        add(jLabel7);
+        jLabel7.setBounds(52, 312, 181, 21);
 
         jLabel8.setText("Enter Number of Hours:");
+        add(jLabel8);
+        jLabel8.setBounds(447, 308, 156, 21);
+        add(numberOfHoursTxt);
+        numberOfHoursTxt.setBounds(621, 304, 160, 29);
 
         gameBookingDateTxt.setDateFormatString("MM/dd/yyyy");
+        add(gameBookingDateTxt);
+        gameBookingDateTxt.setBounds(251, 304, 160, 29);
 
         bookGameBtn.setText("Book Game");
         bookGameBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +121,8 @@ public class GameBookingPanel extends javax.swing.JPanel {
                 bookGameBtnActionPerformed(evt);
             }
         });
+        add(bookGameBtn);
+        bookGameBtn.setBounds(831, 280, 137, 50);
 
         gameWorkQueueTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -129,103 +149,40 @@ public class GameBookingPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(gameWorkQueueTable);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        add(jScrollPane1);
+        jScrollPane1.setBounds(26, 424, 942, 257);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Book A Game");
+        add(jLabel1);
+        jLabel1.setBounds(410, 50, 180, 32);
+
+        add(chooseGameDropdown);
+        chooseGameDropdown.setBounds(448, 122, 148, 29);
 
         jLabel2.setText("Choose a game of your choice:");
+        add(jLabel2);
+        jLabel2.setBounds(204, 130, 204, 21);
 
         jLabel3.setText("Game Name:");
+        add(jLabel3);
+        jLabel3.setBounds(26, 207, 86, 21);
+        add(gameNameTxt);
+        gameNameTxt.setBounds(130, 203, 160, 29);
 
         jLabel4.setText("Game Category:");
+        add(jLabel4);
+        jLabel4.setBounds(348, 207, 106, 21);
+        add(gameCategoryTxt);
+        gameCategoryTxt.setBounds(472, 203, 160, 29);
 
         jLabel9.setText("Game Booking Status");
+        add(jLabel9);
+        jLabel9.setBounds(411, 385, 142, 21);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(383, 383, 383)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(178, 178, 178)
-                                .addComponent(jLabel2)
-                                .addGap(40, 40, 40)
-                                .addComponent(chooseGameDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47)
-                                .addComponent(viewGameBtn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(gameBookingDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(jLabel8)
-                                .addGap(18, 18, 18)
-                                .addComponent(numberOfHoursTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bookGameBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 942, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(gameNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58)
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(gameCategoryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(priceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(411, 411, 411)
-                        .addComponent(jLabel9)))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(chooseGameDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(viewGameBtn))))
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(gameNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(priceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(gameCategoryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addComponent(gameBookingDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel8)
-                                .addComponent(numberOfHoursTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(bookGameBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(52, 52, 52)
-                .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
-        );
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Pictures\\game.png")); // NOI18N
+        add(jLabel10);
+        jLabel10.setBounds(0, 0, 1010, 860);
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewGameBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewGameBtnActionPerformed
@@ -295,6 +252,7 @@ public class GameBookingPanel extends javax.swing.JPanel {
     private javax.swing.JTextField gameNameTxt;
     private javax.swing.JTable gameWorkQueueTable;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -32,7 +32,7 @@ public class MainFrame extends javax.swing.JFrame {
         system = dB4OUtil.retrieveSystem();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-        File fileRoot = new File("/Users/manikantareddythikkavarapu/NetBeansProjects/Resort_Management_System/Resort_Management_Project/src");
+        File fileRoot = new File("C:\\Users\\Asus\\Resort_Management_System\\Resort_Management_Project\\src");
 
         DefaultMutableTreeNode root = new DefaultMutableTreeNode(fileRoot);
         
@@ -116,7 +116,7 @@ public class MainFrame extends javax.swing.JFrame {
         workArea.setPreferredSize(new java.awt.Dimension(800, 800));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setText("WELCOME TO HOTEL MANAGEMENT");
+        jLabel2.setText("WELCOME TO RESORT MANAGEMENT");
 
         jLabel4.setText("jLabel4");
 

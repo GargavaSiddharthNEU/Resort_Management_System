@@ -71,6 +71,12 @@ public class ShopPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         subTotalTxt = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(204, 255, 255));
+        setLayout(null);
+        add(souvenirPriceTxt);
+        souvenirPriceTxt.setBounds(614, 184, 160, 29);
 
         addSouvenirBtn.setText("Add Item");
         addSouvenirBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +84,8 @@ public class ShopPanel extends javax.swing.JPanel {
                 addSouvenirBtnActionPerformed(evt);
             }
         });
+        add(addSouvenirBtn);
+        addSouvenirBtn.setBounds(814, 184, 100, 29);
 
         souvenirListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,19 +112,35 @@ public class ShopPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(souvenirListTable);
 
+        add(jScrollPane1);
+        jScrollPane1.setBounds(34, 258, 966, 195);
+
         buySouvenirBtn.setText("Buy Items");
         buySouvenirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buySouvenirBtnActionPerformed(evt);
             }
         });
+        add(buySouvenirBtn);
+        buySouvenirBtn.setBounds(898, 528, 102, 39);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Shop for Souvenirs");
+        add(jLabel1);
+        jLabel1.setBounds(390, 40, 220, 32);
 
         jLabel2.setText("Choose a Souvenir:");
+        add(jLabel2);
+        jLabel2.setBounds(200, 115, 125, 21);
+
+        add(chooseSouvenirDropdown);
+        chooseSouvenirDropdown.setBounds(343, 111, 220, 29);
 
         jLabel3.setText("Souvenir Name:");
+        add(jLabel3);
+        jLabel3.setBounds(142, 188, 104, 21);
+        add(souvenirNameTxt);
+        souvenirNameTxt.setBounds(264, 184, 160, 29);
 
         viewDetailsBtn.setText("View Details");
         viewDetailsBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +148,8 @@ public class ShopPanel extends javax.swing.JPanel {
                 viewDetailsBtnActionPerformed(evt);
             }
         });
+        add(viewDetailsBtn);
+        viewDetailsBtn.setBounds(593, 111, 120, 29);
 
         removeSouvenirBtn.setText("Remove Item");
         removeSouvenirBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -131,79 +157,22 @@ public class ShopPanel extends javax.swing.JPanel {
                 removeSouvenirBtnActionPerformed(evt);
             }
         });
+        add(removeSouvenirBtn);
+        removeSouvenirBtn.setBounds(593, 471, 126, 39);
 
         jLabel5.setText("Souvenir Price:");
+        add(jLabel5);
+        jLabel5.setBounds(500, 188, 96, 21);
 
         jLabel4.setText("Sub-Total:");
+        add(jLabel4);
+        jLabel4.setBounds(753, 480, 68, 21);
+        add(subTotalTxt);
+        subTotalTxt.setBounds(839, 476, 161, 29);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(souvenirNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(76, 76, 76)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(souvenirPriceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(addSouvenirBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buySouvenirBtn, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(removeSouvenirBtn)
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(subTotalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 966, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(186, 186, 186)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(chooseSouvenirDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(viewDetailsBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(446, 446, 446)
-                        .addComponent(jLabel1)))
-                .addContainerGap(146, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(chooseSouvenirDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewDetailsBtn))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(souvenirNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(souvenirPriceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addSouvenirBtn))
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(subTotalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(removeSouvenirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(buySouvenirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(233, Short.MAX_VALUE))
-        );
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Pictures\\shop.png")); // NOI18N
+        add(jLabel7);
+        jLabel7.setBounds(0, -30, 1410, 1140);
     }// </editor-fold>//GEN-END:initComponents
 
     private void addSouvenirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSouvenirBtnActionPerformed
@@ -239,6 +208,9 @@ public class ShopPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         try {
+            
+            DefaultTableModel itemListModel = (DefaultTableModel) souvenirListTable.getModel();
+
             if (souvenirListTable.getRowCount() != 0) {
                 CustomerTransaction shopBill = new CustomerTransaction();
 
@@ -250,6 +222,9 @@ public class ShopPanel extends javax.swing.JPanel {
 
                 JOptionPane.showMessageDialog(this, "Souvenir items order placed. Please pickup during checkout");
                 clearFields();
+                itemListModel.setRowCount(0);
+                totalPrice = 0;
+                subTotalTxt.setText(String.valueOf(totalPrice));
                 
             } else {
                 JOptionPane.showMessageDialog(this, "Choose atleast one souvenir item for placing an order");
@@ -317,6 +292,7 @@ public class ShopPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton removeSouvenirBtn;
     private javax.swing.JTable souvenirListTable;

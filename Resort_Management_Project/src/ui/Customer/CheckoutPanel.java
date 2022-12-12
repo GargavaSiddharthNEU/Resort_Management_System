@@ -48,6 +48,10 @@ public class CheckoutPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         totalAmountTxt = new javax.swing.JTextField();
         checkoutBtn = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(204, 255, 255));
+        setLayout(null);
 
         checkoutTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,10 +78,19 @@ public class CheckoutPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(checkoutTable);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        add(jScrollPane1);
+        jScrollPane1.setBounds(31, 130, 923, 402);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Checkout Page");
+        add(jLabel1);
+        jLabel1.setBounds(411, 50, 160, 32);
 
         jLabel2.setText("Total Amount:");
+        add(jLabel2);
+        jLabel2.setBounds(657, 605, 94, 21);
+        add(totalAmountTxt);
+        totalAmountTxt.setBounds(769, 601, 185, 29);
 
         checkoutBtn.setText("Checkout");
         checkoutBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -85,42 +98,12 @@ public class CheckoutPanel extends javax.swing.JPanel {
                 checkoutBtnActionPerformed(evt);
             }
         });
+        add(checkoutBtn);
+        checkoutBtn.setBounds(855, 657, 99, 29);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(checkoutBtn)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(totalAmountTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(425, 425, 425)
-                        .addComponent(jLabel1)))
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel1)
-                .addGap(49, 49, 49)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(totalAmountTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(checkoutBtn)
-                .addContainerGap(121, Short.MAX_VALUE))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Asus\\Pictures\\checkout.png")); // NOI18N
+        add(jLabel3);
+        jLabel3.setBounds(0, -50, 1140, 850);
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutBtnActionPerformed
@@ -135,6 +118,7 @@ public class CheckoutPanel extends javax.swing.JPanel {
     private javax.swing.JTable checkoutTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField totalAmountTxt;
     // End of variables declaration//GEN-END:variables
