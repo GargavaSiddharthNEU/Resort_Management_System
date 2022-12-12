@@ -51,6 +51,9 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+
+        userLeftPanel.setBackground(new java.awt.Color(204, 255, 255));
 
         bookVehicleBtn.setText("Book Vehicle");
         bookVehicleBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +118,7 @@ public class CustomerHomePanel extends javax.swing.JPanel {
                     .addComponent(bookLaundryBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(shopBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(checkOutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         userLeftPanelLayout.setVerticalGroup(
             userLeftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,53 +137,35 @@ public class CustomerHomePanel extends javax.swing.JPanel {
                 .addComponent(shopBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74)
                 .addComponent(checkOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(455, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(userLeftPanel);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        userRightPanel.setBackground(new java.awt.Color(204, 255, 255));
+        userRightPanel.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Customer Home Panel");
+        userRightPanel.add(jLabel1);
+        jLabel1.setBounds(208, 53, 240, 32);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Welcome to the Customer Panel");
+        userRightPanel.add(jLabel2);
+        jLabel2.setBounds(184, 201, 255, 25);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        userRightPanel.add(jLabel3);
+        jLabel3.setBounds(445, 201, 0, 0);
 
         jLabel4.setText("Choose a facility to use from the sidebar.");
+        userRightPanel.add(jLabel4);
+        jLabel4.setBounds(194, 244, 270, 21);
 
-        javax.swing.GroupLayout userRightPanelLayout = new javax.swing.GroupLayout(userRightPanel);
-        userRightPanel.setLayout(userRightPanelLayout);
-        userRightPanelLayout.setHorizontalGroup(
-            userRightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(userRightPanelLayout.createSequentialGroup()
-                .addGroup(userRightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(userRightPanelLayout.createSequentialGroup()
-                        .addGap(267, 267, 267)
-                        .addComponent(jLabel1))
-                    .addGroup(userRightPanelLayout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3))
-                    .addGroup(userRightPanelLayout.createSequentialGroup()
-                        .addGap(194, 194, 194)
-                        .addComponent(jLabel4)))
-                .addContainerGap(264, Short.MAX_VALUE))
-        );
-        userRightPanelLayout.setVerticalGroup(
-            userRightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(userRightPanelLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel1)
-                .addGap(116, 116, 116)
-                .addGroup(userRightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addContainerGap(542, Short.MAX_VALUE))
-        );
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/customer-home.png"))); // NOI18N
+        userRightPanel.add(jLabel6);
+        jLabel6.setBounds(0, 0, 1250, 920);
 
         jSplitPane1.setRightComponent(userRightPanel);
 
@@ -250,6 +235,7 @@ public class CustomerHomePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton shopBtn;
     private javax.swing.JPanel userLeftPanel;

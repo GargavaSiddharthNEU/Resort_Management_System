@@ -73,12 +73,28 @@ public class LaundryPanel extends javax.swing.JPanel {
         chooseLaundryDropdown = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(204, 255, 255));
+        setLayout(null);
+        add(priceTxt);
+        priceTxt.setBounds(645, 205, 160, 29);
 
         jLabel9.setText("Laundry Booking Status");
+        add(jLabel9);
+        jLabel9.setBounds(395, 372, 155, 21);
 
         jLabel3.setText("Category Name:");
+        add(jLabel3);
+        jLabel3.setBounds(160, 209, 107, 21);
 
         jLabel8.setText("Enter Number of clothes:");
+        add(jLabel8);
+        jLabel8.setBounds(230, 284, 164, 21);
+        add(categoryNameTxt);
+        categoryNameTxt.setBounds(285, 205, 160, 29);
+        add(numberOfClothesTxt);
+        numberOfClothesTxt.setBounds(412, 280, 160, 29);
 
         bookLaundryBtn.setText("Book Laundry");
         bookLaundryBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +102,8 @@ public class LaundryPanel extends javax.swing.JPanel {
                 bookLaundryBtnActionPerformed(evt);
             }
         });
+        add(bookLaundryBtn);
+        bookLaundryBtn.setBounds(623, 269, 137, 50);
 
         laundryWorkQueueTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,8 +130,13 @@ public class LaundryPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(laundryWorkQueueTable);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        add(jScrollPane1);
+        jScrollPane1.setBounds(29, 411, 918, 257);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Book Laundry");
+        add(jLabel1);
+        jLabel1.setBounds(410, 40, 180, 32);
 
         viewPriceBtn.setText("View Price");
         viewPriceBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -121,82 +144,23 @@ public class LaundryPanel extends javax.swing.JPanel {
                 viewPriceBtnActionPerformed(evt);
             }
         });
+        add(viewPriceBtn);
+        viewPriceBtn.setBounds(683, 116, 106, 29);
+
+        add(chooseLaundryDropdown);
+        chooseLaundryDropdown.setBounds(488, 116, 148, 29);
 
         jLabel6.setText("Price per cloth:");
+        add(jLabel6);
+        jLabel6.setBounds(529, 209, 98, 21);
 
         jLabel2.setText("Choose a category of your choice:");
+        add(jLabel2);
+        jLabel2.setBounds(224, 124, 224, 21);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(64, 64, 64)
-                                .addComponent(jLabel2)
-                                .addGap(40, 40, 40)
-                                .addComponent(chooseLaundryDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47)
-                                .addComponent(viewPriceBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(273, 273, 273))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(18, 18, 18)
-                                .addComponent(numberOfClothesTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(bookLaundryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(45, 45, 45))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(categoryNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(84, 84, 84)
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(priceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(395, 395, 395)
-                        .addComponent(jLabel9)))
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel1)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chooseLaundryDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(viewPriceBtn)))
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(categoryNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(priceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(numberOfClothesTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bookLaundryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
-                .addComponent(jLabel9)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(132, Short.MAX_VALUE))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/laundry.png"))); // NOI18N
+        add(jLabel4);
+        jLabel4.setBounds(140, 0, 1150, 800);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bookLaundryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookLaundryBtnActionPerformed
@@ -257,6 +221,7 @@ public class LaundryPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

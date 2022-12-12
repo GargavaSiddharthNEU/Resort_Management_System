@@ -82,13 +82,28 @@ public class FoodBookingPanel extends javax.swing.JPanel {
         orderStatusTable = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         removeItemBtn = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        setBackground(new java.awt.Color(204, 255, 255));
+        setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Book Food and Beverages");
+        add(jLabel1);
+        jLabel1.setBounds(380, 30, 340, 32);
 
         jLabel2.setText("Choose a Food or Beverage:");
+        add(jLabel2);
+        jLabel2.setBounds(241, 100, 186, 21);
+
+        add(chooseFoodDropdown);
+        chooseFoodDropdown.setBounds(445, 96, 220, 29);
 
         jLabel3.setText("Item Name:");
+        add(jLabel3);
+        jLabel3.setBounds(31, 175, 77, 21);
+        add(itemNameTxt);
+        itemNameTxt.setBounds(126, 171, 160, 29);
 
         viewDetailsBtn.setText("View Details");
         viewDetailsBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -96,10 +111,20 @@ public class FoodBookingPanel extends javax.swing.JPanel {
                 viewDetailsBtnActionPerformed(evt);
             }
         });
+        add(viewDetailsBtn);
+        viewDetailsBtn.setBounds(695, 96, 120, 29);
 
         jLabel4.setText("Item Category:");
+        add(jLabel4);
+        jLabel4.setBounds(319, 175, 97, 21);
+        add(itemCategoryTxt);
+        itemCategoryTxt.setBounds(434, 171, 160, 29);
 
         jLabel5.setText("Item Price:");
+        add(jLabel5);
+        jLabel5.setBounds(624, 175, 69, 21);
+        add(itemPriceTxt);
+        itemPriceTxt.setBounds(711, 171, 160, 29);
 
         addItemBtn.setText("Add Item");
         addItemBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +132,8 @@ public class FoodBookingPanel extends javax.swing.JPanel {
                 addItemBtnActionPerformed(evt);
             }
         });
+        add(addItemBtn);
+        addItemBtn.setBounds(897, 171, 100, 29);
 
         itemListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,12 +160,17 @@ public class FoodBookingPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(itemListTable);
 
+        add(jScrollPane1);
+        jScrollPane1.setBounds(31, 250, 966, 195);
+
         bookOrderBtn.setText("Book Order");
         bookOrderBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bookOrderBtnActionPerformed(evt);
             }
         });
+        add(bookOrderBtn);
+        bookOrderBtn.setBounds(883, 463, 114, 39);
 
         orderStatusTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -165,7 +197,12 @@ public class FoodBookingPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(orderStatusTable);
 
+        add(jScrollPane2);
+        jScrollPane2.setBounds(31, 547, 966, 245);
+
         jLabel6.setText("Food and Beverage Order Status");
+        add(jLabel6);
+        jLabel6.setBounds(384, 508, 215, 21);
 
         removeItemBtn.setText("Remove Item");
         removeItemBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -173,85 +210,12 @@ public class FoodBookingPanel extends javax.swing.JPanel {
                 removeItemBtnActionPerformed(evt);
             }
         });
+        add(removeItemBtn);
+        removeItemBtn.setBounds(728, 463, 126, 39);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(210, 210, 210)
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(chooseFoodDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(viewDetailsBtn))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 966, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(itemNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(jLabel4)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(itemCategoryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jLabel5)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(itemPriceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(addItemBtn)))
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 966, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(697, 697, 697)
-                                    .addComponent(removeItemBtn)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(bookOrderBtn)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(372, 372, 372)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(384, 384, 384)
-                        .addComponent(jLabel6)))
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(chooseFoodDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewDetailsBtn))
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(itemNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(itemCategoryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(itemPriceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addItemBtn))
-                .addGap(50, 50, 50)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(removeItemBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bookOrderBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(116, 116, 116))
-        );
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/food.png"))); // NOI18N
+        add(jLabel8);
+        jLabel8.setBounds(0, -70, 1470, 1060);
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsBtnActionPerformed
@@ -376,6 +340,7 @@ public class FoodBookingPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable orderStatusTable;
