@@ -49,6 +49,8 @@ public class JanitorPanel extends javax.swing.JPanel {
         tasksProgressTables = new javax.swing.JTable();
         completeTaskBtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 204));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Janitor Schedule");
 

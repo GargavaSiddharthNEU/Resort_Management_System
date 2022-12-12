@@ -66,9 +66,11 @@ public class ManageUserPanel extends javax.swing.JPanel {
         updateRoleBtn = new javax.swing.JButton();
         viewUsersBtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 204));
+
         cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vehicle Contractor", "Pool Incharge", "Gaming Incharge", "Janitor", "Food Manager", "Laundry Manager", "Souvenir Shop Manager" }));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Manage User Roles");
 
         jLabel2.setText("Choose an user role:");
@@ -208,7 +210,7 @@ public class ManageUserPanel extends javax.swing.JPanel {
                         .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(viewUsersBtn)))
-                .addContainerGap(501, Short.MAX_VALUE))
+                .addContainerGap(856, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,7 +273,7 @@ public class ManageUserPanel extends javax.swing.JPanel {
                             .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(updateRoleBtn)))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
