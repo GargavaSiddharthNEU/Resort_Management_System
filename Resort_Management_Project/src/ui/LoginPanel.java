@@ -36,6 +36,11 @@ public class LoginPanel extends javax.swing.JPanel {
         this.SplitPane = SplitPane;
     }
 
+    public void resetData() {
+        txtEUserName.setText("");
+        txtEPassword.setText("");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -138,6 +143,7 @@ public class LoginPanel extends javax.swing.JPanel {
                 }
                 if (index == list.size()) {
                     JOptionPane.showMessageDialog(this, "You have not registered !!");
+                    resetData();
                 }
             }
         }
