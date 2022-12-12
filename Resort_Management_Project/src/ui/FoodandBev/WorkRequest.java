@@ -25,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 public class WorkRequest extends javax.swing.JPanel {
 
     private EcoSystem system;
+    float totalPrice;
 
     /**
      * Creates new form WorkRequest
@@ -62,6 +63,7 @@ public class WorkRequest extends javax.swing.JPanel {
                 foodItemNames.add(fb.getFbName());
                 foodItemsTotalPrice += fb.getPrice();
             }
+            totalPrice = foodItemsTotalPrice;
             Object[] newRow = new Object[4];
             newRow[0] = pfbr;
             newRow[1] = foodItemNames.toString().replace("[", "").replace("]", "");
@@ -201,7 +203,7 @@ public class WorkRequest extends javax.swing.JPanel {
         CustomerTransaction ct = new CustomerTransaction();
         ct.setUserId(selectedFoodBevWorkRequest.getUserId());
         ct.setFacilityUsed("Food&Beverage");
-        ct.setPrice(selectedFoodBevWorkRequest.getToatlPrice());
+        ct.setPrice(totalPrice);
         system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
         JOptionPane.showMessageDialog(this, "Order approved successfully");
         populateWorkRequestTable();

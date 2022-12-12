@@ -15,7 +15,6 @@ public class FoodBevWorkRequest {
     
     String userId;
     ArrayList<FBItem> fbItemDetails;
-    Float toatlPrice;
     String status;
 
     public String getUserId() {
@@ -32,14 +31,6 @@ public class FoodBevWorkRequest {
 
     public void setFbItemDetails(ArrayList<FBItem> fbItemDetails) {
         this.fbItemDetails = fbItemDetails;
-    }
-
-    public Float getToatlPrice() {
-        return toatlPrice;
-    }
-
-    public void setToatlPrice(Float toatlPrice) {
-        this.toatlPrice = toatlPrice;
     }
 
     public String getStatus() {
