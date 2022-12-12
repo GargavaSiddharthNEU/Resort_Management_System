@@ -95,7 +95,7 @@ public class LoginPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginUserActionPerformed
-        // TODO add your handling code here:
+    
         String userName = txtEUserName.getText();
         String password = txtEPassword.getText();
         ArrayList<User> list = system.getUserDirectory().getUsers();
