@@ -94,7 +94,7 @@ public class BookVehiclePanel extends javax.swing.JPanel {
         imageAreaPanel.setLayout(null);
 
         jLabel1.setBackground(new java.awt.Color(153, 255, 204));
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\siddh\\OneDrive\\Desktop\\undraw_Order_ride_re_372k.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vehicle booking.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         imageAreaPanel.add(jLabel1);
         jLabel1.setBounds(10, 20, 800, 690);

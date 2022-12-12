@@ -31,7 +31,7 @@ public class HomePoolPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(153, 255, 204));
         setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\siddh\\OneDrive\\Desktop\\AED App Images\\Pool Image.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Pool Image.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         add(jLabel1);
         jLabel1.setBounds(70, 10, 810, 760);

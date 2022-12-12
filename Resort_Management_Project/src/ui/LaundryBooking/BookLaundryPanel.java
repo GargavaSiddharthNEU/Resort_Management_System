@@ -74,7 +74,7 @@ public class BookLaundryPanel extends javax.swing.JPanel {
                     .addComponent(btnRequestQueue)
                     .addComponent(btnManageLaundry)
                     .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +94,7 @@ public class BookLaundryPanel extends javax.swing.JPanel {
         jPanel2.setLayout(null);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\siddh\\OneDrive\\Desktop\\AED App Images\\laundry.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/laundry.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel2.add(jLabel1);
         jLabel1.setBounds(30, 150, 780, 540);
@@ -106,7 +106,7 @@ public class BookLaundryPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jSplitPane1)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1181, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

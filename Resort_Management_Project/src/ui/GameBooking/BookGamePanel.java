@@ -91,7 +91,7 @@ public class BookGamePanel extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(153, 255, 204));
         jPanel2.setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\siddh\\OneDrive\\Desktop\\AED App Images\\game.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/game.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel2.add(jLabel1);
         jLabel1.setBounds(10, 80, 970, 630);
