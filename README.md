@@ -1,14 +1,14 @@
 # Resort_Management_System
 
-###### Problem Statement:
+## Problem Statement:
 
 With the onset of Covid in past two years, one of the pressing challenge is falling demands for resort bookings all across the world. In order to regain trust of consumers, it's extremely important to have transparency in interactions between Resort Managers and Consumers. A utility solution is the need of the hour where consumer can send digital requests for multiple facilities while staying at resort to experience a contact-free, safe stay. Solving this challenge would act as a big booster for the hospitality and tourism industry world-wide.
 
-###### About Eco-System:
+## About Eco-System:
 
 The purpose of Resort Management System is to provide a solution for consumers to digitally avail resort services in a contact-free, transparent and accountability driven manner. This solution would ensure in boosting resort businesses in a withering hospitality economy.
 
-###### Enterprises:
+## Enterprises:
 
 1. Transportation
 2. Recreation
@@ -16,7 +16,7 @@ The purpose of Resort Management System is to provide a solution for consumers t
 4. Housekeeping
 4. Shopping
 
-###### Organisations:
+## Organisations:
 1. Vehicle booking
 2. Gaming facility
 3. Pool facility
@@ -25,7 +25,7 @@ The purpose of Resort Management System is to provide a solution for consumers t
 6. Room Cleaning
 7. In-house Shop
 
-###### Roles:
+## Roles:
 1. Hotel Admin
 2. Customer
 3. Vehicle Contractor
@@ -38,11 +38,11 @@ The purpose of Resort Management System is to provide a solution for consumers t
 
 Database Used : **DB4O**
 
-###### Advanced Features incorporated: 
+## Advanced Features incorporated: 
 1. Google Maps
 2. Email Notification System
 
-###### Features:
+## Features:
 1. Each Service Role has ability to CRUD their service utilities and manage requests of consumers for their services.
 2. Each Service Role has a work area where they can view and decide the fate of those customer requests
 3. Requests have various statuses attached to them including - Pending, In-progress, Accepted, Rejected.
@@ -63,5 +63,4 @@ Please find below the UML Class Diagram of this application
 
 Please find below the UML Sequence Diagram of this application
 
-![Sequence Diagram](https://github.com/GargavaSiddharthNEU/Resort_Management_System/blob/main/Design%20Images%20AED%20Project/Resort%20Management%20Sequence%20Diagram.png))
-
+![Sequence Diagram](https://github.com/GargavaSiddharthNEU/Resort_Management_System/blob/main/Design%20Images%20AED%20Project/Resort%20Management%20Sequence%20Diagram.png)
