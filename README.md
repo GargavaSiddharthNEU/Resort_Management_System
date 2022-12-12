@@ -41,6 +41,7 @@ Database Used : **DB4O**
 ## Advanced Features incorporated: 
 1. Google Maps
 2. Email Notification System
+3. Tree view data display
 
 ## Features:
 1. Each Service Role has ability to CRUD their service utilities and manage requests of consumers for their services.
