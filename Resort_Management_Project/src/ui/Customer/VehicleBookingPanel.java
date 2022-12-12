@@ -13,11 +13,13 @@ import java.awt.Component;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.MutableComboBoxModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import ui.GMapsFrame;
 
 /**
  *
@@ -35,6 +37,8 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
         initComponents();
         this.system = system;
         this.user = user;
+        this.latTxt1 = latTxt;
+        this.longTxt1 = longTxt;
 
         MutableComboBoxModel<String> model = new DefaultComboBoxModel<String>();
 
@@ -52,6 +56,11 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
 
         populateRequestTable();
         formatRows();
+    }
+    
+    public static void setLatLongDetails(double lat, double longitude) {
+        latTxt1.setText(String.valueOf(lat));
+        longTxt1.setText(String.valueOf(longitude));
     }
 
     /**
@@ -85,6 +94,11 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         vehicleNumberTxt = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        latTxt = new javax.swing.JLabel();
+        longTxt = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 255));
 
@@ -150,6 +164,21 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
 
         jLabel10.setText("Vehicle Number:");
 
+        jButton1.setText("Location");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Latitude :");
+
+        jLabel13.setText("Longitude :");
+
+        latTxt.setText("NA");
+
+        longTxt.setText("NA");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -192,18 +221,34 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
                                     .addGap(18, 18, 18)
                                     .addComponent(vehicleSeaterTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 933, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel7)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(vehicleBookingDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(jLabel8)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(numberOfHoursTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(bookVehicleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 933, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jButton1)
+                                                .addGap(47, 47, 47)
+                                                .addComponent(jLabel11)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(latTxt)
+                                                .addGap(82, 82, 82)
+                                                .addComponent(jLabel13))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel7)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(vehicleBookingDateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(26, 26, 26)
+                                                .addComponent(jLabel8)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(numberOfHoursTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(bookVehicleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(4, 4, 4)
+                                                .addComponent(longTxt)
+                                                .addGap(0, 0, Short.MAX_VALUE))))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(376, 376, 376)
                                 .addComponent(jLabel9)))))
@@ -250,7 +295,14 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(bookVehicleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(58, 58, 58)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel13)
+                    .addComponent(latTxt)
+                    .addComponent(longTxt))
+                .addGap(11, 11, 11)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -318,12 +370,24 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_bookVehicleBtnActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        GMapsFrame gMapsFrame = new GMapsFrame();
+        gMapsFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        gMapsFrame.setVisible(true);
+        new GMapsFrame(gMapsFrame);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private static javax.swing.JLabel latTxt1;
+    private static javax.swing.JLabel longTxt1;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bookVehicleBtn;
     private javax.swing.JComboBox<String> chooseVehicleDropdown;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -333,6 +397,8 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel latTxt;
+    private javax.swing.JLabel longTxt;
     private javax.swing.JTextField numberOfHoursTxt;
     private javax.swing.JTextField priceTxt;
     private com.toedter.calendar.JDateChooser vehicleBookingDateTxt;
@@ -379,6 +445,8 @@ public class VehicleBookingPanel extends javax.swing.JPanel {
         vehicleNumberTxt.setText("");
         numberOfHoursTxt.setText("");
         vehicleBookingDateTxt.setCalendar(null);
+        latTxt.setText("NA");
+        longTxt.setText("NA");
     }
 
     private void formatRows() {
