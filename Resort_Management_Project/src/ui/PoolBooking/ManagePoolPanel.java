@@ -134,6 +134,7 @@ public class ManagePoolPanel extends javax.swing.JPanel {
         btnView = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 204));
         setPreferredSize(new java.awt.Dimension(827, 777));
 
         jLabel1.setText("MANAGE POOLS");

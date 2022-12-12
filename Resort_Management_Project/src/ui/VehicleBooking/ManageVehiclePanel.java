@@ -158,6 +158,8 @@ public class ManageVehiclePanel extends javax.swing.JPanel {
         cmbCategory = new javax.swing.JComboBox<>();
         cmbSeater = new javax.swing.JComboBox<>();
 
+        setBackground(new java.awt.Color(153, 255, 204));
+
         jLabel1.setText("MANAGE VEHICLES");
 
         jLabel2.setText("Vehicle Name");

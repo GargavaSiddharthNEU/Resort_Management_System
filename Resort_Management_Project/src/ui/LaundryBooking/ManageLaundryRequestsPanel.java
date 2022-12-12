@@ -111,6 +111,8 @@ public class ManageLaundryRequestsPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         tblLaundryConfirmed = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(153, 255, 204));
+
         tblLaundryRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},

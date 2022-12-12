@@ -28,9 +28,10 @@ public class HomeVehiclePanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(153, 255, 204));
         setPreferredSize(new java.awt.Dimension(697, 752));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\siddh\\OneDrive\\Desktop\\NEU Fall Sem\\AED5100\\Final Project\\Images\\book_vehicle.jfif")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\siddh\\OneDrive\\Desktop\\undraw_Order_ride_re_372k.png")); // NOI18N
         jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -38,16 +39,15 @@ public class HomeVehiclePanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(440, Short.MAX_VALUE))
+                .addGap(88, 88, 88)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(217, 217, 217)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(273, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -37,6 +37,9 @@ public class BookGamePanel extends javax.swing.JPanel {
         btnRequestQueue = new javax.swing.JButton();
         btnHome = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         btnManageGame.setText("MANAGE GAMES");
         btnManageGame.addActionListener(new java.awt.event.ActionListener() {
@@ -85,16 +88,13 @@ public class BookGamePanel extends javax.swing.JPanel {
 
         jSplitPane1.setLeftComponent(jPanel1);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 719, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 755, Short.MAX_VALUE)
-        );
+        jPanel2.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel2.setLayout(null);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\siddh\\OneDrive\\Desktop\\AED App Images\\game.png")); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(10, 80, 970, 630);
 
         jSplitPane1.setRightComponent(jPanel2);
 
@@ -102,7 +102,7 @@ public class BookGamePanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1218, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,6 +145,7 @@ public class BookGamePanel extends javax.swing.JPanel {
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnManageGame;
     private javax.swing.JButton btnRequestQueue;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;

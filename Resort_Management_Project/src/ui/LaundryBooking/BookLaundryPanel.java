@@ -39,6 +39,9 @@ public class BookLaundryPanel extends javax.swing.JPanel {
         btnRequestQueue = new javax.swing.JButton();
         btnHome = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         btnManageLaundry.setText("MANAGE CATEGORY");
         btnManageLaundry.addActionListener(new java.awt.event.ActionListener() {
@@ -87,16 +90,14 @@ public class BookLaundryPanel extends javax.swing.JPanel {
 
         jSplitPane1.setLeftComponent(jPanel1);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 820, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 777, Short.MAX_VALUE)
-        );
+        jPanel2.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel2.setLayout(null);
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\siddh\\OneDrive\\Desktop\\AED App Images\\laundry.png")); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(30, 150, 780, 540);
 
         jSplitPane1.setRightComponent(jPanel2);
 
@@ -149,6 +150,7 @@ public class BookLaundryPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnManageLaundry;
     private javax.swing.JButton btnRequestQueue;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;

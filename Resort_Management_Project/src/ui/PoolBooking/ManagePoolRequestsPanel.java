@@ -111,6 +111,8 @@ public class ManagePoolRequestsPanel extends javax.swing.JPanel {
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 204));
+
         jLabel1.setText("MANAGE REQUESTS");
 
         tblPoolRequests.setModel(new javax.swing.table.DefaultTableModel(
