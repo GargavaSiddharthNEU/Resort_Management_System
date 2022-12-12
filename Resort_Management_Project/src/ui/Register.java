@@ -151,7 +151,7 @@ public class Register extends javax.swing.JPanel {
         add(txtEmailAddress);
         txtEmailAddress.setBounds(382, 404, 289, 23);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("/Users/manikantareddythikkavarapu/NetBeansProjects/Resort_Management_System/Resort_Management_Project/src/images/undraw_my_app_re_gxtj.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/undraw_my_app_re_gxtj.png"))); // NOI18N
         add(jLabel6);
         jLabel6.setBounds(2, -3, 1160, 900);
     }// </editor-fold>//GEN-END:initComponents

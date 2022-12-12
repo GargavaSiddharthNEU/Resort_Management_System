@@ -97,7 +97,7 @@ public class FoodandBevPanel extends javax.swing.JPanel {
         jPanel2.add(jLabel1);
         jLabel1.setBounds(249, 224, 141, 17);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/manikantareddythikkavarapu/NetBeansProjects/Resort_Management_System/Resort_Management_Project/src/images/undraw_Chef_cu0r.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/undraw_Chef_cu0r.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         jPanel2.add(jLabel2);
         jLabel2.setBounds(70, 90, 670, 630);

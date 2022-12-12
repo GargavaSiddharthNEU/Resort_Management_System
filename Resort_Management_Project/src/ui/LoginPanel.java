@@ -83,7 +83,7 @@ public class LoginPanel extends javax.swing.JPanel {
         add(jLabel3);
         jLabel3.setBounds(205, 26, 157, 21);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("/Users/manikantareddythikkavarapu/NetBeansProjects/Resort_Management_System/Resort_Management_Project/src/images/undraw_Access_account_re_8spm.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/undraw_Access_account_re_8spm.png"))); // NOI18N
         jLabel5.setText("jLabel5");
         add(jLabel5);
         jLabel5.setBounds(2, -3, 580, 450);
