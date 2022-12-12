@@ -148,20 +148,20 @@ public class CustomerHomePanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Customer Home Panel");
         userRightPanel.add(jLabel1);
-        jLabel1.setBounds(208, 53, 240, 32);
+        jLabel1.setBounds(208, 53, 360, 30);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Welcome to the Customer Panel");
         userRightPanel.add(jLabel2);
-        jLabel2.setBounds(184, 201, 255, 25);
+        jLabel2.setBounds(184, 201, 350, 22);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         userRightPanel.add(jLabel3);
-        jLabel3.setBounds(445, 201, 0, 0);
+        jLabel3.setBounds(550, 190, 240, 40);
 
         jLabel4.setText("Choose a facility to use from the sidebar.");
         userRightPanel.add(jLabel4);
-        jLabel4.setBounds(194, 244, 270, 21);
+        jLabel4.setBounds(194, 244, 241, 17);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/customer-home.png"))); // NOI18N
         userRightPanel.add(jLabel6);

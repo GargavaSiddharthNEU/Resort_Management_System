@@ -339,6 +339,7 @@ public class ManageLaundryPanel extends javax.swing.JPanel {
                 laundry.setPrice(price);
 
                 populateTable();
+                resetLaundryData();
 
                 JOptionPane.showMessageDialog(this, "Update successful!");
             } else if (tblLaundry.getRowCount() == 0) {

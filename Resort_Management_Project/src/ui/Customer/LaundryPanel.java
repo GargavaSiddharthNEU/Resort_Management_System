@@ -243,10 +243,10 @@ public class LaundryPanel extends javax.swing.JPanel {
                 if (laundryWorkRequest.getUserId().equals(user.getUserId())) {
                     Object[] newRow = new Object[5];
                     newRow[0] = laundryWorkRequest.getLaundryDetails().getCategory();
-                    newRow[2] = laundryWorkRequest.getLaundryDetails().getPrice();
-                    newRow[3] = laundryWorkRequest.getNumberOfClothes();
-                    newRow[4] = (laundryWorkRequest.getLaundryDetails().getPrice() * laundryWorkRequest.getNumberOfClothes());
-                    newRow[5] = laundryWorkRequest.getStatus();
+                    newRow[1] = laundryWorkRequest.getLaundryDetails().getPrice();
+                    newRow[2] = laundryWorkRequest.getNumberOfClothes();
+                    newRow[3] = (laundryWorkRequest.getLaundryDetails().getPrice() * laundryWorkRequest.getNumberOfClothes());
+                    newRow[4] = laundryWorkRequest.getStatus();
 
                     model.addRow(newRow);
                 }

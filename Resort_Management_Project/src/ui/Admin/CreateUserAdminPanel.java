@@ -61,61 +61,61 @@ public class CreateUserAdminPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(153, 255, 204));
         setLayout(null);
         add(txtAge);
-        txtAge.setBounds(510, 460, 203, 29);
+        txtAge.setBounds(510, 460, 203, 23);
 
         jLabel2.setText("User Name");
         add(jLabel2);
-        jLabel2.setBounds(320, 230, 119, 21);
+        jLabel2.setBounds(320, 230, 119, 17);
 
         jLabel14.setText("Email Address");
         add(jLabel14);
-        jLabel14.setBounds(320, 510, 94, 21);
+        jLabel14.setBounds(320, 510, 85, 17);
 
         jLabel3.setText("Last Name");
         add(jLabel3);
-        jLabel3.setBounds(320, 180, 119, 21);
+        jLabel3.setBounds(320, 180, 119, 17);
         add(txtEmailAddress);
-        txtEmailAddress.setBounds(510, 510, 203, 29);
+        txtEmailAddress.setBounds(510, 510, 203, 23);
 
         jLabel4.setText("Password");
         add(jLabel4);
-        jLabel4.setBounds(320, 280, 119, 21);
+        jLabel4.setBounds(320, 280, 119, 17);
 
         jLabel5.setText("Roletype");
         add(jLabel5);
-        jLabel5.setBounds(320, 330, 119, 21);
+        jLabel5.setBounds(320, 330, 119, 17);
 
         jLabel1.setText("First Name");
         add(jLabel1);
-        jLabel1.setBounds(320, 140, 162, 21);
+        jLabel1.setBounds(320, 140, 162, 17);
         add(txtAddress);
-        txtAddress.setBounds(510, 370, 203, 29);
+        txtAddress.setBounds(510, 370, 203, 23);
         add(txtFName);
-        txtFName.setBounds(510, 130, 203, 29);
+        txtFName.setBounds(510, 130, 203, 23);
         add(txtPhoneNumber);
-        txtPhoneNumber.setBounds(510, 420, 203, 29);
+        txtPhoneNumber.setBounds(510, 420, 203, 23);
         add(txtLName);
-        txtLName.setBounds(510, 180, 203, 29);
+        txtLName.setBounds(510, 180, 203, 23);
 
         jLabel8.setText("Address");
         add(jLabel8);
-        jLabel8.setBounds(320, 370, 162, 21);
+        jLabel8.setBounds(320, 370, 162, 17);
         add(txtUserName);
-        txtUserName.setBounds(510, 230, 203, 29);
+        txtUserName.setBounds(510, 230, 203, 23);
 
         jLabel10.setText("Age");
         add(jLabel10);
-        jLabel10.setBounds(320, 470, 162, 21);
+        jLabel10.setBounds(320, 470, 162, 17);
         add(txtPassword);
-        txtPassword.setBounds(510, 270, 203, 29);
+        txtPassword.setBounds(510, 270, 203, 23);
 
         jLabel11.setText("Phone Number");
         add(jLabel11);
-        jLabel11.setBounds(320, 420, 162, 21);
+        jLabel11.setBounds(320, 420, 162, 17);
 
         cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vehicle Contractor", "Pool Incharge", "Gaming Incharge", "Janitor", "Food Manager", "Laundry Manager", "Shop Manager" }));
         add(cmbRole);
-        cmbRole.setBounds(510, 320, 203, 29);
+        cmbRole.setBounds(510, 320, 203, 23);
 
         createUserBtn.setText("Create New User");
         createUserBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -124,12 +124,12 @@ public class CreateUserAdminPanel extends javax.swing.JPanel {
             }
         });
         add(createUserBtn);
-        createUserBtn.setBounds(440, 580, 148, 29);
+        createUserBtn.setBounds(440, 580, 129, 23);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel6.setText("Create User Role");
         add(jLabel6);
-        jLabel6.setBounds(460, 70, 177, 32);
+        jLabel6.setBounds(460, 70, 410, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserBtnActionPerformed

@@ -36,11 +36,11 @@ public class AdminRightPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setText("Welcome to Admin Home");
         add(jLabel2);
-        jLabel2.setBounds(377, 45, 278, 32);
+        jLabel2.setBounds(377, 45, 490, 30);
 
         jLabel3.setText("Choose an action to perform");
         add(jLabel3);
-        jLabel3.setBounds(423, 112, 190, 21);
+        jLabel3.setBounds(423, 112, 165, 17);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/admin.png"))); // NOI18N
         add(jLabel1);

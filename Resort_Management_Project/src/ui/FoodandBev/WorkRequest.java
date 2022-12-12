@@ -192,26 +192,25 @@ public class WorkRequest extends javax.swing.JPanel {
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         // TODO add your handling code here:
         try {
-        int selectedRowIndex = jTable1.getSelectedRow();
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row to approve.");
-            return;
-        }
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        FoodBevWorkRequest selectedFoodBevWorkRequest = (FoodBevWorkRequest) model.getValueAt(selectedRowIndex, 0);
-        updateWorkRequestStatus(selectedFoodBevWorkRequest, "Approved");
-        CustomerTransaction ct = new CustomerTransaction();
-        ct.setUserId(selectedFoodBevWorkRequest.getUserId());
-        ct.setFacilityUsed("Food&Beverage");
-        ct.setPrice(totalPrice);
-        system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
-        JOptionPane.showMessageDialog(this, "Order approved successfully");
-        populateWorkRequestTable();
-        formatRows();
-
-        User getUser = system.getUserDirectory().getUserById(selectedFoodBevWorkRequest.getUserId());
-        new EmailNotification().SendEmailOfNotification(getUser, "Food and Beverage");
-                } catch (Exception e) {
+            int selectedRowIndex = jTable1.getSelectedRow();
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row to approve.");
+                return;
+            }
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            FoodBevWorkRequest selectedFoodBevWorkRequest = (FoodBevWorkRequest) model.getValueAt(selectedRowIndex, 0);
+            updateWorkRequestStatus(selectedFoodBevWorkRequest, "Approved");
+            CustomerTransaction ct = new CustomerTransaction();
+            ct.setUserId(selectedFoodBevWorkRequest.getUserId());
+            ct.setFacilityUsed("Food&Beverage");
+            ct.setPrice(totalPrice);
+            system.getCustomerTransactionDirectory().addCustomerTransaction(ct);
+            User getUser = system.getUserDirectory().getUserById(selectedFoodBevWorkRequest.getUserId());
+            new EmailNotification().SendEmailOfNotification(getUser, "Food and Beverage");
+            JOptionPane.showMessageDialog(this, "Request approved successfully and email notification sent");
+            populateWorkRequestTable();
+            formatRows();
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_btnApproveActionPerformed
@@ -219,18 +218,18 @@ public class WorkRequest extends javax.swing.JPanel {
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         // TODO add your handling code here:
         try {
-        int selectedRowIndex = jTable1.getSelectedRow();
-        if (selectedRowIndex < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row to reject.");
-            return;
-        }
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        FoodBevWorkRequest selectedFoodBevWorkRequest = (FoodBevWorkRequest) model.getValueAt(selectedRowIndex, 0);
-        updateWorkRequestStatus(selectedFoodBevWorkRequest, "Rejected");
-        JOptionPane.showMessageDialog(this, "Order rejected successfully");
-        populateWorkRequestTable();
-        formatRows();
-                } catch (Exception e) {
+            int selectedRowIndex = jTable1.getSelectedRow();
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please select a row to reject.");
+                return;
+            }
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            FoodBevWorkRequest selectedFoodBevWorkRequest = (FoodBevWorkRequest) model.getValueAt(selectedRowIndex, 0);
+            updateWorkRequestStatus(selectedFoodBevWorkRequest, "Rejected");
+            JOptionPane.showMessageDialog(this, "Order rejected successfully");
+            populateWorkRequestTable();
+            formatRows();
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_btnRejectActionPerformed

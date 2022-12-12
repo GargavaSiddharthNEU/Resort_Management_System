@@ -180,11 +180,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Asus\Pictures\janitor.jpg"/>
-        </Property>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

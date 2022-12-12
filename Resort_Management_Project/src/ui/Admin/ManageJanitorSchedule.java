@@ -30,6 +30,12 @@ public class ManageJanitorSchedule extends javax.swing.JPanel {
 
         populateTable();
     }
+    
+    public void resetData() {
+        roomNumberTxt.setText("");
+        timeTxt.setText("");
+        dateTxt.setCalendar(null);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -202,6 +208,7 @@ public class ManageJanitorSchedule extends javax.swing.JPanel {
                 system.getJanitorScheduleDirectory().getScheduleDirectory().add(newSchedule);
                 JOptionPane.showMessageDialog(this, "Schedule added successfully");
                 populateTable();
+                resetData();
             } else {
                 JOptionPane.showMessageDialog(this, "Give valid inputs for adding a schedule");
             }
