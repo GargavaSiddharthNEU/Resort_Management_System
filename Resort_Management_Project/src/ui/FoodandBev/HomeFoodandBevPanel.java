@@ -27,29 +27,23 @@ public class HomeFoodandBevPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+
+        setLayout(null);
 
         jLabel1.setText("Welcome to 5 star hotel");
+        add(jLabel1);
+        jLabel1.setBounds(300, 225, 138, 17);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(300, 300, 300)
-                .addComponent(jLabel1)
-                .addContainerGap(362, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(225, 225, 225)
-                .addComponent(jLabel1)
-                .addContainerGap(558, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/manikantareddythikkavarapu/NetBeansProjects/Resort_Management_System/Resort_Management_Project/src/images/undraw_Chef_cu0r.png")); // NOI18N
+        jLabel2.setText("jLabel2");
+        add(jLabel2);
+        jLabel2.setBounds(2, -3, 800, 800);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
