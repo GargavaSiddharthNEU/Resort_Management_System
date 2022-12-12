@@ -94,31 +94,6 @@ public class ManageVehicleRequestsPanel extends javax.swing.JPanel {
 
     }
 
-//    public void populateWorkRequestTable(String status) {
-//        DefaultTableModel model = new DefaultTableModel();
-//        if(status.equals("Pending")) {
-//            model = (DefaultTableModel) tblVehicleRequests.getModel();
-//        }
-//        else {
-//            model = (DefaultTableModel) tblVehicleConfirmed.getModel();
-//        }
-//        model.setRowCount(0);
-//            for (VehicleWorkRequest vehicleWRequest : system.getVehicleWorkRequestDirectory().getVehicleWorkRequestList()) {
-//                if(vehicleWRequest.getStatus().equals(status)) {
-//                    Object[] newRow = new Object[8];
-//                    newRow[0] = vehicleWRequest;
-//                    newRow[1] = vehicleWRequest.getVehicleDetails().getVehicleNumber();
-//                    newRow[2] = vehicleWRequest.getVehicleDetails().getVehicleName();
-//                    newRow[3] = vehicleWRequest.getVehicleDetails().getCategory();
-//                    newRow[4] = vehicleWRequest.getVehicleDetails().getSeater();
-//                    newRow[5] = vehicleWRequest.getVehicleDetails().getPrice();
-//                    newRow[6] = vehicleWRequest.getNumberOfHours();
-//                    newRow[7] = vehicleWRequest.getStatus();
-//                   
-//                    model.addRow(newRow);
-//                }
-//            }
-//    }
     void updateWorkRequestStatus(VehicleWorkRequest selectedVehicle, String status) {
         selectedVehicle.setStatus(status);
         int index = 0;
@@ -147,6 +122,8 @@ public class ManageVehicleRequestsPanel extends javax.swing.JPanel {
         tblVehicleConfirmed = new javax.swing.JTable();
         btnApprove = new javax.swing.JButton();
         btnReject = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(153, 255, 204));
 
         jLabel1.setText("MANAGE REQUESTS");
 

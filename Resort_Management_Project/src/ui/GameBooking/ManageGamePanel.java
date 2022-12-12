@@ -144,6 +144,8 @@ public class ManageGamePanel extends javax.swing.JPanel {
         btnView = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 204));
+
         jLabel1.setText("MANAGE GAMES");
 
         tblGame.setModel(new javax.swing.table.DefaultTableModel(

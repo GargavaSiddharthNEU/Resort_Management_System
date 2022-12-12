@@ -37,7 +37,9 @@ public class BookVehiclePanel extends javax.swing.JPanel {
         btnRequestQueue = new javax.swing.JButton();
         btnHome = new javax.swing.JButton();
         imageAreaPanel = new javax.swing.JPanel();
-        imgVehicle = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+
+        buttonPanel.setBackground(new java.awt.Color(204, 204, 255));
 
         btnManageVehicle.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         btnManageVehicle.setText("MANAGE FLEET");
@@ -88,25 +90,14 @@ public class BookVehiclePanel extends javax.swing.JPanel {
 
         jSplitPane1.setLeftComponent(buttonPanel);
 
-        imgVehicle.setIcon(new javax.swing.ImageIcon("C:\\Users\\siddh\\OneDrive\\Desktop\\NEU Fall Sem\\AED5100\\Final Project\\Images\\book_vehicle.jfif")); // NOI18N
-        imgVehicle.setText("jLabel1");
+        imageAreaPanel.setBackground(new java.awt.Color(153, 255, 204));
+        imageAreaPanel.setLayout(null);
 
-        javax.swing.GroupLayout imageAreaPanelLayout = new javax.swing.GroupLayout(imageAreaPanel);
-        imageAreaPanel.setLayout(imageAreaPanelLayout);
-        imageAreaPanelLayout.setHorizontalGroup(
-            imageAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(imageAreaPanelLayout.createSequentialGroup()
-                .addGap(262, 262, 262)
-                .addComponent(imgVehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(313, Short.MAX_VALUE))
-        );
-        imageAreaPanelLayout.setVerticalGroup(
-            imageAreaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(imageAreaPanelLayout.createSequentialGroup()
-                .addGap(258, 258, 258)
-                .addComponent(imgVehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(355, Short.MAX_VALUE))
-        );
+        jLabel1.setBackground(new java.awt.Color(153, 255, 204));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vehicle booking.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        imageAreaPanel.add(jLabel1);
+        jLabel1.setBounds(10, 20, 800, 690);
 
         jSplitPane1.setRightComponent(imageAreaPanel);
 
@@ -114,7 +105,7 @@ public class BookVehiclePanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 943, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,7 +151,7 @@ public class BookVehiclePanel extends javax.swing.JPanel {
     private javax.swing.JButton btnRequestQueue;
     private javax.swing.JPanel buttonPanel;
     private javax.swing.JPanel imageAreaPanel;
-    private javax.swing.JLabel imgVehicle;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSplitPane jSplitPane1;
     // End of variables declaration//GEN-END:variables
 }
