@@ -364,6 +364,7 @@ public class ManageGamePanel extends javax.swing.JPanel {
                 game.setPrice(price);
 
                 populateTable();
+                resetGameData();
 
                 JOptionPane.showMessageDialog(this, "Update successful!");
             } else if (tblGame.getRowCount() == 0) {

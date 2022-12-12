@@ -232,7 +232,7 @@ public class ManageLaundryRequestsPanel extends javax.swing.JPanel {
             //email notification
             new EmailNotification().SendEmailOfNotification(getUser, "Laundry");
             
-            JOptionPane.showMessageDialog(this, "Request approved successfully");
+            JOptionPane.showMessageDialog(this, "Request approved successfully and email notification sent");
             populateLaundryRequestTable();
             formatRows();
             

@@ -294,6 +294,7 @@ public class ManageLaundryPanel extends javax.swing.JPanel {
 
             populateTable();
             resetLaundryData();
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }

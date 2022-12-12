@@ -411,6 +411,7 @@ public class ManageVehiclePanel extends javax.swing.JPanel {
                 vehicle.setPrice(price);
 
                 populateTable();
+                resetVehicleData();
 
                 JOptionPane.showMessageDialog(this, "Update successful!");
             } else if (tblVehicle.getRowCount() == 0) {
